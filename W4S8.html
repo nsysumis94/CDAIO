@@ -1,0 +1,2124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexaMind | Global Data & AI Governance Council — Selection Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:    #0f2d5a;
+      --blue:    #1e4d8c;
+      --sky:     #2563eb;
+      --orange:  #e8541a;
+      --green:   #059669;
+      --red:     #dc2626;
+      --amber:   #d97706;
+      --gray-50: #f9fafb;
+      --gray-100:#f3f4f6;
+      --gray-200:#e5e7eb;
+      --gray-400:#9ca3af;
+      --gray-600:#4b5563;
+      --gray-800:#1f2937;
+      --white:   #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--gray-800);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    /* ── SHARED WIDTH ── */
+    .page-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      width: 100%;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      border-bottom: 3px solid var(--orange);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      height: 52px;
+      gap: 2.5rem;
+    }
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .nav-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.2); }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-tag {
+      margin-left: auto;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: rgba(232,84,26,0.15);
+      padding: 0.25rem 0.65rem;
+      border: 1px solid rgba(232,84,26,0.3);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 60%, #152e56 100%);
+      padding: 5rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -60px; top: -60px;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      background: rgba(37,99,235,0.08);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+    .hero-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--orange);
+      border: 1px solid rgba(232,84,26,0.4);
+      padding: 0.28rem 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      max-width: 620px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .meta-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); }
+    .meta-value { font-size: 0.88rem; font-weight: 600; color: rgba(255,255,255,0.85); }
+
+    /* ── ALERT BANNER ── */
+    .alert-banner {
+      background: #fff8f5;
+      border-left: 4px solid var(--orange);
+      padding: 1.25rem 0;
+    }
+    .alert-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .alert-icon { font-size: 1.1rem; line-height: 1.65; flex-shrink: 0; }
+    .alert-text { font-size: 0.88rem; color: #7c2d12; line-height: 1.6; }
+    .alert-text strong { font-weight: 600; }
+
+    /* ── SECTIONS ── */
+    section { padding: 4rem 0; }
+    section:nth-child(even) { background: var(--gray-50); }
+    .section-inner { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--sky);
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+    .section-desc {
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      max-width: 680px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    /* ── CRISIS CARDS ── */
+    .crisis-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    @media (max-width: 860px) { .crisis-grid { grid-template-columns: 1fr; } }
+    .crisis-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-top: 3px solid var(--red);
+      padding: 1.5rem;
+    }
+    .crisis-card.amber { border-top-color: var(--amber); }
+    .crisis-card.blue  { border-top-color: var(--sky); }
+    .crisis-icon { font-size: 1.4rem; margin-bottom: 0.75rem; }
+    .crisis-title { font-weight: 600; font-size: 0.9rem; color: var(--navy); margin-bottom: 0.5rem; }
+    .crisis-body { font-size: 0.82rem; color: var(--gray-600); line-height: 1.6; }
+
+    .mandate-box {
+      background: var(--navy);
+      color: var(--white);
+      padding: 2rem 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 720px) { .mandate-box { grid-template-columns: 1fr; } }
+    .mandate-item { display: flex; gap: 0.75rem; }
+    .mandate-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--orange);
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .mandate-text { font-size: 0.82rem; color: rgba(255,255,255,0.75); line-height: 1.55; }
+    .mandate-text strong { display: block; color: var(--white); font-size: 0.85rem; margin-bottom: 0.2rem; }
+
+    /* ── METHODOLOGY ── */
+    .method-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 820px) { .method-grid { grid-template-columns: 1fr; } }
+    .method-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+    .method-text p { font-size: 0.88rem; color: var(--gray-600); margin-bottom: 0.85rem; line-height: 1.65; }
+
+    .mini-matrix {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      border: 2px solid var(--navy);
+      aspect-ratio: 1;
+      max-width: 400px;
+      position: relative;
+    }
+    .mm-q {
+      padding: 0.9rem;
+      border: 1px solid rgba(15,45,90,0.15);
+      display: flex;
+      flex-direction: column;
+    }
+    .mm-tl { background: var(--navy); }
+    .mm-tr { background: var(--white); outline: 2px solid var(--orange); outline-offset: -2px; }
+    .mm-bl { background: var(--white); }
+    .mm-br { background: #1a3a6b; }
+    .mm-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.4rem;
+    }
+    .mm-tl .mm-title, .mm-br .mm-title { color: var(--white); }
+    .mm-tr .mm-title, .mm-bl .mm-title { color: var(--navy); }
+    .mm-strats { font-size: 0.6rem; line-height: 1.7; list-style: none; }
+    .mm-tl .mm-strats, .mm-br .mm-strats { color: rgba(255,255,255,0.7); }
+    .mm-tr .mm-strats, .mm-bl .mm-strats { color: var(--gray-600); }
+    .mm-strats li::before { content: '→ '; opacity: 0.5; }
+    .mm-axis-x {
+      text-align: center;
+      font-size: 0.62rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray-600);
+      margin-top: 0.4rem;
+    }
+    .mm-axis-y {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 0.62rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray-600);
+      margin-right: 0.4rem;
+      align-self: center;
+    }
+    .mm-wrap { display: flex; align-items: stretch; gap: 0.35rem; }
+
+    /* ── FULL MATRIX ── */
+    .full-matrix-wrap {
+      display: flex;
+      gap: 0.5rem;
+      align-items: stretch;
+      margin-bottom: 1.5rem;
+    }
+    .fm-y-axis {
+      display: flex;
+      gap: 0.35rem;
+      align-items: stretch;
+    }
+    .fm-y-label {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 0.62rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray-400);
+      white-space: nowrap;
+      align-self: center;
+    }
+    .fm-scale-y {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2px 0;
+    }
+    .fm-scale-y span, .fm-scale-x span {
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: var(--gray-400);
+    }
+    .fm-col { flex: 1; display: flex; flex-direction: column; }
+    .fm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      aspect-ratio: 1;
+      border: 2px solid var(--navy);
+      position: relative;
+    }
+    .fm-q { border: 1px solid rgba(15,45,90,0.12); position: relative; overflow: visible; }
+    .fm-tl { background: rgba(15,45,90,0.06); }
+    .fm-tr { background: #fff8f5; outline: 2px solid var(--orange); outline-offset: -2px; z-index: 1; }
+    .fm-bl { background: var(--white); }
+    .fm-br { background: rgba(15,45,90,0.06); }
+
+    .fm-q-label {
+      font-size: 0.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--navy);
+      opacity: 0.45;
+      padding: 0.4rem 0.5rem 0.2rem;
+      line-height: 1.3;
+      pointer-events: none;
+    }
+
+    .fm-dots { position: absolute; inset: 0; z-index: 10; pointer-events: none; grid-column: 1/-1; grid-row: 1/-1; }
+    .fm-dot {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      cursor: default;
+    }
+    .fm-dot-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.5rem;
+      font-weight: 700;
+      color: var(--white);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+      position: relative;
+    }
+    .fm-dot-circle.selected { border: 2.5px solid var(--white); box-shadow: 0 0 0 2px var(--orange), 0 3px 8px rgba(0,0,0,0.2); }
+    .fm-dot-circle.excluded { opacity: 0.45; border: 1.5px dashed rgba(0,0,0,0.2); }
+    .fm-dot-name {
+      font-size: 0.52rem;
+      font-weight: 600;
+      white-space: nowrap;
+      color: var(--navy);
+      background: rgba(255,255,255,0.9);
+      padding: 1px 4px;
+      line-height: 1.3;
+    }
+    .fm-scale-x { display: flex; justify-content: space-between; margin-top: 3px; }
+    .fm-x-label {
+      text-align: center;
+      font-size: 0.62rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray-400);
+      margin-top: 4px;
+    }
+
+    .matrix-legend {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: var(--gray-600); }
+    .legend-dot { width: 14px; height: 14px; border-radius: 50%; }
+    .legend-dot.sel { background: var(--sky); border: 2px solid var(--orange); }
+    .legend-dot.exc { background: var(--gray-400); opacity: 0.5; border: 1px dashed rgba(0,0,0,0.3); }
+
+    /* ── SELECTED MEMBERS ── */
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .member-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-top: 3px solid var(--sky);
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .member-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
+    .member-header {
+      padding: 1.25rem 1.5rem 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .member-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .member-info .member-name { font-weight: 600; font-size: 0.95rem; color: var(--navy); line-height: 1.2; }
+    .member-info .member-title { font-size: 0.75rem; color: var(--gray-600); margin-top: 2px; }
+    .member-scores {
+      display: flex;
+      gap: 0.6rem;
+      padding: 0 1.5rem 0.9rem;
+    }
+    .score-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: var(--gray-100);
+      padding: 0.25rem 0.6rem;
+      font-size: 0.7rem;
+      border-radius: 2px;
+    }
+    .score-pill .s-label { color: var(--gray-600); }
+    .score-pill .s-val { font-weight: 700; color: var(--navy); }
+    .score-bar { height: 3px; background: var(--gray-200); width: 32px; border-radius: 1px; overflow: hidden; }
+    .score-bar-fill { height: 100%; border-radius: 1px; }
+    .quadrant-tag {
+      display: inline-block;
+      margin: 0 1.5rem 0.9rem;
+      font-size: 0.62rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.22rem 0.6rem;
+    }
+    .qt-tr { background: #fff0eb; color: var(--orange); border: 1px solid rgba(232,84,26,0.3); }
+    .qt-tl { background: #eff6ff; color: var(--sky); border: 1px solid rgba(37,99,235,0.3); }
+    .qt-br { background: #f0fdf4; color: var(--green); border: 1px solid rgba(5,150,105,0.3); }
+    .qt-bl { background: var(--gray-100); color: var(--gray-600); border: 1px solid var(--gray-200); }
+    .member-body {
+      padding: 0 1.5rem 1.25rem;
+      border-top: 1px solid var(--gray-100);
+      margin-top: 0.25rem;
+    }
+    .member-body h4 {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray-400);
+      padding-top: 0.9rem;
+      margin-bottom: 0.35rem;
+    }
+    .member-body p { font-size: 0.82rem; color: var(--gray-600); line-height: 1.6; }
+    .member-body .reason { color: var(--navy); font-weight: 400; }
+    .strategy-list { display: flex; flex-direction: column; gap: 0.3rem; }
+    .strategy-item {
+      font-size: 0.78rem;
+      color: var(--gray-600);
+      display: flex;
+      gap: 0.4rem;
+      align-items: flex-start;
+    }
+    .strategy-item::before { content: '→'; color: var(--sky); flex-shrink: 0; font-size: 0.72rem; margin-top: 2px; }
+    .seat-role-tag {
+      display: inline-block;
+      background: var(--navy);
+      color: rgba(255,255,255,0.85);
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.55rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── EXCLUDED TABLE ── */
+    .excluded-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    .excluded-table thead tr {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .excluded-table thead th {
+      padding: 0.75rem 1.1rem;
+      text-align: left;
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .excluded-table tbody tr { border-bottom: 1px solid var(--gray-200); }
+    .excluded-table tbody tr:hover { background: var(--gray-50); }
+    .excluded-table tbody td { padding: 0.9rem 1.1rem; color: var(--gray-800); vertical-align: top; }
+    .excluded-table tbody td:first-child { font-weight: 600; color: var(--navy); white-space: nowrap; }
+    .exc-quad { display: inline-block; font-size: 0.62rem; font-weight: 600; padding: 0.15rem 0.4rem; text-transform: uppercase; }
+    .exc-quad.br { background: var(--gray-100); color: var(--gray-600); }
+    .exc-quad.tr { background: #fff0eb; color: var(--orange); }
+    .exc-quad.tl { background: #eff6ff; color: var(--sky); }
+    .exc-reason { font-size: 0.8rem; color: var(--gray-600); line-height: 1.55; }
+
+    /* ── COUNCIL BALANCE ── */
+    .balance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 720px) { .balance-grid { grid-template-columns: 1fr; } }
+    .balance-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      padding: 1.5rem;
+    }
+    .balance-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--gray-100);
+    }
+    .balance-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.65rem;
+    }
+    .balance-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .balance-name { font-size: 0.82rem; color: var(--navy); font-weight: 500; min-width: 130px; }
+    .balance-bar-wrap { flex: 1; height: 6px; background: var(--gray-200); border-radius: 3px; overflow: hidden; }
+    .balance-bar { height: 100%; border-radius: 3px; }
+    .balance-label { font-size: 0.7rem; color: var(--gray-600); white-space: nowrap; }
+
+    .faction-table { width: 100%; margin-top: 0.5rem; }
+    .faction-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.85rem; }
+    .faction-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.5rem;
+      white-space: nowrap;
+    }
+    .faction-badge.growth { background: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+    .faction-badge.gov { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .faction-badge.bridge { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
+    .faction-badge.exec { background: #f3e8ff; color: #6b21a8; border: 1px solid #c4b5fd; }
+    .faction-names { font-size: 0.8rem; color: var(--gray-600); }
+
+    /* ── FIRST ACTION ── */
+    .action-box {
+      background: var(--navy);
+      color: var(--white);
+      padding: 2.5rem 0;
+    }
+    .action-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 820px) { .action-box { grid-template-columns: 1fr; } }
+    .action-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+    .action-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+    .action-box p { font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 0.85rem; }
+    .action-timeline { display: flex; flex-direction: column; gap: 0.85rem; }
+    .timeline-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .timeline-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .timeline-content .timeline-week { font-size: 0.68rem; color: var(--orange); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+    .timeline-content .timeline-desc { font-size: 0.82rem; color: rgba(255,255,255,0.8); line-height: 1.5; margin-top: 0.1rem; }
+
+    /* ── RATIONALE ── */
+    .rationale-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 860px) { .rationale-cols { grid-template-columns: 1fr; } }
+    .rationale-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      padding: 1.5rem;
+    }
+    .rationale-card .r-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .rationale-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .rationale-card p { font-size: 0.82rem; color: var(--gray-600); line-height: 1.65; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--gray-800);
+      padding: 2rem 0;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-brand { font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 700; color: var(--white); }
+    .footer-note { font-size: 0.72rem; color: rgba(255,255,255,0.4); }
+
+    /* ── UTILITY ── */
+    .divider { height: 1px; background: var(--gray-200); margin: 2rem 0; }
+    .tag-inline {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.15rem 0.45rem;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+    .tag-selected { background: #e0f2fe; color: var(--sky); border: 1px solid #7dd3fc; }
+    .tag-excluded { background: var(--gray-100); color: var(--gray-600); border: 1px solid var(--gray-200); }
+
+    /* ── PRINT STYLES ── */
+    @media print {
+      /* Force color preservation */
+      *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+
+      /* Page setup */
+      @page {
+        size: A4;
+        margin: 12mm 14mm;
+      }
+
+      /* Hide non-content elements */
+      nav,
+      .alert-banner {
+        display: none !important;
+      }
+
+      /* Remove sticky positioning */
+      body { font-size: 11px; }
+
+      /* Sections: reset padding for print density */
+      section { padding: 20pt 0 !important; }
+      .section-inner { max-width: 100% !important; }
+
+      /* Hero: compact */
+      .hero {
+        padding: 20pt 0 16pt !important;
+        background: var(--navy) !important;
+        border-bottom: 4pt solid var(--orange) !important;
+      }
+      .hero h1 { font-size: 20pt !important; }
+      .hero-sub { font-size: 9pt !important; }
+      .hero-meta { gap: 16pt !important; }
+
+      /* Mandate box: keep background */
+      .mandate-box {
+        background: var(--navy) !important;
+        color: white !important;
+        grid-template-columns: repeat(3,1fr) !important;
+      }
+      .mandate-text { color: rgba(255,255,255,0.75) !important; }
+      .mandate-text strong { color: white !important; }
+      .mandate-num { color: var(--orange) !important; }
+
+      /* Crisis cards */
+      .crisis-grid { grid-template-columns: repeat(3,1fr) !important; gap: 8pt !important; }
+      .crisis-card { border-top: 3pt solid var(--red) !important; break-inside: avoid; }
+      .crisis-card.amber { border-top-color: var(--amber) !important; }
+      .crisis-card.blue  { border-top-color: var(--sky) !important; }
+
+      /* Method grid: side by side */
+      .method-grid { grid-template-columns: 1fr 1fr !important; gap: 16pt !important; }
+
+      /* Matrix section — hide interactive dots, show static print version */
+      .full-matrix-wrap { break-inside: avoid; }
+      .fm-grid {
+        background: white !important;
+        break-inside: avoid;
+        overflow: hidden !important;
+        position: relative !important;
+      }
+      .fm-tl { background: rgba(15,45,90,0.06) !important; }
+      .fm-tr { background: #fff8f5 !important; }
+      .fm-br { background: rgba(15,45,90,0.06) !important; }
+      /* Hide floating dots entirely in print */
+      .fm-dots { display: none !important; }
+      /* Show static print matrix instead */
+      .print-matrix-table { display: table !important; }
+      .matrix-legend { display: none !important; }
+
+      /* Score table: no excessive padding */
+      #evidence-tbody td,
+      #score-table td,
+      .excluded-table td,
+      .excluded-table th { padding: 5pt 7pt !important; font-size: 8pt !important; }
+      .excluded-table thead tr { background: var(--navy) !important; }
+      .excluded-table thead th { color: white !important; }
+
+      /* Member cards: 2 columns, preserve top border color */
+      .members-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10pt !important;
+      }
+      .member-card { break-inside: avoid; }
+      .member-header { padding: 10pt 12pt 8pt !important; }
+      .member-body { padding: 0 12pt 10pt !important; }
+
+      /* Golden square: full width cards */
+      #golden-cards > div { break-inside: avoid; margin-bottom: 8pt !important; }
+      #golden-cards > div > div:last-child {
+        grid-template-columns: 1fr 1fr 1fr !important;
+      }
+      /* Preserve column background colors */
+      #golden-cards [style*="background:#fffbeb"],
+      #golden-cards [style*="background:#fffdf5"] {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      /* Balance grid: side by side */
+      .balance-grid { grid-template-columns: 1fr 1fr !important; gap: 12pt !important; }
+      .balance-card { break-inside: avoid; }
+
+      /* Execution Reality callout */
+      #balance [style*="border:1.5px solid #d97706"] {
+        background: #fffbeb !important;
+        break-inside: avoid;
+      }
+
+      /* Action box */
+      .action-box { background: var(--navy) !important; break-inside: avoid; }
+      .action-inner {
+        grid-template-columns: 1fr 280pt !important;
+        padding: 16pt !important;
+      }
+      .action-box h3 { color: white !important; font-size: 13pt !important; }
+      .action-box p { color: rgba(255,255,255,0.7) !important; font-size: 9pt !important; }
+      .timeline-dot { background: var(--orange) !important; }
+      .timeline-week { color: var(--orange) !important; }
+      .timeline-desc { color: rgba(255,255,255,0.8) !important; }
+
+      /* Rationale */
+      .rationale-cols { grid-template-columns: repeat(3,1fr) !important; gap: 8pt !important; }
+      .rationale-card { break-inside: avoid; }
+
+      /* Faction badges: keep colors */
+      .faction-badge.growth { background: #fef9c3 !important; color: #854d0e !important; }
+      .faction-badge.gov    { background: #dbeafe !important; color: #1e40af !important; }
+      .faction-badge.bridge { background: #dcfce7 !important; color: #14532d !important; }
+      .faction-badge.exec   { background: #fef3c7 !important; color: #78350f !important; }
+
+      /* Quadrant badges */
+      .q-badge.badge-tl { background: var(--navy) !important; color: white !important; }
+      .q-badge.badge-tr { background: var(--orange) !important; color: white !important; }
+      .q-badge.badge-bl { background: var(--gray-100) !important; color: var(--navy) !important; }
+      .q-badge.badge-br { background: var(--navy-mid) !important; color: white !important; }
+
+      /* Navy backgrounds */
+      .list-head   { background: var(--navy) !important; }
+      .list-head * { color: white !important; }
+
+      /* Footer */
+      footer {
+        background: var(--gray-800) !important;
+        padding: 10pt 14pt !important;
+      }
+      footer * { color: rgba(255,255,255,0.6) !important; }
+      .footer-brand { color: white !important; }
+
+      /* Section page breaks */
+      #context      { break-before: auto; }
+      #scoring      { break-before: page; }
+      #matrix       { break-before: page; }
+      #selected     { break-before: page; }
+      #golden-square{ break-before: page; }
+      #excluded     { break-before: page; }
+      #balance      { break-before: page; }
+      #action       { break-before: page; }
+      #rationale    { break-before: auto; }
+
+      /* Mini matrix in methodology */
+      .mini-matrix .mm-tl { background: var(--navy) !important; }
+      .mini-matrix .mm-br { background: #1a3a6b !important; }
+      .mm-tl .mm-title, .mm-br .mm-title { color: white !important; }
+      .mm-tl .mm-strats, .mm-br .mm-strats { color: rgba(255,255,255,0.7) !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-brand">NexaMind Consulting</span>
+    <div class="nav-divider"></div>
+    <div class="nav-links">
+      <a href="#context">Context</a>
+      <a href="#methodology">Methodology</a>
+      <a href="#matrix">Matrix</a>
+      <a href="#selected">Selected 7</a>
+      <a href="#excluded">Excluded</a>
+      <a href="#action">First Action</a>
+    </div>
+    <span class="nav-tag">CDAO Report · Simulation 8</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <span class="hero-label">Global Data & AI Governance Council</span>
+    <h1>7-Member Council<br>Selection Analysis</h1>
+    <p class="hero-sub">
+      Using the Stakeholder Power–Interest Matrix to identify, justify, and prioritize the optimal composition of NexaMind's governance body — balancing trust, speed, and long-term sustainability.
+    </p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Total Candidates</span>
+        <span class="meta-value">12 Stakeholders</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Seats to Fill</span>
+        <span class="meta-value">7 Council Members</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Framework Used</span>
+        <span class="meta-value">Power–Interest Matrix</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Governing Body</span>
+        <span class="meta-value">CDAO Office</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ALERT -->
+<div class="alert-banner">
+  <div class="alert-inner">
+    <span class="alert-icon">⚠️</span>
+    <p class="alert-text">
+      <strong>Trigger Event:</strong> A major client flagged that NexaMind's AI solution resembled a deployment made for a different client. Regulators are now scrutinizing cross-client data usage. Internal delivery teams continue bypassing controls to meet aggressive partner-driven deadlines. The CDAO must act decisively.
+    </p>
+  </div>
+</div>
+
+<!-- SECTION 1: CONTEXT -->
+<section id="context">
+  <div class="section-inner">
+    <div class="section-label">01 · Strategic Context</div>
+    <h2>The Governance Crisis at NexaMind</h2>
+    <p class="section-desc">Three structural tensions are converging simultaneously, creating an urgent need for a governance body with the right composition to address each dimension.</p>
+
+    <div class="crisis-grid">
+      <div class="crisis-card">
+        <div class="crisis-icon">🔐</div>
+        <div class="crisis-title">Client Confidentiality Risk</div>
+        <div class="crisis-body">Consultants are reusing components of client data models across engagements without clear governance boundaries. One client has already flagged IP similarities — a reputational and legal ticking clock.</div>
+      </div>
+      <div class="crisis-card amber">
+        <div class="crisis-icon">⚖️</div>
+        <div class="crisis-title">Regulatory Inspection</div>
+        <div class="crisis-body">External regulators are actively examining how consulting firms manage cross-client data usage, particularly in finance and healthcare. Non-compliance risk is no longer theoretical.</div>
+      </div>
+      <div class="crisis-card blue">
+        <div class="crisis-icon">⚡</div>
+        <div class="crisis-title">Internal Execution Gap</div>
+        <div class="crisis-body">Partners push for speed. Legal raises red flags. Delivery teams quietly bypass controls to meet deadlines. Governance without buy-in from execution-level staff will simply be ignored.</div>
+      </div>
+    </div>
+
+    <div class="mandate-box">
+      <div class="mandate-item">
+        <div class="mandate-num">01</div>
+        <div class="mandate-text">
+          <strong>Protect Client Trust</strong>
+          Prevent unauthorized reuse of client data, models, and IP across engagements.
+        </div>
+      </div>
+      <div class="mandate-item">
+        <div class="mandate-num">02</div>
+        <div class="mandate-text">
+          <strong>Standardize Governance</strong>
+          Establish consistent, enforceable policies across global projects and regional offices.
+        </div>
+      </div>
+      <div class="mandate-item">
+        <div class="mandate-num">03</div>
+        <div class="mandate-text">
+          <strong>Maintain Speed</strong>
+          Design governance that is embedded, not bureaucratic — preserving NexaMind's competitive delivery advantage.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: METHODOLOGY -->
+<section id="methodology">
+  <div class="section-inner">
+    <div class="section-label">02 · Selection Methodology</div>
+    <h2>Stakeholder Power–Interest Matrix</h2>
+    <p class="section-desc">Each candidate was scored on two dimensions derived from their profile descriptions. Selection priority was determined by quadrant placement and strategic role on the council.</p>
+
+    <div class="method-grid">
+      <div class="method-text">
+        <h3>Scoring Dimensions</h3>
+        <p><strong style="color:var(--navy)">Influence (Power) Score 1–5:</strong><br>
+        Does this person have approval/veto authority? Do they control budgets, platforms, or pipelines? Are they a key node in NexaMind's decision chain? Can they mobilize or block others?</p>
+        <p><strong style="color:var(--navy)">Interest Score 1–5:</strong><br>
+        Is this person directly impacted by governance outcomes? Do they actively engage with compliance, delivery risk, or client trust issues? Do they have a personal or professional stake in the result?</p>
+        <div class="divider"></div>
+        <h3>Quadrant → Council Strategy</h3>
+        <p>The framework determines <em>why</em> each candidate should be included or excluded, and <em>how</em> to engage them on the council. High-Influence members need to be inside the tent — not managed from outside.</p>
+        <p>The critical insight for this simulation: <strong style="color:var(--navy)">governance must be designed for the people who will actually execute it</strong> — not just those with formal authority.</p>
+      </div>
+      <div>
+        <div class="mm-wrap">
+          <span class="mm-axis-y">Interest →</span>
+          <div style="flex:1;">
+            <div class="mini-matrix">
+              <div class="mm-q mm-tl">
+                <div class="mm-title">High Interest<br>+ Low Influence</div>
+                <ul class="mm-strats">
+                  <li>Inform completely</li>
+                  <li>Monitor closely</li>
+                  <li>Friendly distance</li>
+                </ul>
+              </div>
+              <div class="mm-q mm-tr">
+                <div class="mm-title">High Interest<br>+ High Influence</div>
+                <ul class="mm-strats">
+                  <li>Engage regularly</li>
+                  <li>Sustain satisfaction</li>
+                  <li>Leverage Power</li>
+                </ul>
+              </div>
+              <div class="mm-q mm-bl">
+                <div class="mm-title">Low Interest<br>+ Low Influence</div>
+                <ul class="mm-strats">
+                  <li>Essential info only</li>
+                  <li>Minimum contact</li>
+                  <li>Can ignore</li>
+                </ul>
+              </div>
+              <div class="mm-q mm-br">
+                <div class="mm-title">Low Interest<br>+ High Influence</div>
+                <ul class="mm-strats">
+                  <li>Anticipate needs</li>
+                  <li>Monitor regularly</li>
+                  <li>Build Rapport</li>
+                </ul>
+              </div>
+            </div>
+            <div class="mm-axis-x">→ Influence</div>
+          </div>
+        </div>
+        <p style="font-size:0.75rem; color:var(--gray-400); margin-top:0.85rem; line-height:1.55;">
+          <strong style="color:var(--orange)">★ Governance insight:</strong> High-Influence + Low-Interest candidates (bottom-right) are the most dangerous if left outside the council. They can silently block governance without engagement.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2B: SCORING RUBRIC -->
+<section id="scoring">
+  <div class="section-inner">
+    <div class="section-label">02B · Scoring Transparency</div>
+    <h2>How Every Score Was Derived</h2>
+    <p class="section-desc">Each score is traced directly to specific language in the candidate's profile. No score was assumed — every point is backed by quoted evidence.</p>
+
+    <!-- Rubric tables -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem;">
+      <div style="background:var(--white);border:1px solid var(--gray-200);border-top:3px solid var(--sky);overflow:hidden;">
+        <div style="background:var(--sky);padding:0.75rem 1.25rem;">
+          <span style="font-family:'Playfair Display',serif;font-size:0.88rem;font-weight:700;color:#fff;">Influence Score Rubric</span>
+        </div>
+        <table style="width:100%;border-collapse:collapse;font-size:0.78rem;">
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:0.6rem 1rem;font-weight:800;color:var(--sky);width:28px;">5</td>
+            <td style="padding:0.6rem 1rem;color:var(--gray-800);">C-suite / board-level authority <em>or</em> legal veto power that can halt decisions firm-wide</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:0.6rem 1rem;font-weight:800;color:var(--sky);">4</td>
+            <td style="padding:0.6rem 1rem;color:var(--gray-800);">Senior leader with significant formal authority over budgets, platforms, or major decisions across teams</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:0.6rem 1rem;font-weight:800;color:var(--sky);">3</td>
+            <td style="padding:0.6rem 1rem;color:var(--gray-800);">Director / Head level with domain authority; notable informal power over what gets implemented</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:0.6rem 1rem;font-weight:800;color:var(--sky);">2</td>
+            <td style="padding:0.6rem 1rem;color:var(--gray-800);">Expert-level with informal cultural influence (e.g. shapes norms) but limited formal decision authority</td>
+          </tr>
+          <tr>
+            <td style="padding:0.6rem 1rem;font-weight:800;color:var(--sky);">1</td>
+            <td style="padding:0.6rem 1rem;color:var(--gray-800);">Individual contributor; minimal organizational authority over others</td>
+          </tr>
+        </table>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--gray-200);border-top:3px solid var(--orange);overflow:hidden;">
+        <div style="background:var(--orange);padding:0.75rem 1.25rem;">
+          <span style="font-family:'Playfair Display',serif;font-size:0.88rem;font-weight:700;color:#fff;">Interest Score Rubric</span>
+        </div>
+        <table style="width:100%;border-collapse:collapse;font-size:0.78rem;">
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:0.6rem 1rem;font-weight:800;color:var(--orange);width:28px;">5</td>
+            <td style="padding:0.6rem 1rem;color:var(--gray-800);">Primary job function <em>is</em> governance / compliance / risk; personally accountable for outcomes</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:0.6rem 1rem;font-weight:800;color:var(--orange);">4</td>
+            <td style="padding:0.6rem 1rem;color:var(--gray-800);">Governance outcomes directly affect their team or delivery work; actively engaged with the problem (even if resistant)</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:0.6rem 1rem;font-weight:800;color:var(--orange);">3</td>
+            <td style="padding:0.6rem 1rem;color:var(--gray-800);">Moderately affected; aware of governance issues but not primarily responsible; engagement is situational</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:0.6rem 1rem;font-weight:800;color:var(--orange);">2</td>
+            <td style="padding:0.6rem 1rem;color:var(--gray-800);">Views governance as a cost or constraint; peripheral involvement; focus lies elsewhere</td>
+          </tr>
+          <tr>
+            <td style="padding:0.6rem 1rem;font-weight:800;color:var(--orange);">1</td>
+            <td style="padding:0.6rem 1rem;color:var(--gray-800);">Largely indifferent; governance has minimal connection to stated goals or responsibilities</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Per-candidate scoring evidence -->
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.8rem;" id="evidence-table">
+        <thead>
+          <tr style="background:var(--navy);">
+            <th style="padding:0.7rem 1rem;text-align:left;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;color:#fff;font-weight:600;white-space:nowrap;">Candidate</th>
+            <th style="padding:0.7rem 1rem;text-align:center;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;color:#fff;font-weight:600;">Inf.</th>
+            <th style="padding:0.7rem 1rem;text-align:left;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;color:#7dd3fc;font-weight:600;">Evidence from Profile → Influence Score</th>
+            <th style="padding:0.7rem 1rem;text-align:center;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;color:#fff;font-weight:600;">Int.</th>
+            <th style="padding:0.7rem 1rem;text-align:left;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;color:#fdba74;font-weight:600;">Evidence from Profile → Interest Score</th>
+          </tr>
+        </thead>
+        <tbody id="evidence-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: FULL MATRIX -->
+<section id="matrix">
+  <div class="section-inner">
+    <div class="section-label">03 · All 12 Candidates Mapped</div>
+    <h2>Stakeholder Matrix: Full Field</h2>
+    <p class="section-desc">All 12 candidates plotted by Influence and Interest scores derived from their profile descriptions. Orange-ringed dots indicate selected council members.</p>
+
+    <div class="full-matrix-wrap">
+      <div class="fm-y-axis">
+        <span class="fm-y-label">Stakeholder Interest →</span>
+        <div class="fm-scale-y">
+          <span>5</span><span>4</span><span>3</span><span>2</span><span>1</span>
+        </div>
+      </div>
+      <div class="fm-col">
+        <div class="fm-grid" id="fm-grid">
+          <div class="fm-q fm-tl"><div class="fm-q-label">High Interest<br>Low Influence</div></div>
+          <div class="fm-q fm-tr"><div class="fm-q-label">High Interest<br>High Influence</div></div>
+          <div class="fm-q fm-bl"><div class="fm-q-label">Low Interest<br>Low Influence</div></div>
+          <div class="fm-q fm-br"><div class="fm-q-label">Low Interest<br>High Influence</div></div>
+          <div class="fm-dots" id="fm-dots"></div>
+        </div>
+        <div class="fm-scale-x">
+          <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+        </div>
+        <div class="fm-x-label">→ Stakeholder Influence</div>
+      </div>
+    </div>
+
+    <div class="matrix-legend">
+      <div class="legend-item"><div class="legend-dot sel"></div> Selected (7 members)</div>
+      <div class="legend-item"><div class="legend-dot exc"></div> Not Selected (5 candidates)</div>
+    </div>
+
+    <!-- Static print-only matrix (hidden on screen) -->
+    <table class="print-matrix-table" style="display:none; width:100%; border-collapse:collapse; margin-top:1rem; font-size:8pt;">
+      <thead>
+        <tr style="background:var(--navy);">
+          <th style="padding:6pt 8pt; color:#fff; text-align:left; font-size:7pt; text-transform:uppercase; letter-spacing:0.08em;">Candidate</th>
+          <th style="padding:6pt 8pt; color:#fff; text-align:left; font-size:7pt; text-transform:uppercase; letter-spacing:0.08em;">Role</th>
+          <th style="padding:6pt 8pt; color:#7dd3fc; text-align:center; font-size:7pt; text-transform:uppercase; letter-spacing:0.08em;">Influence</th>
+          <th style="padding:6pt 8pt; color:#fdba74; text-align:center; font-size:7pt; text-transform:uppercase; letter-spacing:0.08em;">Interest</th>
+          <th style="padding:6pt 8pt; color:#fff; text-align:left; font-size:7pt; text-transform:uppercase; letter-spacing:0.08em;">Quadrant</th>
+          <th style="padding:6pt 8pt; color:#fff; text-align:center; font-size:7pt; text-transform:uppercase; letter-spacing:0.08em;">Status</th>
+        </tr>
+      </thead>
+      <tbody id="print-matrix-tbody"></tbody>
+    </table>
+
+    <!-- Score summary table -->
+    <div style="margin-top: 2rem; overflow-x: auto;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.8rem;">
+        <thead>
+          <tr style="background:var(--gray-100);">
+            <th style="text-align:left; padding:0.6rem 0.85rem; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gray-600); font-weight:600; border-bottom:2px solid var(--gray-200);">Candidate</th>
+            <th style="text-align:left; padding:0.6rem 0.85rem; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gray-600); font-weight:600; border-bottom:2px solid var(--gray-200);">Role</th>
+            <th style="text-align:center; padding:0.6rem 0.85rem; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gray-600); font-weight:600; border-bottom:2px solid var(--gray-200);">Influence</th>
+            <th style="text-align:center; padding:0.6rem 0.85rem; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gray-600); font-weight:600; border-bottom:2px solid var(--gray-200);">Interest</th>
+            <th style="text-align:left; padding:0.6rem 0.85rem; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gray-600); font-weight:600; border-bottom:2px solid var(--gray-200);">Quadrant</th>
+            <th style="text-align:center; padding:0.6rem 0.85rem; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gray-600); font-weight:600; border-bottom:2px solid var(--gray-200);">Status</th>
+          </tr>
+        </thead>
+        <tbody id="score-table"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: SELECTED 7 -->
+<section id="selected">
+  <div class="section-inner">
+    <div class="section-label">04 · Council Composition</div>
+    <h2>The Selected 7 Members</h2>
+    <p class="section-desc">Each member was chosen for a specific strategic function — covering executive mandate, legal authority, technical control, execution reality, and governance expertise.</p>
+    <div class="members-grid" id="members-grid"></div>
+  </div>
+</section>
+
+<!-- SECTION 4B: AKINA 3 GOLDEN SQUARE -->
+<section id="golden-square">
+  <div class="section-inner">
+    <div class="section-label">04B · Akina's 3 Golden Square</div>
+    <h2>Why Each Member Belongs on the Council</h2>
+    <p class="section-desc">Applying Akina's nested framework — from organizational context (What) to personal authority (Who) to strategic rationale (Why) — to justify every seat.</p>
+
+    <!-- Framework explainer -->
+    <div style="display:flex; gap:2rem; align-items:center; margin-bottom:3rem; flex-wrap:wrap;">
+      <div style="flex-shrink:0; position:relative; width:220px; height:160px;">
+        <!-- Nested squares visual -->
+        <div style="position:absolute;inset:0;border:3px solid #f59e0b;border-radius:3px;background:#fffbeb;display:flex;align-items:flex-start;padding:8px 10px;">
+          <span style="font-size:0.7rem;font-weight:700;color:#92400e;text-transform:uppercase;letter-spacing:0.08em;">What?</span>
+        </div>
+        <div style="position:absolute;inset:22px 16px 10px 16px;border:3px solid #f59e0b;border-radius:3px;background:#fef9c3;display:flex;align-items:flex-start;padding:8px 10px;">
+          <span style="font-size:0.7rem;font-weight:700;color:#78350f;text-transform:uppercase;letter-spacing:0.08em;">Who?</span>
+        </div>
+        <div style="position:absolute;inset:44px 32px 20px 32px;border:3px solid #f59e0b;border-radius:3px;background:#fde68a;display:flex;align-items:center;justify-content:center;">
+          <span style="font-size:0.7rem;font-weight:700;color:#78350f;text-transform:uppercase;letter-spacing:0.08em;">Why?</span>
+        </div>
+      </div>
+      <div style="flex:1; min-width:260px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem;">
+          <div>
+            <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#92400e;background:#fef3c7;padding:0.25rem 0.6rem;margin-bottom:0.5rem;display:inline-block;">What?</div>
+            <div style="font-size:0.75rem;color:var(--gray-600);line-height:1.6;">
+              <div>A. Company / Agency</div>
+              <div>B. Department / Team</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#78350f;background:#fde68a;padding:0.25rem 0.6rem;margin-bottom:0.5rem;display:inline-block;">Who?</div>
+            <div style="font-size:0.75rem;color:var(--gray-600);line-height:1.6;">
+              <div>A. Title &amp; Responsibilities</div>
+              <div>B. Rapport / Relationship</div>
+              <div>C. Power / Authority</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#451a03;background:#fbbf24;padding:0.25rem 0.6rem;margin-bottom:0.5rem;display:inline-block;">Why?</div>
+            <div style="font-size:0.75rem;color:var(--gray-600);line-height:1.6;">
+              <div>A. User / Approver / Gatekeeper</div>
+              <div>B. Direct or Indirect Impact</div>
+              <div>C. Advocate or Challenger</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Member analysis cards -->
+    <div id="golden-cards" style="display:flex;flex-direction:column;gap:1.5rem;"></div>
+  </div>
+</section>
+
+<!-- SECTION 5: EXCLUDED -->
+<section id="excluded">
+  <div class="section-inner">
+    <div class="section-label">05 · Exclusion Rationale</div>
+    <h2>The 5 Not Selected</h2>
+    <p class="section-desc">Exclusion is a strategic decision, not a judgement of importance. These five stakeholders should be actively managed <em>outside</em> the council through targeted engagement.</p>
+    <div style="overflow-x:auto;">
+      <table class="excluded-table">
+        <thead>
+          <tr>
+            <th>Candidate</th>
+            <th>Role</th>
+            <th>Quadrant</th>
+            <th>Reason for Exclusion</th>
+            <th>How to Manage Outside Council</th>
+          </tr>
+        </thead>
+        <tbody id="excluded-table"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: BALANCE -->
+<section id="balance">
+  <div class="section-inner">
+    <div class="section-label">06 · Council Balance Analysis</div>
+    <h2>Composition & Tension Management</h2>
+    <p class="section-desc">The selected 7 deliberately span NexaMind's four organizational dynamics — ensuring no single faction can dominate, and that governance reaches all the way down to execution.</p>
+    <div class="balance-grid">
+      <div class="balance-card">
+        <h3>Influence Score Distribution</h3>
+        <div id="balance-bars"></div>
+      </div>
+      <div class="balance-card">
+        <h3>Organizational Faction Coverage</h3>
+        <div class="faction-table" id="faction-table"></div>
+        <div style="margin-top:1.25rem; font-size:0.8rem; color:var(--gray-600); line-height:1.6;">
+          Four factions are represented — Growth Engine, Governance Core, Technical Bridge, and Execution Reality. No single faction holds a majority (2-2-2-1). The critical design insight from the simulation: <strong style="color:var(--navy);">governance that does not reach Execution Reality will be ignored regardless of how well it is designed at the top.</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Execution Reality callout -->
+    <div style="margin-top:1.5rem;border:1.5px solid #d97706;background:#fffbeb;padding:1.5rem 1.75rem;display:grid;grid-template-columns:auto 1fr;gap:1.25rem;align-items:start;">
+      <div style="width:42px;height:42px;background:#d97706;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:700;color:#fff;flex-shrink:0;">KT</div>
+      <div>
+        <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#92400e;margin-bottom:0.35rem;">Execution Reality — Why This Faction Cannot Be Left Out</div>
+        <p style="font-size:0.83rem;color:#78350f;line-height:1.65;margin-bottom:0.6rem;">
+          The simulation explicitly states: <em>"Kevin Tan and Emily Zhang represent execution reality, where informal practices determine success more than formal policies."</em> This is a distinct organizational layer — separate from the Technical Bridge (Wu, Chen) who operate at the architecture and knowledge level.
+        </p>
+        <p style="font-size:0.83rem;color:#78350f;line-height:1.65;margin-bottom:0.6rem;">
+          Kevin Tan's informal power is the specific kind that governance frameworks most commonly fail to account for: <strong>he controls what actually gets deployed, not just what is approved.</strong> A policy that Wu designs and Bennett approves can still be bypassed if Tan's pipelines do not enforce it. His inclusion closes this gap.
+        </p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:0.5rem;">
+          <div style="font-size:0.78rem;color:#92400e;">
+            <span style="font-weight:600;">Emily Zhang</span> (not selected) also belongs to this faction — but she operates at peer/cultural influence level, not pipeline control. She is better placed as a frontline governance champion outside the council.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: FIRST ACTION -->
+<section id="action" style="padding:0; background:var(--navy);">
+  <div class="action-box">
+    <div class="action-inner">
+    <div>
+      <div class="action-label">07 · First Decisive Action</div>
+      <h3>Implement the Client Data Segregation Protocol (CDSP)</h3>
+      <p>
+        Within 30 days of council formation, mandate a <strong style="color:var(--white)">technical and process-level firewall</strong> between client data assets. No model, dataset, or analytical framework derived from a client engagement may be reused across another engagement without explicit council-approved authorization.
+      </p>
+      <p>
+        This action is chosen because it addresses all three mandate dimensions simultaneously: it protects client confidentiality directly, creates a standardized governance touchpoint, and — critically — it is enforced at the <strong style="color:var(--white)">pipeline level by Kevin Tan</strong>, making it impossible to bypass without triggering an automated alert. Governance that lives in systems is harder to ignore than governance that lives in policy documents.
+      </p>
+      <p style="font-size:0.82rem; color:rgba(255,255,255,0.5);">
+        Target: Protection of client trust and confidentiality · Completion window: 90 days
+      </p>
+    </div>
+    <div>
+      <div style="font-size:0.68rem; font-weight:600; text-transform:uppercase; letter-spacing:0.12em; color:rgba(255,255,255,0.4); margin-bottom:1rem;">Implementation Timeline</div>
+      <div class="action-timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot">W1</div>
+          <div class="timeline-content">
+            <div class="timeline-week">Week 1–2</div>
+            <div class="timeline-desc">Kevin Tan audits all current active pipelines for cross-client data touchpoints. Daniel Wu maps reuse patterns in the platform.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">W3</div>
+          <div class="timeline-content">
+            <div class="timeline-week">Week 3–4</div>
+            <div class="timeline-desc">Laura Bennett drafts the legal framework. Isabella Rossi writes the compliance checklist. Michael Grant issues executive mandate to all partners.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">M2</div>
+          <div class="timeline-content">
+            <div class="timeline-week">Month 2</div>
+            <div class="timeline-desc">Daniel Wu deploys technical segregation controls. Victor Chen updates the Knowledge Repository with new access governance tags.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">M3</div>
+          <div class="timeline-content">
+            <div class="timeline-week">Month 3</div>
+            <div class="timeline-desc">Sophie Laurent trains AI Practice on new protocols. Council reviews first compliance dashboard. Full CDSP goes live across all four offices.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div><!-- /action-inner -->
+  </div>
+</section>
+
+<!-- SECTION 8: RATIONALE -->
+<section id="rationale">
+  <div class="section-inner">
+    <div class="section-label">08 · Strategic Rationale</div>
+    <h2>Why This Council Composition Works</h2>
+    <p class="section-desc">Three design principles drove every inclusion and exclusion decision.</p>
+    <div class="rationale-cols">
+      <div class="rationale-card">
+        <div class="r-icon">🏛️</div>
+        <h4>Authority Without Blind Spots</h4>
+        <p>The council covers all decision levers: executive mandate (Grant), legal veto (Bennett), technical platform (Wu), and operational pipeline (Tan). No decision can be made without someone with real power in the room — and no power goes unrepresented.</p>
+      </div>
+      <div class="rationale-card">
+        <div class="r-icon">⚙️</div>
+        <h4>Governance Where It Actually Happens</h4>
+        <p>Kevin Tan (Data Engineering) and Victor Chen (Knowledge Management) represent the execution layer where reuse actually occurs. Without them, governance remains theoretical. Their inclusion converts informal power into formal accountability.</p>
+      </div>
+      <div class="rationale-card">
+        <div class="r-icon">⚖️</div>
+        <h4>Converting Resistors into Champions</h4>
+        <p>Sophie Laurent is included specifically <em>because</em> she resists governance. High-Influence resistors outside the council will undermine it. Inside the council, she becomes co-responsible for governance outcomes — and her delivery expertise makes the governance more practical.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">NexaMind Consulting · CDAO Office</span>
+    <span class="footer-note">Simulation 8 — AI Consulting Services Industry · Stakeholder Power–Interest Matrix Analysis</span>
+  </div>
+</footer>
+
+<script>
+  /* ── DATA ── */
+  const CANDIDATES = [
+    { id:'mg',  name:'Michael Grant',    title:'Global Managing Partner',       inf:5, int:3, selected:true,
+      color:'#0f2d5a', initials:'MG',
+      seatRole:'Executive Sponsor',
+      quadrant:'br',
+      selectionReason:'As the top revenue and strategy authority, Grant\'s buy-in is the single biggest determinant of governance success. Without his mandate, partners will continue to prioritize speed over compliance. His Low Interest score means he won\'t engage in operational detail — but his executive endorsement is the council\'s political air cover.',
+      strategies:['Anticipate his need for governance to be framed as a business risk, not a compliance cost','Provide high-level scorecards rather than detailed reports','Leverage his board relationships to signal seriousness to major clients']
+    },
+    { id:'sl',  name:'Sophie Laurent',   title:'Head of AI Practice',           inf:4, int:4, selected:true,
+      color:'#dc2626', initials:'SL',
+      seatRole:'Delivery & Innovation Voice',
+      quadrant:'tr',
+      selectionReason:'Sophie is the council\'s most important inclusion precisely because she is governance\'s most powerful internal opponent. Her High Influence over AI delivery culture means she can make or break any policy through informal pressure on her team. Including her forces co-ownership: she can no longer be a resistor from outside.',
+      strategies:['Engage her in designing governance guardrails that preserve delivery speed','Frame governance as protecting her team from reputational blowback','Give her visible credit when governance-enabled delivery succeeds']
+    },
+    { id:'dw',  name:'Daniel Wu',        title:'Chief Technology Officer',      inf:4, int:4, selected:true,
+      color:'#2563eb', initials:'DW',
+      seatRole:'Technical Architecture Owner',
+      quadrant:'tr',
+      selectionReason:'Wu built the very platforms where unauthorized reuse occurs. His philosophy — "governance should be embedded in systems, not processes" — is exactly right. He has both the influence to enforce technical controls and the technical depth to make them effective. Without him, governance has no engineering backbone.',
+      strategies:['Empower him to design system-level enforcement (automated flagging, access controls)','Let him lead the technical governance specification to ensure it is actually implementable','Bridge his technical perspective with Laura Bennett\'s legal requirements']
+    },
+    { id:'lb',  name:'Laura Bennett',    title:'General Counsel',               inf:5, int:5, selected:true,
+      color:'#7c3aed', initials:'LB',
+      seatRole:'Legal Authority & Compliance Anchor',
+      quadrant:'tr',
+      selectionReason:'Bennett is the only person who can halt deals and has direct regulatory relationships. Her presence on the council is non-negotiable: it gives governance binding legal authority and signals to regulators that NexaMind is taking the issue seriously. Her High Interest and High Influence make her the council\'s most powerful governance advocate.',
+      strategies:['Give her authority to review and approve cross-client reuse requests','Leverage her regulator relationships as a proactive compliance signal','Use her legal framing to anchor every governance policy in contractual obligation']
+    },
+    { id:'rm',  name:'Ravi Mehta',       title:'Head of Client Delivery',       inf:3, int:4, selected:false,
+      color:'#059669', initials:'RM',
+      quadrant:'tr',
+      excReason:'Ravi is already represented on the council through Sophie Laurent (AI Practice) and Kevin Tan (Data Engineering). His perspective — managing delivery pressure vs. compliance — is important, but adding him creates a Growth Engine majority that would tilt council decisions toward speed over governance. Better managed as a key implementation partner outside.',
+      excManage:'Monthly briefings from council. Include him in the CDSP rollout as a delivery champion. Tie his KPIs to governance compliance rates.'
+    },
+    { id:'ir',  name:'Isabella Rossi',   title:'Chief Risk & Compliance Officer',inf:2, int:5, selected:true,
+      color:'#0891b2', initials:'IR',
+      seatRole:'Governance Integrity Guardian',
+      quadrant:'tl',
+      selectionReason:'Rossi has the deepest governance expertise on the entire candidate list and the highest Interest score. While her Influence is low (she lacks political backing from revenue leaders), the council changes this dynamic by giving her a formal voice. Her role is to ensure the council never compromises governance standards under commercial pressure.',
+      strategies:['Pair her with Grant\'s executive authority to give her proposals teeth','Use her as the council\'s ethics and compliance auditor','Recognize and publicize her contributions to counter her marginalization']
+    },
+    { id:'kt',  name:'Kevin Tan',        title:'Director of Data Engineering',  inf:3, int:4, selected:true,
+      color:'#d97706', initials:'KT',
+      seatRole:'Execution Reality Operator',
+      quadrant:'tr',
+      selectionReason:'Tan is the most underrated candidate on the list. He controls the data pipelines and model deployments where unauthorized reuse actually happens. He knows exactly which workarounds exist and how they\'re used. His informal power over implementation is higher than his formal influence score suggests. Without him, governance has no connection to operational reality.',
+      strategies:['Assign him ownership of the technical audit and CDSP implementation','Give him authority to flag non-compliant deployments directly to the council','Protect him from delivery-side pressure by backing his decisions at council level']
+    },
+    { id:'ez',  name:'Emily Zhang',      title:'Senior AI Consultant',          inf:2, int:3, selected:false,
+      color:'#be185d', initials:'EZ',
+      quadrant:'tl',
+      excReason:'Emily is influential at the consultant culture level, but her influence is informal and below council level. Her inclusion would not add decision-making power. She is more valuable as a frontline governance champion — someone who translates council policies to junior consultants from a peer perspective.',
+      excManage:'Appoint as Governance Champion within the AI Practice. Partner with Sophie Laurent to cascade governance norms to the consultant layer.'
+    },
+    { id:'jc',  name:'James Carter',     title:'Chief Financial Officer',       inf:4, int:2, selected:false,
+      color:'#64748b', initials:'JC',
+      quadrant:'br',
+      excReason:'Carter\'s low governance interest combined with control over investment decisions makes him a potential funding blocker — but not a governance designer. His inclusion would introduce a cost-optimization lens that could strip governance initiatives of resources. He is better managed as a financial gatekeeper to be kept informed and aligned.',
+      excManage:'Quarterly briefings framed around ROI of governance (risk mitigation, client retention, regulatory cost avoidance). Involve him in governance budget approvals but not in policy design.'
+    },
+    { id:'fa',  name:'Fatima Al-Khalid', title:'Head of Middle East Market',    inf:3, int:2, selected:false,
+      color:'#7c2d12', initials:'FA',
+      quadrant:'bl',
+      excReason:'Fatima\'s regional focus and low governance interest (she operates with minimal oversight) place her in the Low Interest + Moderate Influence quadrant. Including her would add a regional voice but dilute governance focus. The global council should set standards she is required to implement, not negotiate around.',
+      excManage:'Ensure CDSP rollout covers Dubai operations. Assign a regional compliance liaison. Include her in market-specific implementation review sessions.'
+    },
+    { id:'vc',  name:'Victor Chen',      title:'Head of Knowledge Management',  inf:3, int:4, selected:true,
+      color:'#0d9488', initials:'VC',
+      seatRole:'Knowledge Reuse Controller',
+      quadrant:'tr',
+      selectionReason:'Victor controls the internal knowledge repositories — the exact mechanism through which unauthorized reuse spreads across the firm. He operates between the Growth Engine and Governance Core, making him a natural bridge-builder. His inclusion gives the council direct control over what knowledge assets can be shared and under what conditions.',
+      strategies:['Assign him authority to govern the Knowledge Repository — who can access, tag, and reuse which assets','Partner with Daniel Wu to create technical access controls within the repository','His bridge-builder status makes him the council\'s internal diplomat across factions']
+    },
+    { id:'rg',  name:'Rachel Green',     title:'Head of Brand & Reputation',    inf:2, int:4, selected:false,
+      color:'#9333ea', initials:'RG',
+      quadrant:'tl',
+      excReason:'Rachel\'s reputational risk perspective is valuable but secondary to the core governance problems, which are technical and legal. Her High Interest but Low Influence means she can raise awareness but not enforce decisions. She is better positioned as an external monitor who alerts the council when governance failures begin to surface publicly.',
+      excManage:'Monthly reputational risk briefing to council. Grant her escalation rights if a client-facing governance incident emerges. Include in crisis response planning.'
+    }
+  ];
+
+  const COLORS = {
+    tr: { bg:'#fff0eb', text:'#c2410c', label:'High Interest + High Influence' },
+    tl: { bg:'#eff6ff', text:'#1d4ed8', label:'High Interest + Low Influence' },
+    br: { bg:'#f0fdf4', text:'#065f46', label:'Low Interest + High Influence' },
+    bl: { bg:'#f3f4f6', text:'#374151', label:'Low Interest + Low Influence' }
+  };
+
+  /* ── MATRIX DOTS ── */
+  function dotPos(inf, int) {
+    return {
+      x: ((inf - 1) / 4) * 88 + 6,
+      y: 100 - (((int - 1) / 4) * 88 + 6)
+    };
+  }
+
+  function renderMatrix() {
+    const container = document.getElementById('fm-dots');
+
+    // Group candidates that share the same (inf, int) position
+    const groups = {};
+    CANDIDATES.forEach(c => {
+      const key = `${c.inf}_${c.int}`;
+      if (!groups[key]) groups[key] = [];
+      groups[key].push(c);
+    });
+
+    // Spread offsets for clusters: radius ~4% from center, evenly distributed angles
+    const spreadRadius = 4.5;
+    CANDIDATES.forEach(c => {
+      const key = `${c.inf}_${c.int}`;
+      const group = groups[key];
+      const base = dotPos(c.inf, c.int);
+      let ox = 0, oy = 0;
+      if (group.length > 1) {
+        const idx = group.indexOf(c);
+        const angle = (2 * Math.PI * idx / group.length) - Math.PI / 2;
+        ox = Math.cos(angle) * spreadRadius;
+        oy = Math.sin(angle) * spreadRadius;
+      }
+
+      const wrap = document.createElement('div');
+      wrap.className = 'fm-dot';
+      wrap.style.cssText = `left:${base.x + ox}%;top:${base.y + oy}%;`;
+
+      const circle = document.createElement('div');
+      circle.className = 'fm-dot-circle' + (c.selected ? ' selected' : ' excluded');
+      circle.style.background = c.selected ? c.color : '#9ca3af';
+      circle.textContent = c.initials;
+
+      const label = document.createElement('div');
+      label.className = 'fm-dot-name';
+      label.textContent = c.name.split(' ')[0];
+
+      wrap.appendChild(circle);
+      wrap.appendChild(label);
+      container.appendChild(wrap);
+    });
+  }
+
+  /* ── SCORE TABLE ── */
+  function renderScoreTable() {
+    const tbody = document.getElementById('score-table');
+    CANDIDATES.forEach(c => {
+      const q = COLORS[c.quadrant];
+      const tr = document.createElement('tr');
+      tr.style.borderBottom = '1px solid var(--gray-200)';
+      tr.innerHTML = `
+        <td style="padding:0.65rem 0.85rem; font-weight:600; color:var(--navy); white-space:nowrap;">
+          <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${c.selected ? c.color : '#9ca3af'};margin-right:0.5rem;opacity:${c.selected?1:0.5};"></span>
+          ${c.name}
+        </td>
+        <td style="padding:0.65rem 0.85rem; color:var(--gray-600);">${c.title}</td>
+        <td style="padding:0.65rem 0.85rem; text-align:center;">
+          <span style="font-weight:700;color:var(--navy);">${c.inf}</span>
+          <div style="height:4px;background:var(--gray-200);width:40px;display:inline-block;margin-left:0.4rem;vertical-align:middle;border-radius:2px;overflow:hidden;">
+            <div style="height:100%;width:${(c.inf/5)*100}%;background:var(--sky);"></div>
+          </div>
+        </td>
+        <td style="padding:0.65rem 0.85rem; text-align:center;">
+          <span style="font-weight:700;color:var(--navy);">${c.int}</span>
+          <div style="height:4px;background:var(--gray-200);width:40px;display:inline-block;margin-left:0.4rem;vertical-align:middle;border-radius:2px;overflow:hidden;">
+            <div style="height:100%;width:${(c.int/5)*100}%;background:var(--orange);"></div>
+          </div>
+        </td>
+        <td style="padding:0.65rem 0.85rem;">
+          <span style="display:inline-block;padding:0.15rem 0.5rem;font-size:0.62rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;background:${q.bg};color:${q.text};">${q.label}</span>
+        </td>
+        <td style="padding:0.65rem 0.85rem; text-align:center;">
+          <span style="display:inline-block;padding:0.15rem 0.5rem;font-size:0.62rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;${c.selected ? 'background:#e0f2fe;color:var(--sky);' : 'background:var(--gray-100);color:var(--gray-600);'}">
+            ${c.selected ? '✓ Selected' : 'Excluded'}
+          </span>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  /* ── MEMBER CARDS ── */
+  function renderMembers() {
+    const grid = document.getElementById('members-grid');
+    const selected = CANDIDATES.filter(c => c.selected);
+    selected.forEach(c => {
+      const q = COLORS[c.quadrant];
+      const card = document.createElement('div');
+      card.className = 'member-card';
+      card.style.borderTopColor = c.color;
+
+      const infBar = `<div class="score-bar"><div class="score-bar-fill" style="width:${(c.inf/5)*100}%;background:var(--sky);"></div></div>`;
+      const intBar = `<div class="score-bar"><div class="score-bar-fill" style="width:${(c.int/5)*100}%;background:var(--orange);"></div></div>`;
+
+      card.innerHTML = `
+        <div class="member-header">
+          <div class="member-avatar" style="background:${c.color}">${c.initials}</div>
+          <div class="member-info">
+            <div class="member-name">${c.name}</div>
+            <div class="member-title">${c.title}</div>
+          </div>
+        </div>
+        <div class="member-scores">
+          <div class="score-pill">
+            <span class="s-label">Influence</span>
+            <span class="s-val">${c.inf}/5</span>
+            ${infBar}
+          </div>
+          <div class="score-pill">
+            <span class="s-label">Interest</span>
+            <span class="s-val">${c.int}/5</span>
+            ${intBar}
+          </div>
+        </div>
+        <span class="quadrant-tag qt-${c.quadrant}">${q.label}</span>
+        <span class="seat-role-tag" style="margin-left:0;">${c.seatRole}</span>
+        <div class="member-body">
+          <h4>Why Selected</h4>
+          <p class="reason">${c.selectionReason}</p>
+          <h4 style="margin-top:0.85rem;">Management Approach</h4>
+          <div class="strategy-list">
+            ${c.strategies.map(s => `<div class="strategy-item">${s}</div>`).join('')}
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  /* ── EXCLUDED TABLE ── */
+  function renderExcluded() {
+    const tbody = document.getElementById('excluded-table');
+    const excluded = CANDIDATES.filter(c => !c.selected);
+    excluded.forEach(c => {
+      const q = COLORS[c.quadrant];
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${c.name}</td>
+        <td style="color:var(--gray-600);font-size:0.78rem;">${c.title}</td>
+        <td><span class="exc-quad ${c.quadrant}" style="background:${q.bg};color:${q.text};">${q.label}</span></td>
+        <td class="exc-reason">${c.excReason}</td>
+        <td class="exc-reason" style="color:var(--sky);">${c.excManage}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  /* ── BALANCE BARS ── */
+  function renderBalance() {
+    const selected = CANDIDATES.filter(c => c.selected);
+    const container = document.getElementById('balance-bars');
+    selected.forEach(c => {
+      const row = document.createElement('div');
+      row.className = 'balance-item';
+      row.innerHTML = `
+        <div class="balance-dot" style="background:${c.color};"></div>
+        <div class="balance-name">${c.name.split(' ')[0]} ${c.name.split(' ')[1][0]}.
+          <div style="font-size:0.68rem;color:var(--gray-400);font-weight:400;">${c.title.split(' ').slice(0,3).join(' ')}</div>
+        </div>
+        <div class="balance-bar-wrap">
+          <div class="balance-bar" style="width:${(c.inf/5)*100}%;background:${c.color};opacity:0.8;"></div>
+        </div>
+        <div class="balance-label">${c.inf}/5</div>
+      `;
+      container.appendChild(row);
+    });
+  }
+
+  /* ── FACTION TABLE ── */
+  function renderFactions() {
+    const container = document.getElementById('faction-table');
+    const factions = [
+      { label:'Growth Engine',     class:'growth', names:'Michael Grant, Sophie Laurent', note:'Revenue & speed mandate' },
+      { label:'Governance Core',   class:'gov',    names:'Laura Bennett, Isabella Rossi', note:'Legal authority & ethics' },
+      { label:'Technical Bridge',  class:'bridge', names:'Daniel Wu, Victor Chen',        note:'Systems & knowledge architecture' },
+      { label:'Execution Reality', class:'exec',   names:'Kevin Tan',                     note:'Pipeline control — where policy becomes practice' },
+    ];
+    factions.forEach(f => {
+      const row = document.createElement('div');
+      row.className = 'faction-row';
+      row.innerHTML = `
+        <span class="faction-badge ${f.class}" style="white-space:nowrap;">${f.label}</span>
+        <div>
+          <div class="faction-names">${f.names}</div>
+          <div style="font-size:0.7rem;color:var(--gray-400);margin-top:1px;">${f.note}</div>
+        </div>
+      `;
+      container.appendChild(row);
+    });
+  }
+
+  /* ── GOLDEN SQUARE DATA ── */
+  const GOLDEN = [
+    {
+      id: 'mg',
+      what: {
+        company: 'NexaMind Consulting — Global AI advisory firm (NY / London / Singapore / Dubai)',
+        dept: 'C-Suite / Executive Leadership Team'
+      },
+      who: {
+        title: 'Global Managing Partner — drives firm-wide strategy, revenue targets, and board agenda',
+        rapport: 'Deeply trusted by the board and Fortune 500 clients; respected across all partner factions as the firm\'s commercial anchor',
+        power: 'Formal executive authority: strategic direction-setting, resource allocation, partner performance accountability, board reporting'
+      },
+      why: {
+        role: 'Approver & Executive Sponsor — his mandate is the council\'s political oxygen',
+        impact: 'Direct: governance failures (IP leakage, regulatory fines) are existential reputational threats that fall on him personally',
+        advocacy: 'Currently Growth Engine; must be activated as Sponsor to legitimize governance in the eyes of revenue-driven partners',
+        challenger: 'High risk if excluded — he can quietly instruct partners to bypass governance without ever appearing on record'
+      }
+    },
+    {
+      id: 'sl',
+      what: {
+        company: 'NexaMind Consulting — Global AI advisory firm',
+        dept: 'AI Practice — global AI solution delivery hub'
+      },
+      who: {
+        title: 'Head of AI Practice — leads all AI strategy, delivery, and innovation globally; manages AI project teams across offices',
+        rapport: 'Highly trusted by delivery teams and clients; informal cultural authority over how AI consultants approach their work',
+        power: 'Formal authority over AI Practice budget and staffing; informal agenda-setting power over delivery culture and norms'
+      },
+      why: {
+        role: 'Key Stakeholder converted into Co-Owner — the most critical seat to prevent internal sabotage',
+        impact: 'Direct: governance constraints hit her team first; unauthorized reuse originates in her practice',
+        advocacy: 'Currently Non-Supportive — believes governance undermines competitive speed; inclusion forces shared accountability',
+        challenger: 'Highest challenger risk of all 12 — if left outside the council, she becomes its most effective informal opponent'
+      }
+    },
+    {
+      id: 'dw',
+      what: {
+        company: 'NexaMind Consulting — Global AI advisory firm',
+        dept: 'Technology / Engineering — internal platform and AI infrastructure'
+      },
+      who: {
+        title: 'Chief Technology Officer — architect of NexaMind\'s reusable AI platforms and internal knowledge systems',
+        rapport: 'Bridge figure respected by both the Growth Engine and Governance Core; technical credibility is unquestioned across factions',
+        power: 'Formal authority over all technology decisions; controls the systems where unauthorized reuse mechanically occurs'
+      },
+      why: {
+        role: 'Technical Gatekeeper — only person who can enforce governance at the system level, not just the policy level',
+        impact: 'Direct: his platforms are the vehicles of both competitive advantage and the current IP risk',
+        advocacy: 'Conditionally Supportive — backs governance when it is embedded in systems rather than bureaucratic process; his philosophy aligns with scalable governance design',
+        challenger: 'Low risk; pragmatic and results-oriented'
+      }
+    },
+    {
+      id: 'lb',
+      what: {
+        company: 'NexaMind Consulting — Global AI advisory firm',
+        dept: 'Legal & Risk — client contracts, regulatory affairs, IP protection'
+      },
+      who: {
+        title: 'General Counsel — responsible for all legal risk, client confidentiality obligations, and regulatory relationships',
+        rapport: 'Maintains active relationships with regulators in key markets; viewed by clients as a trust anchor for sensitive engagements',
+        power: 'Unique veto authority: her legal opinions can halt deals immediately; only officer with direct regulatory liaison capacity'
+      },
+      why: {
+        role: 'Gatekeeper & Legal Approver — the council\'s binding legal authority; her signature makes governance enforceable',
+        impact: 'Direct: every governance failure lands as a legal liability on her desk; she carries personal professional accountability',
+        advocacy: 'Governance Core champion — most aligned with the council\'s mission; provides legal scaffolding for every policy',
+        challenger: 'None — but must be empowered to enforce, not just advise'
+      }
+    },
+    {
+      id: 'ir',
+      what: {
+        company: 'NexaMind Consulting — Global AI advisory firm',
+        dept: 'Risk & Compliance — ethical AI frameworks, internal audit, compliance monitoring'
+      },
+      who: {
+        title: 'Chief Risk & Compliance Officer — advocates strict governance frameworks and ethical AI practices firm-wide',
+        rapport: 'Limited political capital with revenue leaders; respected by legal and external auditors but marginalized internally',
+        power: 'Formal compliance authority; limited practical power due to lack of backing from revenue-generating partners'
+      },
+      why: {
+        role: 'Governance Expert & Ethics Guardian — the council\'s institutional conscience and compliance auditor',
+        impact: 'Direct: her role exists precisely because of the risks the council is designed to address',
+        advocacy: 'Strongest governance advocate on the entire candidate list; highest Interest score (5/5)',
+        challenger: 'She IS challenged by others — the council gives her the formal authority she currently lacks to make her expertise actionable'
+      }
+    },
+    {
+      id: 'kt',
+      what: {
+        company: 'NexaMind Consulting — Global AI advisory firm',
+        dept: 'Data Engineering — data pipelines, model deployment, infrastructure operations'
+      },
+      who: {
+        title: 'Director of Data Engineering — controls all data pipelines and model deployment practices across projects',
+        rapport: 'Trusted by delivery teams at the operational level; informal authority over what gets technically implemented regardless of policy',
+        power: 'Informal but decisive power: he controls what is technically possible in data deployment; formal policies that he does not enforce do not get enforced'
+      },
+      why: {
+        role: 'Execution Gatekeeper — the person who turns policy into technical reality (or doesn\'t)',
+        impact: 'Direct: unauthorized cross-client data reuse flows through his pipelines; he knows exactly where and how it happens',
+        advocacy: 'Pragmatic and neutral; once given formal council authority, becomes a highly effective enforcement actor',
+        challenger: 'Low risk; currently operating in grey areas due to lack of clear governance — not out of bad faith'
+      }
+    },
+    {
+      id: 'vc',
+      what: {
+        company: 'NexaMind Consulting — Global AI advisory firm',
+        dept: 'Knowledge Management — internal model repositories, frameworks, and institutional knowledge'
+      },
+      who: {
+        title: 'Head of Knowledge Management — maintains repositories of models, analytical frameworks, and past client work',
+        rapport: 'Bridge figure between Growth Engine and Governance Core; trusted by both sides as a neutral knowledge custodian',
+        power: 'Controls the access and distribution of institutional knowledge assets — the source from which reuse spreads across the firm'
+      },
+      why: {
+        role: 'Knowledge Gatekeeper — the council\'s control point over what can be reused and under what governance conditions',
+        impact: 'Direct: every instance of unauthorized model reuse begins with an asset accessed through his repositories',
+        advocacy: 'Bridge-builder and Influential Supporter — his neutral position makes him the council\'s most effective internal diplomat',
+        challenger: 'Very low; motivated to solve the reuse problem because it creates governance risk for his own domain'
+      }
+    }
+  ];
+
+  /* ── RENDER GOLDEN SQUARE ── */
+  function renderGoldenSquare() {
+    const container = document.getElementById('golden-cards');
+    const selectedCandidates = CANDIDATES.filter(c => c.selected);
+
+    GOLDEN.forEach(g => {
+      const c = selectedCandidates.find(x => x.id === g.id);
+      if (!c) return;
+
+      const card = document.createElement('div');
+      card.style.cssText = 'background:var(--white);border:1px solid var(--gray-200);overflow:hidden;';
+
+      card.innerHTML = `
+        <!-- Card header -->
+        <div style="background:var(--navy);padding:1.1rem 1.5rem;display:flex;align-items:center;gap:1rem;">
+          <div style="width:38px;height:38px;border-radius:50%;background:${c.color};display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:700;color:#fff;flex-shrink:0;">${c.initials}</div>
+          <div>
+            <div style="font-weight:700;font-size:0.95rem;color:#fff;">${c.name}</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-top:1px;">${c.title}</div>
+          </div>
+          <div style="margin-left:auto;display:flex;gap:0.5rem;flex-shrink:0;">
+            <span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:0.2rem 0.55rem;background:rgba(232,84,26,0.2);color:#fb923c;border:1px solid rgba(232,84,26,0.3);">${c.seatRole}</span>
+          </div>
+        </div>
+
+        <!-- Three columns -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-top:3px solid #f59e0b;">
+
+          <!-- WHAT -->
+          <div style="padding:1.25rem 1.35rem;border-right:1px solid var(--gray-200);">
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
+              <div style="width:28px;height:28px;border:2.5px solid #f59e0b;background:#fffbeb;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.72rem;font-weight:700;color:#92400e;flex-shrink:0;">W</div>
+              <span style="font-family:'Playfair Display',serif;font-size:0.88rem;font-weight:700;color:#92400e;">What?</span>
+            </div>
+            <div style="margin-bottom:0.75rem;">
+              <div style="font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-400);margin-bottom:0.25rem;">A. Company / Agency</div>
+              <div style="font-size:0.8rem;color:var(--gray-800);line-height:1.55;">${g.what.company}</div>
+            </div>
+            <div>
+              <div style="font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-400);margin-bottom:0.25rem;">B. Department / Team</div>
+              <div style="font-size:0.8rem;color:var(--gray-800);line-height:1.55;">${g.what.dept}</div>
+            </div>
+          </div>
+
+          <!-- WHO -->
+          <div style="padding:1.25rem 1.35rem;border-right:1px solid var(--gray-200);background:#fffdf5;">
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
+              <div style="width:28px;height:28px;border:2.5px solid #f59e0b;background:#fef3c7;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.72rem;font-weight:700;color:#78350f;flex-shrink:0;">W</div>
+              <span style="font-family:'Playfair Display',serif;font-size:0.88rem;font-weight:700;color:#78350f;">Who?</span>
+            </div>
+            <div style="margin-bottom:0.75rem;">
+              <div style="font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-400);margin-bottom:0.25rem;">A. Title &amp; Responsibilities</div>
+              <div style="font-size:0.8rem;color:var(--gray-800);line-height:1.55;">${g.who.title}</div>
+            </div>
+            <div style="margin-bottom:0.75rem;">
+              <div style="font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-400);margin-bottom:0.25rem;">B. Rapport &amp; Relationship</div>
+              <div style="font-size:0.8rem;color:var(--gray-800);line-height:1.55;">${g.who.rapport}</div>
+            </div>
+            <div>
+              <div style="font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-400);margin-bottom:0.25rem;">C. Power / Authority</div>
+              <div style="font-size:0.8rem;color:var(--gray-800);line-height:1.55;">${g.who.power}</div>
+            </div>
+          </div>
+
+          <!-- WHY -->
+          <div style="padding:1.25rem 1.35rem;background:#fffbeb;">
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
+              <div style="width:28px;height:28px;border:2.5px solid #f59e0b;background:#fde68a;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.72rem;font-weight:700;color:#451a03;flex-shrink:0;">W</div>
+              <span style="font-family:'Playfair Display',serif;font-size:0.88rem;font-weight:700;color:#451a03;">Why?</span>
+            </div>
+            <div style="margin-bottom:0.75rem;">
+              <div style="font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-400);margin-bottom:0.25rem;">A. Role on Council</div>
+              <div style="font-size:0.8rem;color:var(--gray-800);line-height:1.55;">${g.why.role}</div>
+            </div>
+            <div style="margin-bottom:0.75rem;">
+              <div style="font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-400);margin-bottom:0.25rem;">B. Impact</div>
+              <div style="font-size:0.8rem;color:var(--gray-800);line-height:1.55;">${g.why.impact}</div>
+            </div>
+            <div style="margin-bottom:0.75rem;">
+              <div style="font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-400);margin-bottom:0.25rem;">C. Support / Advocacy</div>
+              <div style="font-size:0.8rem;color:var(--gray-800);line-height:1.55;">${g.why.advocacy}</div>
+            </div>
+            <div>
+              <div style="font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-400);margin-bottom:0.25rem;">D. Challenger Risk</div>
+              <div style="font-size:0.8rem;line-height:1.55;${g.why.challenger.toLowerCase().startsWith('high') ? 'color:#dc2626;font-weight:500;' : g.why.challenger.toLowerCase().startsWith('low') || g.why.challenger.toLowerCase().startsWith('none') ? 'color:#059669;' : 'color:var(--gray-800);'}">${g.why.challenger}</div>
+            </div>
+          </div>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  /* ── SCORING EVIDENCE DATA ── */
+  const EVIDENCE = [
+    {
+      id:'mg', name:'Michael Grant', inf:5, int:3, selected:true,
+      infRubric:'5 — C-suite / board-level authority',
+      infEvidence:'"Drives firm-wide strategy and revenue growth. Highly influential with the board and major clients."',
+      intRubric:'3 — Moderately affected; engagement is situational',
+      intEvidence:'"Prefers high-level direction over operational detail. He values speed and market leadership." → Cares about business outcomes, not governance mechanics.'
+    },
+    {
+      id:'sl', name:'Sophie Laurent', inf:4, int:4, selected:true,
+      infRubric:'4 — Senior leader with formal authority across teams',
+      infEvidence:'"Leads AI solution delivery globally." → Commands the entire AI practice budget and staffing.',
+      intRubric:'4 — Governance directly affects her team; actively engaged (even as a resistor)',
+      intEvidence:'"Often challenges compliance requirements." → Active engagement with governance, even in opposition, registers as high interest.'
+    },
+    {
+      id:'dw', name:'Daniel Wu', inf:4, int:4, selected:true,
+      infRubric:'4 — Senior leader controlling major platform decisions',
+      infEvidence:'"Built NexaMind\'s internal AI platforms and reusable assets." → Controls the technical infrastructure where governance must be enforced.',
+      intRubric:'4 — Governance directly affects his platform architecture',
+      intEvidence:'"He sees governance as necessary but believes it should be embedded into systems." → Personally invested in how governance is designed.'
+    },
+    {
+      id:'lb', name:'Laura Bennett', inf:5, int:5, selected:true,
+      infRubric:'5 — Legal veto power that can halt decisions firm-wide',
+      infEvidence:'"Her opinions can halt deals immediately. Maintains strong relationships with regulators."',
+      intRubric:'5 — Primary job function IS client confidentiality and legal risk',
+      intEvidence:'"Responsible for legal risk and client confidentiality." → Governance failure lands directly on her desk as professional liability.'
+    },
+    {
+      id:'rm', name:'Ravi Mehta', inf:3, int:4, selected:false,
+      infRubric:'3 — Director level with delivery accountability',
+      infEvidence:'"Accountable for meeting deadlines and client satisfaction." → Operates under partner pressure, not independent authority.',
+      intRubric:'4 — His teams are directly implicated in governance grey areas',
+      intEvidence:'"His teams often operate in grey areas to meet expectations." → Delivery outcomes are directly shaped by governance rules.'
+    },
+    {
+      id:'ir', name:'Isabella Rossi', inf:2, int:5, selected:true,
+      infRubric:'2 — Expert with formal title but limited practical authority',
+      infEvidence:'"Lacks strong backing from revenue-generating leaders. Often perceived as slowing the business." → Formal role exists but is politically marginalized.',
+      intRubric:'5 — Her entire job function is governance and ethical AI',
+      intEvidence:'"Advocates strict governance frameworks and ethical AI practices." → The council\'s mandate is her job description.'
+    },
+    {
+      id:'kt', name:'Kevin Tan', inf:3, int:4, selected:true,
+      infRubric:'3 — Director level + significant informal implementation power',
+      infEvidence:'"Holds informal power over what actually gets implemented." → Score acknowledges that informal power is real power at execution level.',
+      intRubric:'4 — Controls the pipelines where the problem originates',
+      intEvidence:'"Knows where reuse happens in reality." → He is directly inside the problem space, not just adjacent to it.'
+    },
+    {
+      id:'ez', name:'Emily Zhang', inf:2, int:3, selected:false,
+      infRubric:'2 — Peer-level cultural influence, no formal decision authority',
+      infEvidence:'"Influences junior consultants and shapes delivery culture." → Cultural influence only; no authority over budgets, policy, or platforms.',
+      intRubric:'3 — Participates in the problem but is not primarily responsible',
+      intEvidence:'"Frequently reuses models and approaches to meet aggressive timelines." → A practitioner of the problem, not a decision-maker about it.'
+    },
+    {
+      id:'jc', name:'James Carter', inf:4, int:2, selected:false,
+      infRubric:'4 — Controls investment decisions and resource allocation',
+      infEvidence:'"Controls investment decisions and resource allocation." → Budget authority is significant formal power.',
+      intRubric:'2 — Views governance as a cost/efficiency constraint',
+      intEvidence:'"Concerned that governance could reduce efficiency." → Governance is peripheral to his goals; he engages with it as a threat, not a priority.'
+    },
+    {
+      id:'fa', name:'Fatima Al-Khalid', inf:3, int:2, selected:false,
+      infRubric:'3 — Regional head with strong local influence',
+      infEvidence:'"Strong local influence" and "closing large deals quickly." → Influence is real but geographically bounded to the Middle East region.',
+      intRubric:'2 — Operates with minimal oversight; governance is not her focus',
+      intEvidence:'"Operates with minimal oversight." → Low governance engagement is explicit in the profile description.'
+    },
+    {
+      id:'vc', name:'Victor Chen', inf:3, int:4, selected:true,
+      infRubric:'3 — Controls a critical domain (knowledge repositories)',
+      infEvidence:'"Controls what knowledge is reused and how widely it spreads across the firm." → Domain authority over the exact mechanism of unauthorized reuse.',
+      intRubric:'4 — At the center of the reuse problem by role definition',
+      intEvidence:'"Maintains internal repositories of models, frameworks, and past client work." → His function is the source point of the governance risk.'
+    },
+    {
+      id:'rg', name:'Rachel Green', inf:2, int:4, selected:false,
+      infRubric:'2 — Monitoring and advisory role, no decision authority',
+      infEvidence:'"Monitors market sentiment and media risk." → Observational role; cannot enforce, approve, or veto decisions.',
+      intRubric:'4 — Highly engaged with the consequences of governance failure',
+      intEvidence:'"Understands how quickly trust can erode if governance failures become public." → Acutely aware of the stakes, even if she cannot control the outcome.'
+    }
+  ];
+
+  /* ── RENDER EVIDENCE TABLE ── */
+  function renderEvidenceTable() {
+    const tbody = document.getElementById('evidence-tbody');
+    EVIDENCE.forEach(e => {
+      const c = CANDIDATES.find(x => x.id === e.id);
+      const tr = document.createElement('tr');
+      tr.style.cssText = 'border-bottom:1px solid var(--gray-100);';
+      tr.innerHTML = `
+        <td style="padding:0.85rem 1rem;white-space:nowrap;vertical-align:top;">
+          <div style="display:flex;align-items:center;gap:0.5rem;">
+            <div style="width:8px;height:8px;border-radius:50%;background:${c ? c.color : '#9ca3af'};flex-shrink:0;${e.selected?'':'opacity:0.4;'}"></div>
+            <span style="font-weight:600;color:var(--navy);font-size:0.8rem;">${e.name}</span>
+            ${e.selected ? '<span style="font-size:0.6rem;font-weight:600;background:#e0f2fe;color:var(--sky);padding:0.1rem 0.4rem;border:1px solid #7dd3fc;">✓</span>' : ''}
+          </div>
+        </td>
+        <td style="padding:0.85rem 1rem;text-align:center;vertical-align:top;">
+          <span style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--sky);">${e.inf}</span>
+          <div style="font-size:0.58rem;color:var(--gray-400);margin-top:1px;white-space:nowrap;">${e.infRubric.split('—')[0].trim()}</div>
+        </td>
+        <td style="padding:0.85rem 1rem;vertical-align:top;">
+          <div style="font-size:0.62rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--sky);margin-bottom:0.3rem;">${e.infRubric.split('—').slice(1).join('—').trim()}</div>
+          <div style="font-size:0.78rem;color:var(--gray-700);line-height:1.55;">
+            <span style="color:var(--gray-400);font-style:italic;">${e.infEvidence.match(/^"[^"]*"/)?.[0] ?? ''}</span>
+            ${e.infEvidence.replace(/^"[^"]*"\s*→?\s*/,'').replace(/^→\s*/,'')}
+          </div>
+        </td>
+        <td style="padding:0.85rem 1rem;text-align:center;vertical-align:top;">
+          <span style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--orange);">${e.int}</span>
+          <div style="font-size:0.58rem;color:var(--gray-400);margin-top:1px;white-space:nowrap;">${e.intRubric.split('—')[0].trim()}</div>
+        </td>
+        <td style="padding:0.85rem 1rem;vertical-align:top;">
+          <div style="font-size:0.62rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--orange);margin-bottom:0.3rem;">${e.intRubric.split('—').slice(1).join('—').trim()}</div>
+          <div style="font-size:0.78rem;color:var(--gray-700);line-height:1.55;">
+            <span style="color:var(--gray-400);font-style:italic;">${e.intEvidence.match(/^"[^"]*"/)?.[0] ?? ''}</span>
+            ${e.intEvidence.replace(/^"[^"]*"\s*→?\s*/,'').replace(/^→\s*/,'')}
+          </div>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  /* ── PRINT MATRIX TABLE ── */
+  function renderPrintMatrix() {
+    const tbody = document.getElementById('print-matrix-tbody');
+    if (!tbody) return;
+    const quadrantLabels = {
+      tr: 'High Interest + High Influence',
+      tl: 'High Interest + Low Influence',
+      br: 'Low Interest + High Influence',
+      bl: 'Low Interest + Low Influence'
+    };
+    const quadrantColors = {
+      tr: 'background:#fff0eb;color:#c2410c;',
+      tl: 'background:#eff6ff;color:#1d4ed8;',
+      br: 'background:#f0fdf4;color:#065f46;',
+      bl: 'background:#f3f4f6;color:#374151;'
+    };
+    CANDIDATES.forEach(c => {
+      const tr = document.createElement('tr');
+      tr.style.borderBottom = '1px solid #e5e7eb';
+      tr.innerHTML = `
+        <td style="padding:5pt 8pt; font-weight:600; color:#0f2d5a;">
+          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${c.selected ? c.color : '#9ca3af'};margin-right:5px;vertical-align:middle;${c.selected?'':'opacity:0.4;'}"></span>
+          ${c.name}
+        </td>
+        <td style="padding:5pt 8pt; color:#4b5563; font-size:7.5pt;">${c.title}</td>
+        <td style="padding:5pt 8pt; text-align:center; font-weight:700; color:#1e4d8c;">${c.inf}</td>
+        <td style="padding:5pt 8pt; text-align:center; font-weight:700; color:#e8541a;">${c.int}</td>
+        <td style="padding:5pt 8pt;">
+          <span style="display:inline-block;padding:2pt 5pt;font-size:6.5pt;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;${quadrantColors[c.quadrant]}">${quadrantLabels[c.quadrant]}</span>
+        </td>
+        <td style="padding:5pt 8pt; text-align:center;">
+          <span style="display:inline-block;padding:2pt 5pt;font-size:6.5pt;font-weight:700;text-transform:uppercase;${c.selected ? 'background:#e0f2fe;color:#1e4d8c;' : 'background:#f3f4f6;color:#6b7280;'}">
+            ${c.selected ? '✓ Selected' : 'Excluded'}
+          </span>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  /* ── INIT ── */
+  renderMatrix();
+  renderPrintMatrix();
+  renderEvidenceTable();
+  renderScoreTable();
+  renderMembers();
+  renderGoldenSquare();
+  renderExcluded();
+  renderBalance();
+  renderFactions();
+</script>
+</body>
+</html>
