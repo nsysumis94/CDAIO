@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SearchCo: Defend the Core or Reinvent the Future? — Week 10 Strategic Thinking</title>
+<style>
+:root {
+  --navy:   #1F3864;
+  --blue:   #2E75B6;
+  --teal:   #1F7DA8;
+  --lblue:  #D5E8F0;
+  --light:  #F4F8FB;
+  --gray:   #5A5A5A;
+  --lgray:  #F0F0F0;
+  --white:  #FFFFFF;
+  --green:  #E2EFDA;
+  --yellow: #FFF2CC;
+  --red:    #FCE4D6;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; color: #333; background: #fff; font-size: 15px; line-height: 1.7; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--navy); color: #fff;
+  display: flex; align-items: center; gap: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+.nav-brand { padding: 0 24px; font-weight: 700; font-size: 15px; white-space: nowrap; border-right: 1px solid rgba(255,255,255,.15); }
+.nav-links { display: flex; overflow-x: auto; }
+.nav-links a {
+  padding: 16px 20px; color: rgba(255,255,255,.8); text-decoration: none;
+  font-size: 13px; font-weight: 500; white-space: nowrap;
+  border-bottom: 3px solid transparent; transition: .2s;
+}
+.nav-links a:hover { color: #fff; border-bottom-color: var(--teal); }
+.nav-links a.active { color: #fff; border-bottom-color: #fff; }
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+  color: #fff; padding: 72px 24px 56px; text-align: center;
+}
+.hero h1 { font-size: clamp(26px, 4vw, 42px); font-weight: 800; margin-bottom: 12px; }
+.hero .sub { font-size: 16px; color: rgba(255,255,255,.75); max-width: 680px; margin: 0 auto 32px; }
+.hero-chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.chip { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); border-radius: 20px; padding: 6px 16px; font-size: 13px; }
+
+/* ── SECTION ── */
+.section { padding: 64px 24px; max-width: 1100px; margin: 0 auto; }
+.section-header { margin-bottom: 40px; }
+.section-header h2 { font-size: 28px; font-weight: 700; color: var(--navy); }
+.section-header .en { font-size: 13px; color: var(--teal); font-weight: 600; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 6px; }
+.section-divider { width: 100%; height: 1px; background: var(--lgray); margin: 64px 0 0; }
+
+/* ── TABS ── */
+.tabs { display: flex; gap: 4px; border-bottom: 2px solid var(--lgray); margin-bottom: 32px; overflow-x: auto; }
+.tab-btn {
+  padding: 10px 20px; border: none; background: none; cursor: pointer;
+  font-size: 14px; font-weight: 600; color: var(--gray);
+  border-bottom: 3px solid transparent; margin-bottom: -2px;
+  white-space: nowrap; transition: .2s;
+}
+.tab-btn.active { color: var(--navy); border-bottom-color: var(--blue); }
+.tab-btn:hover { color: var(--blue); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── FRAMEWORK CARDS ── */
+.fw-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 32px; }
+.fw-card {
+  background: var(--light); border-radius: var(--radius); padding: 24px 20px;
+  border-left: 4px solid var(--blue); transition: .2s;
+}
+.fw-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.fw-card .step-num { font-size: 11px; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 8px; }
+.fw-card h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.fw-card .en-label { font-size: 12px; color: var(--gray); margin-bottom: 10px; }
+.fw-card p { font-size: 13px; color: var(--gray); }
+
+.flow-arrow { text-align: center; font-size: 22px; color: var(--teal); margin: 4px 0; }
+
+/* ── SKILL CARDS ── */
+.skill-sequence { display: flex; flex-direction: column; gap: 12px; }
+.skill-row { display: flex; gap: 12px; align-items: stretch; }
+.skill-num {
+  min-width: 80px; background: var(--navy); color: #fff;
+  border-radius: var(--radius) 0 0 var(--radius);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 16px 8px; text-align: center;
+}
+.skill-num .s-label { font-size: 10px; font-weight: 700; opacity: .7; letter-spacing: .1em; }
+.skill-num .s-en { font-size: 18px; font-weight: 800; }
+.skill-body {
+  flex: 1; background: var(--light); border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 16px 20px;
+}
+.skill-body h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.skill-body .skill-en { font-size: 12px; color: var(--teal); font-weight: 600; margin-bottom: 8px; }
+.skill-body p { font-size: 13px; color: var(--gray); }
+.causal-arrow { text-align: left; padding-left: 80px; color: var(--teal); font-size: 18px; margin: 2px 0; }
+
+/* ── CALLOUT BOXES ── */
+.callout { border-radius: var(--radius); padding: 16px 20px; margin: 16px 0; border-left: 4px solid; }
+.callout.navy { background: var(--lblue); border-color: var(--navy); }
+.callout.teal  { background: #E8F5FA; border-color: var(--teal); }
+.callout.yellow { background: var(--yellow); border-color: #D4A017; }
+.callout.green  { background: var(--green); border-color: #538135; }
+.callout.red    { background: var(--red); border-color: #C55A11; }
+.callout strong { color: var(--navy); }
+
+/* ── DATA TABLES ── */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+.data-table th { background: var(--navy); color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; }
+.data-table td { padding: 9px 12px; border-bottom: 1px solid var(--lgray); }
+.data-table tr:nth-child(even) td { background: var(--light); }
+.data-table tr:hover td { background: var(--lblue); }
+.tag-bad  { color: #C55A11; font-weight: 700; }
+.tag-good { color: #375623; font-weight: 700; }
+.tag-warn { color: #7C5F00; font-weight: 700; }
+
+/* ── ACCORDION ── */
+.accordion { border: 1px solid var(--lgray); border-radius: var(--radius); overflow: hidden; margin-bottom: 12px; }
+.accordion-header {
+  width: 100%; text-align: left; background: var(--light); border: none; cursor: pointer;
+  padding: 16px 20px; display: flex; justify-content: space-between; align-items: center;
+  font-size: 15px; font-weight: 600; color: var(--navy); transition: .2s;
+}
+.accordion-header:hover { background: var(--lblue); }
+.accordion-header.open { background: var(--navy); color: #fff; }
+.accordion-icon { font-size: 18px; transition: transform .25s; }
+.accordion-header.open .accordion-icon { transform: rotate(45deg); }
+.accordion-body { display: none; padding: 20px; }
+.accordion-body.open { display: block; }
+
+/* ── ANALYSIS FLOW ── */
+.analysis-flow { display: flex; flex-direction: column; gap: 0; }
+.analysis-step { display: flex; gap: 0; }
+.analysis-step-label {
+  min-width: 100px; background: var(--navy); color: #fff;
+  padding: 20px 12px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+.analysis-step-label .s-num { font-size: 10px; opacity: .6; text-transform: uppercase; letter-spacing: .08em; }
+.analysis-step-label .s-name { font-size: 14px; font-weight: 800; margin: 4px 0; }
+.analysis-step-label .s-cn { font-size: 11px; opacity: .8; }
+.analysis-step-content {
+  flex: 1; padding: 20px 24px; border: 1px solid var(--lgray); border-left: none;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: #fff;
+}
+.analysis-connector { height: 24px; width: 50px; margin-left: 50px; display: flex; align-items: center; color: var(--teal); font-size: 20px; }
+.analysis-step-content h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.analysis-step-content p { font-size: 13px; color: var(--gray); margin-bottom: 8px; }
+
+/* ── BUDGET TABLE ── */
+.budget-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+.budget-card { border-radius: var(--radius); padding: 20px; background: var(--light); border-top: 4px solid var(--blue); }
+.budget-card .b-pct { font-size: 32px; font-weight: 800; color: var(--navy); }
+.budget-card .b-amt { font-size: 14px; color: var(--teal); font-weight: 700; margin-bottom: 8px; }
+.budget-card .b-label { font-size: 13px; color: var(--gray); }
+
+/* ── SCENARIO CARDS ── */
+.scenario-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 16px 0; }
+.scenario-card { border-radius: var(--radius); padding: 20px; border-left: 5px solid; }
+.scenario-card.green  { background: var(--green); border-color: #538135; }
+.scenario-card.yellow { background: var(--yellow); border-color: #D4A017; }
+.scenario-card.red    { background: var(--red);    border-color: #C55A11; }
+.scenario-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: #222; }
+.scenario-card p { font-size: 13px; color: #444; }
+
+/* ── QA BLOCK ── */
+.qa-block { margin-bottom: 28px; }
+.qa-q { font-size: 15px; font-weight: 700; color: var(--navy); padding: 10px 0 6px; border-top: 2px solid var(--lblue); }
+.qa-a { font-size: 13px; color: var(--gray); padding: 8px 0; }
+
+/* ── COMPARE TABLE ── */
+.compare-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+.compare-table th { background: var(--teal); color: #fff; padding: 10px 14px; }
+.compare-table td { padding: 10px 14px; border-bottom: 1px solid var(--lgray); vertical-align: top; }
+.compare-table tr:nth-child(even) td { background: var(--light); }
+.tag-x { color: #C00; font-weight: 700; }
+.tag-warn2 { color: #7C5F00; font-weight: 700; }
+
+/* ── PRESENTATION SUMMARY ── */
+.pres-grid { display: flex; flex-direction: column; gap: 0; }
+.pres-row { display: flex; gap: 0; border-bottom: 1px solid var(--lgray); }
+.pres-row:last-child { border-bottom: none; }
+.pres-key { min-width: 200px; background: var(--navy); color: #fff; padding: 16px; font-size: 13px; font-weight: 600; }
+.pres-val { flex: 1; padding: 16px; font-size: 13px; color: var(--gray); background: var(--light); }
+.pres-row:nth-child(even) .pres-key { background: var(--teal); }
+.pres-row:nth-child(even) .pres-val { background: #fff; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy); color: rgba(255,255,255,.6);
+  text-align: center; padding: 32px 24px; font-size: 13px;
+}
+footer strong { color: #fff; }
+
+/* ── UTILITIES ── */
+ul.list { list-style: none; padding: 0; }
+ul.list li { padding: 6px 0 6px 20px; position: relative; font-size: 13px; color: var(--gray); }
+ul.list li::before { content: "•"; color: var(--teal); position: absolute; left: 0; font-weight: 700; }
+.badge { display: inline-block; background: var(--lblue); color: var(--navy); border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 700; margin-right: 6px; }
+.badge.bad  { background: var(--red); color: #7D2600; }
+.badge.ok   { background: var(--green); color: #2E5300; }
+.badge.warn { background: var(--yellow); color: #5A4000; }
+
+@media (max-width: 640px) {
+  .skill-row { flex-direction: column; }
+  .skill-num { border-radius: var(--radius) var(--radius) 0 0; min-width: auto; flex-direction: row; gap: 12px; }
+  .analysis-step { flex-direction: column; }
+  .analysis-step-label { border-radius: var(--radius) var(--radius) 0 0; flex-direction: row; justify-content: flex-start; gap: 12px; }
+  .pres-row { flex-direction: column; }
+  .pres-key { min-width: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════════════════════════════ -->
+<nav id="top-nav">
+  <div class="nav-brand">Strategic Thinking · Week 10</div>
+  <div class="nav-links">
+    <a href="#frameworks" class="nav-link">📘 三大框架</a>
+    <a href="#case" class="nav-link">📋 個案原題</a>
+    <a href="#analysis" class="nav-link">🔍 策略分析</a>
+    <a href="#answers" class="nav-link">✅ 題目解答</a>
+  </div>
+  <a href="index-en.html" style="margin-left:auto;margin-right:16px;padding:6px 14px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:4px;color:#fff;text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap;">EN →</a>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
+<div class="hero">
+  <h1>SearchCo: Defend the Core or Reinvent the Future?</h1>
+  <p class="sub">Week 10 Strategic Thinking Mindset Simulation — NUS SOC CDAIO SEPO · June 2026<br>本頁整合課堂三大框架、模擬個案原題，以及完整的因果序列策略分析</p>
+  <div class="hero-chips">
+    <span class="chip">Discernment Process</span>
+    <span class="chip">4 Strategic Thinking Levels</span>
+    <span class="chip">6 Strategic Mindset Skills</span>
+    <span class="chip">SearchCo Case Study</span>
+    <span class="chip">$15B Budget Decision</span>
+  </div>
+</div>
+
+<!-- ══ SECTION 1: FRAMEWORKS ═════════════════════════════════════════════ -->
+<div class="section" id="frameworks">
+  <div class="section-header">
+    <div class="en">The Three Frameworks</div>
+    <h2>📘 三大策略思考框架</h2>
+    <p style="color:var(--gray);font-size:14px;margin-top:8px;">這三個框架構成完整的策略領導力工具組。先用 Discernment 讀懂現實，再用 4 Levels 深化理解，最後用 6 Skills 決定行動。</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('fw','discernment',this)">① Discernment Process</button>
+    <button class="tab-btn" onclick="showTab('fw','levels',this)">② 4 Strategic Levels</button>
+    <button class="tab-btn" onclick="showTab('fw','skills',this)">③ 6 Mindset Skills</button>
+  </div>
+
+  <!-- Tab 1: Discernment -->
+  <div class="tab-panel active" id="fw-discernment">
+    <div class="callout navy">
+      <strong>核心概念：</strong>Discernment（辨識）是策略思考的起點。在決定做什麼之前，必須先讀懂完整的現實——而不只是你想看到的部分。<br>
+      <strong>Core idea:</strong> Before deciding what to do, you must accurately read what is really happening.
+    </div>
+    <br>
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="step-num">Step 1</div>
+        <h3>👁 Observe</h3>
+        <div class="en-label">Active Listening & Pattern Recognition</div>
+        <p>蒐集內外部的可觀察事實。不急於解讀，先建立完整的事實基礎。<br><em>Gather observable facts — internal signals, external signals, data, behavior.</em></p>
+      </div>
+      <div class="fw-card" style="border-color:var(--teal)">
+        <div class="step-num">Step 2</div>
+        <h3>🧩 Interpret</h3>
+        <div class="en-label">Contextual Thinking & Emotional Intelligence</div>
+        <p>將觀察到的訊號合起來解讀：它們共同說明什麼？<br><em>Connect internal and external signals — what do they mean together?</em></p>
+      </div>
+      <div class="fw-card" style="border-color:var(--navy)">
+        <div class="step-num">Step 3</div>
+        <h3>🔍 Challenge</h3>
+        <div class="en-label">Critical Thinking</div>
+        <p>挑戰現有計畫的假設：這些假設是否成立？有沒有被忽略的矛盾？<br><em>Question assumptions behind current plans. What contradictions are being ignored?</em></p>
+      </div>
+      <div class="fw-card" style="border-color:#538135">
+        <div class="step-num">Step 4</div>
+        <h3>🔭 Anticipate</h3>
+        <div class="en-label">Foresight</div>
+        <p>若目前的趨勢延續，下一步是什麼？預判而非等待。<br><em>If current trends continue, what comes next? Anticipate before it becomes obvious.</em></p>
+      </div>
+    </div>
+    <br>
+    <h4 style="color:var(--navy);margin-bottom:8px;font-size:15px;">🔧 六項辨識感知力</h4>
+    <p style="color:var(--gray);font-size:13px;margin-bottom:16px;">「Discernment 不是一個技能，而是六種感知力的整合運作。」<em>— Discernment is not one skill. It is six lenses working together.</em><br>六種感知力分別對應 Observe → Interpret → Challenge → Anticipate 流程中的不同步驟。</p>
+    <div class="fw-grid" style="grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));">
+      <div class="fw-card" style="border-color:var(--blue);">
+        <div class="step-num">LENS 1 · Signal Detection Layer</div>
+        <h3>Active Listening & Observation</h3>
+        <div class="en-label">信號偵測層</div>
+        <p>聽到說出與<em>未說出</em>的內容；捕捉語氣轉變與微行為；注意他人忽略的細節與弱訊號。<br><span style="color:var(--teal);font-weight:600;">→ 對應步驟：Observe</span></p>
+      </div>
+      <div class="fw-card" style="border-color:var(--teal);">
+        <div class="step-num">LENS 2 · Analytical Validation Layer</div>
+        <h3>Critical Thinking</h3>
+        <div class="en-label">分析驗證層</div>
+        <p>質疑假設而非接受假設；辨識資料來源偏見；評估證據品質（相關性 ≠ 因果）。<br><span style="color:var(--teal);font-weight:600;">→ 對應步驟：Challenge</span></p>
+      </div>
+      <div class="fw-card" style="border-color:var(--navy);">
+        <div class="step-num">LENS 3 · Insight Discovery Layer</div>
+        <h3>Pattern Recognition</h3>
+        <div class="en-label">洞察發現層</div>
+        <p>在數據中發現隱藏趨勢；跨項目辨識行為模式；將看似無關的觀察連結成單一洞察。<br><span style="color:var(--teal);font-weight:600;">→ 對應步驟：Observe</span></p>
+      </div>
+      <div class="fw-card" style="border-color:#1F7DA8;">
+        <div class="step-num">LENS 4 · System Interpretation Layer</div>
+        <h3>Contextual Thinking</h3>
+        <div class="en-label">系統詮釋層（情境意識）</div>
+        <p>在更廣泛環境中詮釋資訊；理解時機、限制與隱性動態；辨識決策如何與組織系統互動。<br><span style="color:var(--teal);font-weight:600;">→ 對應步驟：Interpret</span></p>
+      </div>
+      <div class="fw-card" style="border-color:#5C3D6B;">
+        <div class="step-num">LENS 5 · Human Insight Layer</div>
+        <h3>Emotional Intelligence</h3>
+        <div class="en-label">人際洞察層</div>
+        <p>了解自身偏見如何影響詮釋；保持客觀性；解讀決策背後的動機、意圖與人際動態。<br><span style="color:var(--teal);font-weight:600;">→ 對應步驟：Interpret</span></p>
+      </div>
+      <div class="fw-card" style="border-color:#3D6B3D;">
+        <div class="step-num">LENS 6 · Strategic Anticipation Layer</div>
+        <h3>Foresight & Consequence Prediction</h3>
+        <div class="en-label">策略預判層</div>
+        <p>預判決策的二三階效應；預測意外後果；評估短期利益與長期衝擊的取捨。<br><span style="color:var(--teal);font-weight:600;">→ 對應步驟：Anticipate</span></p>
+      </div>
+    </div>
+    <div class="callout yellow">
+      <strong>關鍵記憶：</strong>"Discernment determines what is really happening. Strategic Thinking determines what to do next — and what NOT to do."
+    </div>
+  </div>
+
+  <!-- Tab 2: 4 Levels -->
+  <div class="tab-panel" id="fw-levels">
+    <div class="callout navy">
+      <strong>核心概念：</strong>大多數人停在 Level 1（看到發生什麼）。強的策略思考者能到 Level 4——在生態系轉型「變得明顯」之前就看見並準備好。<br>
+      <strong>Core idea:</strong> Move beyond surface-level observation. The goal is to prepare for ecosystem transformation before it becomes obvious.
+    </div>
+    <br>
+    <div style="display:flex;flex-direction:column;gap:0;">
+      <div class="fw-card" style="border-color:var(--lgray);background:#fff;border-left:none;border:1px solid var(--lgray);border-top:4px solid var(--blue);border-radius:var(--radius);">
+        <div class="step-num">LEVEL 1</div>
+        <h3>Event Interpretation — 事件解讀</h3>
+        <div class="en-label">What is happening?</div>
+        <p>觀察可見的事實與數字。策略思考的起點——先誠實面對正在發生的事，包括好消息與壞消息並存的情況。</p>
+      </div>
+      <div style="text-align:center;padding:8px;color:var(--teal);font-size:20px;">↓</div>
+      <div class="fw-card" style="border-color:var(--teal);border-left:4px solid var(--teal);">
+        <div class="step-num">LEVEL 2</div>
+        <h3>Signal Recognition — 訊號識別</h3>
+        <div class="en-label">What is emerging? / What is the underlying shift?</div>
+        <p>不只看單一事件，而是問：所有訊號合起來指向什麼更大的方向？<br><em>Analysis asks "what does this signal mean?" — Synthesis asks "what do ALL these signals mean together?"</em></p>
+      </div>
+      <div style="text-align:center;padding:8px;color:var(--teal);font-size:20px;">↓</div>
+      <div class="fw-card" style="border-color:var(--navy);">
+        <div class="step-num">LEVEL 3</div>
+        <h3>Consequence Analysis — 結果分析</h3>
+        <div class="en-label">What changes? What becomes more/less valuable?</div>
+        <p>假設趨勢延續：哪些事情會改變？哪些商業模式會被顛覆？什麼變得更有價值，什麼變得更沒有價值？這是「讓人不舒服」的問題——因為答案會挑戰現有的商業模式。</p>
+      </div>
+      <div style="text-align:center;padding:8px;color:var(--teal);font-size:20px;">↓</div>
+      <div class="fw-card" style="border-color:#C55A11;background:var(--red);">
+        <div class="step-num">LEVEL 4</div>
+        <h3>Ecosystem Transformation — 生態系重組</h3>
+        <div class="en-label">How does the world reorganize? Who gains/loses power?</div>
+        <p>最重要的策略問題不是「誰贏得產品競爭」，而是「在 AI 原生世界中，誰控制新的價值層？」<br><em>"The most important strategic question is not who wins the product battle — it is who controls the new layer of value."</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab 3: 6 Skills -->
+  <div class="tab-panel" id="fw-skills">
+    <div class="callout navy">
+      <strong>關鍵：這六個技能是一個整合序列，不能獨立啟動。</strong><br>
+      Skill 1 的決策決定 Skill 2 要識別什麼；Skill 2 的識別決定 Skill 3 如何配置；Skill 3 的配置決定 Skill 4 要分析哪些取捨；Skill 4 的取捨決定 Skill 5 的優先序；Skill 5 的優先序決定 Skill 6 要準備哪些情境。<br>
+      <em>These DO NOT activate independently — it is ONE integrated causal sequence.</em>
+    </div>
+    <br>
+    <div class="skill-sequence">
+      <div class="skill-row">
+        <div class="skill-num" style="background:var(--navy)"><div class="s-label">SKILL 1</div><div class="s-en">DECIDE</div></div>
+        <div class="skill-body">
+          <h4>Decision-Making Under Uncertainty 不確定性下的核心決策</h4>
+          <div class="skill-en">Make timely decisions with incomplete or conflicting data. Avoid analysis paralysis.</div>
+          <p>在完美資訊不存在的情況下做出有紀律的決策。平衡風險、時機、取捨，與長期方向。<strong>這個決策決定後續所有分析的方向。</strong></p>
+        </div>
+      </div>
+      <div class="causal-arrow">↓ 決策確定 → 識別哪些資產能支撐這個決策</div>
+      <div class="skill-row">
+        <div class="skill-num" style="background:var(--teal)"><div class="s-label">SKILL 2</div><div class="s-en">DIFFERENTIATE</div></div>
+        <div class="skill-body">
+          <h4>Synthesis for Advantage 差異化優勢整合</h4>
+          <div class="skill-en">Combine insights, capabilities, and data. Identify your "Only We Can…" advantage.</div>
+          <p>將多個弱訊號整合為單一強洞察。識別組織的獨特優勢——不是模仿，而是透過整合創新。<strong>「合起來看」比「分開看」更有價值。</strong></p>
+        </div>
+      </div>
+      <div class="causal-arrow">↓ 因為 Skill 1+2 → 所以這樣配置資源</div>
+      <div class="skill-row">
+        <div class="skill-num" style="background:var(--blue)"><div class="s-label">SKILL 3</div><div class="s-en">ALLOCATE</div></div>
+        <div class="skill-body">
+          <h4>Resource Orchestration 資源配置</h4>
+          <div class="skill-en">Align talent, time, budget, and attention to strategic priorities. Move resources when priorities shift.</div>
+          <p>依據 Skill 1 的決策方向與 Skill 2 識別的資產缺口配置資源。<strong>Strategy IS resource allocation — 沒有取捨就不是策略。</strong></p>
+        </div>
+      </div>
+      <div class="causal-arrow">↓ 此配置 → 產生哪些系統性取捨？</div>
+      <div class="skill-row">
+        <div class="skill-num" style="background:#1F5C7A"><div class="s-label">SKILL 4</div><div class="s-en">INTEGRATE</div></div>
+        <div class="skill-body">
+          <h4>Systems Thinking 系統性思考</h4>
+          <div class="skill-en">See interdependencies. Anticipate ripple effects before deployment.</div>
+          <p>識別資源配置在系統內產生的漣漪效應。在問題發生前預判取捨，而非在問題出現後補救。<strong>一個改變如何影響整個系統？</strong></p>
+        </div>
+      </div>
+      <div class="causal-arrow">↓ 確認取捨 → 在此配置下，哪些事必須先做？</div>
+      <div class="skill-row">
+        <div class="skill-num" style="background:#5C3D6B"><div class="s-label">SKILL 5</div><div class="s-en">PRIORITIZE</div></div>
+        <div class="skill-body">
+          <h4>Strategic Filtration & Prioritization 策略篩選與優先序</h4>
+          <div class="skill-en">Distill noise from signal. Select what matters most. Sequence to maximize speed.</div>
+          <p>在 Skill 3 的配置框架下，推導出必做事項與必停事項。<strong>「不能做什麼」和「要做什麼」一樣重要。You cannot do everything.</strong></p>
+        </div>
+      </div>
+      <div class="causal-arrow">↓ 確認優先序 → 針對不同情境，如何調整？</div>
+      <div class="skill-row">
+        <div class="skill-num" style="background:#3D6B3D"><div class="s-label">SKILL 6</div><div class="s-en">PREPARE</div></div>
+        <div class="skill-body">
+          <h4>Futures Thinking & Scenario Planning 未來思考與情境規劃</h4>
+          <div class="skill-en">Prepare for multiple possible futures. Build options and contingency paths. Use weak signals early.</div>
+          <p>不是預測單一未來，而是建立情境彈性。<strong>以最可能的情境規劃，同時確保在最壞情境下不措手不及。</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ══ SECTION 2: CASE STUDY ═════════════════════════════════════════════ -->
+<div class="section" id="case">
+  <div class="section-header">
+    <div class="en">Week 10 Simulation 1 — Original Case Material</div>
+    <h2>📋 SearchCo 模擬個案（原題）</h2>
+    <p style="color:var(--gray);font-size:14px;margin-top:8px;">Defend the Core or Reinvent the Future? — Context, Data & Questions</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('case','raw',this)">📄 原始個案</button>
+    <button class="tab-btn" onclick="showTab('case','breakdown',this)">🗂 個案拆解</button>
+    <button class="tab-btn" onclick="showTab('case','questions',this)">❓ 題目 Part 1–3</button>
+  </div>
+
+  <!-- Tab 1: Raw Case (as received) -->
+  <div class="tab-panel active" id="case-raw">
+    <div class="callout teal" style="margin-bottom:20px;">
+      <strong>模擬情境說明：</strong>以下是課堂上發放的原始個案材料。資訊以敘述形式呈現，尚未經過整理或分析——這正是真實情境模擬的起點。你的任務是用三個框架從這份材料中萃取出策略意義。
+    </div>
+
+    <div style="background:#fff;border:1px solid var(--lgray);border-radius:var(--radius);padding:32px 36px;font-size:14px;line-height:1.9;color:#333;">
+
+      <h3 style="font-size:20px;font-weight:800;color:var(--navy);margin-bottom:6px;">SearchCo: Defend the Core or Reinvent the Future?</h3>
+      <p style="color:var(--gray);font-size:12px;margin-bottom:28px;">Week 10 Strategic Thinking Mindset Simulation — NUS SOC CDAIO SEPO</p>
+
+      <p>SearchCo 是全球規模最大的搜尋平台，每日處理超過 30 億次搜尋查詢，並在全球數位廣告市場中占據主導地位。過去 15 年間，公司的核心商業模式維持高度穩定：用戶輸入搜尋關鍵字，平台展示贊助搜尋結果，廣告主按點擊付費。此模式驅動了公司超過 80% 的收入。</p>
+
+      <p style="margin-top:16px;">執行長公開表達的願景是：「我們的使命是持續成為全球資訊的主要入口，同時加速 AI 轉型。」（"Our mission is to remain the world's primary gateway to information while accelerating our AI transformation."）</p>
+
+      <h4 style="color:var(--navy);margin-top:24px;margin-bottom:10px;font-size:15px;">業務現況</h4>
+      <p>從近兩年的業績數字來看，公司的處境呈現複雜面貌。搜尋廣告收入從 2023 年的 $180 億美元成長至 2025 年的 $205 億美元，但收入成長率同期從 12% 下滑至 5%。市場占有率從 91% 降至 84%。每位用戶的平均搜尋量從正成長 8% 轉為負成長 3%。與此同時，每次搜尋的推算成本上升了 40%，而 AI 基礎設施支出則從 $8B 攀升至 $22B，升幅達 175%。</p>
+
+      <h4 style="color:var(--navy);margin-top:24px;margin-bottom:10px;font-size:15px;">用戶行為的轉變</h4>
+      <p>在用戶行為面，出現了一系列值得關注的變化。以傳統搜尋作為資訊探索起點的用戶比例，從 2023 年的 92% 降至 2025 年的 74%。同期，以 AI 助手作為資訊探索起點的比例從 2% 上升至 16%，在進入網站之前使用 AI 摘要輔助研究的比例從 5% 急升至 28%，使用對話式 AI 進行產品推薦的比例則從 3% 升至 21%。公司內部調查顯示，25 歲以下用戶越來越傾向將 AI 助手而非傳統搜尋引擎視為主要資訊介面。</p>
+
+      <h4 style="color:var(--navy);margin-top:24px;margin-bottom:10px;font-size:15px;">競爭環境</h4>
+      <p>與此同時，外部競爭格局正在快速演變。OpenAI 已推出 AI 搜尋功能，企業採用率持續提升，其 Agent 產品具備搜尋、推理與行動的整合能力。Anthropic 則持續投資長脈絡推理能力，並透過 MCP 協議擴展 AI Agent 的系統存取範圍，明確定位為知識工作者的主要工作介面。Apple 正積極將 AI 深度整合至作業系統，探索替代性的資訊發現體驗，並將 AI 定位為跨裝置的個人助理層。Perplexity 在學生、研究者與專業人士族群中快速成長，規模雖小但用戶參與度高，採 AI 優先的搜尋體驗設計。</p>
+
+      <h4 style="color:var(--navy);margin-top:24px;margin-bottom:10px;font-size:15px;">內部 AI 計畫</h4>
+      <p>SearchCo 目前有多項 AI 相關計畫在進行中。AI 搜尋摘要已全面上線，帶動用戶參與度提升 18%；對話式搜尋處於試點階段，用戶反饋正面但採用率偏低；AI 助手已上線，在年輕用戶中呈現快速成長；Agent-Based Search 仍在實驗階段，尚未建立商業收益路徑。</p>
+
+      <h4 style="color:var(--navy);margin-top:24px;margin-bottom:10px;font-size:15px;">領導層的立場與分歧</h4>
+      <p>公司內部的策略優先序存在明顯分歧。財務長（CFO）以保護廣告獲利為首要考量；首席產品長（CPO）著重用戶體驗的持續優化；廣告業務主管致力維護廣告合作夥伴關係；首席 AI 官（CAIO）則力主在主要競爭者之前率先建立未來商業模式。</p>
+
+      <h4 style="color:var(--navy);margin-top:24px;margin-bottom:10px;font-size:15px;">管理層提案（Executive Proposal）</h4>
+      <p>面對上述處境，管理層提出的策略方向為：「在所有市場全面擴展 AI 生成搜尋摘要，同時維持現有廣告商業模式。」（"Expand AI-generated search summaries across all markets while preserving the existing advertising model."）</p>
+      <p style="margin-top:10px;">具體計畫行動包含六項：</p>
+      <ol style="margin:10px 0 0 20px;line-height:2;">
+        <li>向所有用戶全面展開 AI 摘要</li>
+        <li>AI 基礎設施追加投資 $10B</li>
+        <li>維持現有廣告模式，不作結構性調整</li>
+        <li>提升 AI 助手的用戶採用率</li>
+        <li>繼續優化傳統搜尋排名</li>
+        <li>延遲開發新的獲利模式，直到 AI 收入真正落地</li>
+      </ol>
+
+      <p style="margin-top:20px;padding-top:16px;border-top:1px solid var(--lgray);color:var(--gray);font-size:13px;">為支應策略投資，董事會已批准額外 <strong>$15 億美元（$15B）</strong>的投資預算，待管理團隊提出配置方案。</p>
+    </div>
+  </div>
+
+  <!-- Tab 2: Breakdown (structured) -->
+  <div class="tab-panel" id="case-breakdown">
+    <p style="color:var(--gray);font-size:13px;margin-bottom:20px;">將原始個案資訊整理為結構化格式，便於對照與分析。</p>
+
+    <h4 style="color:var(--navy);margin-bottom:12px;">公司基本資料</h4>
+    <div class="callout navy" style="margin-bottom:16px;">
+      <strong>SearchCo</strong> — 全球最大搜尋平台 · 每日超過 30 億次搜尋 · 超過 80% 收入來自搜尋廣告<br>
+      核心商業模式（15 年未變）：<strong>User Search → Sponsored Results → Advertising Revenue</strong>
+    </div>
+
+    <h4 style="color:var(--navy);margin-bottom:12px;">業務績效數據</h4>
+    <table class="data-table">
+      <tr><th>指標</th><th>2023</th><th>2025</th><th>方向</th></tr>
+      <tr><td>搜尋市占率</td><td>91%</td><td>84%</td><td class="tag-bad">↓ 惡化</td></tr>
+      <tr><td>搜尋廣告收入</td><td>$180B</td><td>$205B</td><td class="tag-good">↑ 仍成長</td></tr>
+      <tr><td>收入成長率</td><td>12%</td><td>5%</td><td class="tag-bad">↓ 腰斬</td></tr>
+      <tr><td>每用戶平均搜尋量</td><td>+8%</td><td>−3%</td><td class="tag-bad">↓ 轉負</td></tr>
+      <tr><td>每搜尋成本</td><td>Stable</td><td>+40%</td><td class="tag-bad">↓ 惡化</td></tr>
+      <tr><td>AI 基礎設施支出</td><td>$8B</td><td>$22B</td><td class="tag-warn">⚠ +175%</td></tr>
+    </table>
+    <br>
+
+    <h4 style="color:var(--navy);margin-bottom:12px;">用戶行為轉變</h4>
+    <table class="data-table">
+      <tr><th>用戶行為</th><th>2023</th><th>2025</th><th>趨勢</th></tr>
+      <tr><td>以傳統搜尋作為資訊探索起點</td><td>92%</td><td>74%</td><td class="tag-bad">⚠ 持續下滑</td></tr>
+      <tr><td>以 AI 助手作為資訊探索起點</td><td>2%</td><td>16%</td><td class="tag-bad">🔺 快速上升</td></tr>
+      <tr><td>使用 AI 摘要輔助研究（訪問網站前）</td><td>5%</td><td>28%</td><td class="tag-bad">🔺 急升</td></tr>
+      <tr><td>使用對話式 AI 進行產品推薦</td><td>3%</td><td>21%</td><td class="tag-bad">🔺 急升</td></tr>
+    </table>
+    <div class="callout yellow" style="margin-top:10px;"><strong>內部調查：</strong>25 歲以下用戶越來越將 AI 助手視為主要資訊介面，而非傳統搜尋引擎。</div>
+    <br>
+
+    <h4 style="color:var(--navy);margin-bottom:12px;">競爭對手動向</h4>
+    <table class="data-table">
+      <tr><th>競爭者</th><th>核心動向</th></tr>
+      <tr><td><strong>OpenAI</strong></td><td>推出 AI 搜尋功能；企業採用率提升；Agent 能搜尋、推理、行動</td></tr>
+      <tr><td><strong>Anthropic</strong></td><td>投資長脈絡推理；透過 MCP 擴展 Agent；定位為知識工作主要介面</td></tr>
+      <tr><td><strong>Apple</strong></td><td>AI 深度整合至作業系統；探索替代資訊發現體驗；跨裝置個人助理層</td></tr>
+      <tr><td><strong>Perplexity</strong></td><td>在學生、研究者、專業人士中快速成長；AI-first 搜尋體驗</td></tr>
+    </table>
+    <br>
+
+    <h4 style="color:var(--navy);margin-bottom:12px;">內部 AI 計畫現況</h4>
+    <table class="data-table">
+      <tr><th>計畫</th><th>狀態</th><th>結果</th></tr>
+      <tr><td>AI 搜尋摘要</td><td>✅ 上線</td><td>用戶參與度 +18%</td></tr>
+      <tr><td>對話式搜尋</td><td>🔬 試點</td><td>反饋正面但採用率低</td></tr>
+      <tr><td>AI 助手</td><td>✅ 上線</td><td>在年輕用戶中快速成長</td></tr>
+      <tr><td>Agent-Based Search</td><td>🧪 實驗中</td><td class="tag-bad">尚未找到獲利模式</td></tr>
+    </table>
+    <br>
+
+    <h4 style="color:var(--navy);margin-bottom:12px;">領導層優先事項衝突</h4>
+    <ul class="list">
+      <li><strong>CEO：</strong>「保持全球主要資訊入口，加速 AI 轉型」</li>
+      <li><strong>CFO：</strong>優先保護廣告獲利</li>
+      <li><strong>Chief Product Officer：</strong>聚焦用戶體驗改善</li>
+      <li><strong>廣告主管：</strong>維護廣告合作夥伴關係</li>
+      <li><strong>Chief AI Officer：</strong>主張在競爭者之前建立未來商業模式</li>
+    </ul>
+    <br>
+
+    <h4 style="color:var(--navy);margin-bottom:12px;">管理層提案（Executive Proposal）</h4>
+    <div class="callout red">
+      <strong>"Expand AI-generated search summaries across all markets while preserving the existing advertising model."</strong><br>
+      (1) 全面展開 AI 摘要 &nbsp;(2) AI 基礎設施 +$10B &nbsp;(3) 維持廣告模式 &nbsp;(4) 提升 AI 助手採用率 &nbsp;(5) 持續優化傳統搜尋排名 &nbsp;(6) 延遲新獲利模式直到 AI 收入真正落地
+    </div>
+  </div>
+
+  <!-- Tab 3: Questions -->
+  <div class="tab-panel" id="case-questions">
+    <div class="callout navy" style="margin-bottom:24px;">
+      <strong>作答規則（教授提醒）：</strong><br>
+      (1) You cannot do everything. If your answer is "do all", you have failed the exercise.<br>
+      (2) What trade-off are you making? If you don't make a trade-off, you are not doing strategy.<br>
+      (3) Think like a CDO and CAIO — this is a business decision under constraint, not a technical exercise.
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header open" onclick="toggleAccordion(this)">
+        Part 1 — Critique the Current Strategy（批判現行策略）<span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body open">
+        <div class="qa-block"><div class="qa-q">Q1. What are the key issues or weaknesses in this plan?</div><div class="qa-a">現行計畫的核心問題與弱點是什麼？</div></div>
+        <div class="qa-block"><div class="qa-q">Q2. What strategic signals may be underestimated?</div><div class="qa-a">哪些戰略訊號可能被低估了？</div></div>
+        <div class="qa-block"><div class="qa-q">Q3. What future risks are not being addressed?</div><div class="qa-a">哪些未來風險沒有被處理？</div></div>
+        <div class="qa-block"><div class="qa-q">Q4. What assumptions does management appear to be making about the future?</div><div class="qa-a">管理層對未來做了哪些假設？</div></div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        Part 2 — Define a Better Strategy（定義更好的策略）<span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <div class="qa-block"><div class="qa-q">Q1. What are the top 2 priorities SearchCo should focus on now?</div><div class="qa-a">SearchCo 現在應該聚焦的 Top 2 優先事項是什麼？</div></div>
+        <div class="qa-block"><div class="qa-q">Q2. What should be delayed, reduced, or stopped?</div><div class="qa-a">應該延遲、縮減或停止的事項是什麼？</div></div>
+        <div class="qa-block"><div class="qa-q">Q3. What future scenarios should leadership prepare for?</div><div class="qa-a">領導層應準備的未來情境有哪些？</div></div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        Part 3 — Make a Leadership Decision（領導決策）<span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <div class="callout yellow"><strong>Budget:</strong> SearchCo has approved an additional <strong>$15 billion investment budget</strong>.</div>
+        <br>
+        <div class="qa-block"><div class="qa-q">Q1. How should this budget be allocated?</div><div class="qa-a">$15B 預算應如何配置？</div></div>
+        <div class="qa-block"><div class="qa-q">Q2. What trade-offs are being made?</div><div class="qa-a">這個策略正在做哪些取捨？</div></div>
+        <div class="qa-block"><div class="qa-q">Q3. What assumptions is your strategy dependent upon?</div><div class="qa-a">這個策略依賴哪些假設？</div></div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        Presentation Format（5 分鐘呈現架構）<span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <ul class="list">
+          <li>The key strategic problem identified（識別的核心策略問題）</li>
+          <li>The strategic signals that matter most（最重要的策略訊號）</li>
+          <li>The revised strategic priorities（修訂後的策略優先序）</li>
+          <li>The budget allocation and trade-offs（預算配置與取捨）</li>
+          <li>The future scenario they believe leadership should prepare for（應準備的未來情境）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ══ SECTION 3: ANALYSIS ═══════════════════════════════════════════════ -->
+<div class="section" id="analysis">
+  <div class="section-header">
+    <div class="en">Full Analysis — Following the 6-Skill Causal Sequence</div>
+    <h2>🔍 策略分析：Skill 1→6 因果序列</h2>
+    <p style="color:var(--gray);font-size:14px;margin-top:8px;">每個 Skill 的結論直接導出下一個 Skill 的問題。因果不斷鍊。</p>
+  </div>
+
+  <!-- Discernment Application -->
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAccordion(this)">
+      📍 前置：Discernment — 讀懂完整現實<span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-body open">
+      <div class="callout teal"><strong>Interpret（合起來的意義）：</strong>用戶資訊探索行為的轉移（內部數據確認）與競爭者的能力擴展（外部訊號確認）方向一致——AI 正在成為人與資訊之間的直接介面，搜尋作為中間步驟的必要性正在被壓縮。這不是四個獨立的競爭威脅，而是同一個結構性轉變的四個面向。</div>
+      <br>
+      <h4 style="color:var(--navy);margin-bottom:10px;">Challenge — 現行計畫的假設是否成立？</h4>
+      <table class="compare-table">
+        <tr><th>管理層的隱含假設</th><th>個案訊號的檢驗</th></tr>
+        <tr><td>AI 摘要可與廣告模式並行，兩者不互斥</td><td><span class="tag-x">❌ 個案確認因果衝突——假設不成立</span></td></tr>
+        <tr><td>AI 查詢成本增加是可管理的</td><td><span class="tag-warn2">⚠️ 成本 +40%，無個案數據支撐「可管理」</span></td></tr>
+        <tr><td>新獲利模式可以等到 AI 收入真正落地後再建立</td><td><span class="tag-x">❌ 四家競爭者都在積極擴張，可以出手的時機越來越短</span></td></tr>
+        <tr><td>繼續優化傳統搜尋排名仍有價值</td><td><span class="tag-warn2">⚠️ 以傳統搜尋為資訊起點：92%→74%，趨勢持續</span></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <br>
+  <p style="color:var(--gray);font-size:13px;text-align:center;margin-bottom:16px;">——— Discernment 確認了現實之後，4 Strategic Levels 深化理解 ———</p>
+
+  <!-- 4 Strategic Levels Application -->
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAccordion(this)" style="border-left:4px solid var(--teal)">
+      📊 4 Strategic Levels：現實的深度分析<span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-body open">
+      <p style="color:var(--gray);margin-bottom:16px;">Discernment 告訴我們「正在發生什麼」，4 Levels 進一步追問「這代表什麼結構性意義」——是 Skill 1 做出核心決策的必要前置。</p>
+
+      <div class="analysis-flow">
+        <div class="analysis-step">
+          <div class="analysis-step-label" style="background:var(--blue);">
+            <div class="s-num">LEVEL 1</div>
+            <div class="s-name">Event<br>Interpretation</div>
+            <div class="s-cn">事件解讀</div>
+          </div>
+          <div class="analysis-step-content">
+            <h4>What is happening? — 觀察可見的事實</h4>
+            <p>市占率 91%→84%；收入成長率 12%→5%；用戶以 AI 助手為資訊起點 2%→16%；AI 摘要採用率 5%→28%；每搜尋成本 +40%；AI 基礎設施支出 +175%。</p>
+            <div class="callout teal" style="margin-top:8px;"><strong>Level 1 觀察：</strong>數字「混搭」——廣告收入仍成長至 $205B，但<em>所有結構性指標</em>都在惡化。好消息與壞消息並存，正是 Level 1 最危險的陷阱：只看絕對數字，容易誤判形勢。</div>
+          </div>
+        </div>
+        <div class="analysis-connector">↓</div>
+        <div class="analysis-step">
+          <div class="analysis-step-label" style="background:var(--teal);">
+            <div class="s-num">LEVEL 2</div>
+            <div class="s-name">Signal<br>Recognition</div>
+            <div class="s-cn">訊號識別</div>
+          </div>
+          <div class="analysis-step-content">
+            <h4>What do ALL signals mean together? — 訊號合起來說什麼？</h4>
+            <p>內部訊號（用戶行為轉移）與外部訊號（OpenAI/Anthropic/Apple/Perplexity 同步擴張）方向一致：</p>
+            <div class="callout navy" style="margin-top:8px;"><strong>Level 2 識別：</strong>這不是四個獨立的競爭威脅，而是同一個結構性轉變的四個面向——<strong>AI 正在成為人與資訊之間的直接介面，搜尋作為必要中間步驟的地位正在被壓縮。</strong></div>
+          </div>
+        </div>
+        <div class="analysis-connector">↓</div>
+        <div class="analysis-step">
+          <div class="analysis-step-label" style="background:#1F5C7A;">
+            <div class="s-num">LEVEL 3</div>
+            <div class="s-name">Consequence<br>Analysis</div>
+            <div class="s-cn">結果分析</div>
+          </div>
+          <div class="analysis-step-content">
+            <h4>If this trend continues, what changes? — 若趨勢延續，什麼改變？</h4>
+            <table class="data-table" style="margin-top:8px;">
+              <tr><th>變得<span class="tag-bad">更沒有</span>價值</th><th>變得<span class="tag-good">更有</span>價值</th></tr>
+              <tr><td>傳統搜尋廣告（點擊模型）</td><td>大規模意圖數據（B2B）</td></tr>
+              <tr><td>搜尋排名優化能力</td><td>AI Agent 任務完成能力</td></tr>
+              <tr><td>靠流量分發維持的出版商生態</td><td>個人化 AI 助手入口位置</td></tr>
+              <tr><td>「資訊閘道」地位（被 AI 繞過）</td><td>AI 原生商業模式（訂閱、API 授權）</td></tr>
+            </table>
+            <div class="callout red" style="margin-top:8px;"><strong>Level 3 警示：</strong>成本 +40% 的方向與收入模式侵蝕方向同時發生——若趨勢延續，SearchCo 將面臨「AI 成本上升 × 廣告收入下滑」的雙重壓縮。</div>
+          </div>
+        </div>
+        <div class="analysis-connector">↓</div>
+        <div class="analysis-step">
+          <div class="analysis-step-label" style="background:#1F3864;">
+            <div class="s-num">LEVEL 4</div>
+            <div class="s-name">Ecosystem<br>Transformation</div>
+            <div class="s-cn">生態系轉型</div>
+          </div>
+          <div class="analysis-step-content">
+            <h4>Who controls the new layer of value? — 誰控制新的價值層？</h4>
+            <p><strong>舊價值層：</strong>搜尋引擎 = 用戶與網路之間的閘道<br><strong>新價值層：</strong>AI 助手 = 用戶與資訊／任務之間的介面</p>
+            <div class="callout navy" style="margin-top:8px;"><strong>Level 4 核心問題：</strong>"The most important strategic question is not who wins the search product battle — it is who controls the new AI-native layer of value."<br><br>OpenAI / Anthropic 正在建立<em>推理層</em>；Apple 正在建立<em>作業系統層</em>；Perplexity 正在建立<em>研究介面層</em>。SearchCo 的真實風險是：從「資訊閘道」退化為 AI 系統的<em>後端數據供應商</em>——而非維持入口地位。</div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="callout yellow"><strong>4 Levels 結論 → 導出 Skill 1 核心決策：</strong>Level 3 確認廣告模式結構性受壓；Level 4 確認生態系主控權正在轉移。在這個前提下，Skill 1 的問題已不是「要不要轉型」，而是「以什麼速度、優先建立哪個新的價值層控制點」。</div>
+    </div>
+  </div>
+
+  <br>
+  <p style="color:var(--gray);font-size:13px;text-align:center;margin-bottom:24px;">——— 4 Levels 確認了結構性轉型之後，6 Skills 整合序列決定行動 ———</p>
+
+  <!-- Skill 1 -->
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAccordion(this)" style="border-left:4px solid var(--navy)">
+      Skill 1 — DECIDE：核心決策<span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-body open">
+      <p style="color:var(--gray);">個案揭示領導層方向分歧：CFO 優先保護廣告；Chief AI Officer 主張在競爭者之前建立未來商業模式。兩者並行在個案中已確認存在因果衝突。</p>
+      <br>
+      <table class="data-table">
+        <tr><th>方向</th><th>核心取捨</th></tr>
+        <tr><td>選項 A：優先保護廣告收入</td><td>延遲 AI 原生商業模式；在競爭者擴張的同時等待</td></tr>
+        <tr><td><strong>選項 B（本分析選擇）：立即建立 AI 原生商業模式</strong></td><td>短期廣告收入承壓；建立長期結構性優勢</td></tr>
+      </table>
+      <br>
+      <div class="callout yellow"><strong>Skill 1 決策：</strong>SearchCo 選擇建立 AI 原生商業模式，而非只保護廣告。<strong>這個決策決定了 Skill 2 要識別什麼資產。</strong></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:8px 0;color:var(--teal);font-size:18px;">↓ 決策確定 → 識別哪些既有資產可以支撐</div>
+
+  <!-- Skill 2 -->
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAccordion(this)" style="border-left:4px solid var(--teal)">
+      Skill 2 — DIFFERENTIATE：識別「Only We Can」差異化資產<span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-body open">
+      <p style="color:var(--gray);">因為 Skill 1 決定建立 AI 原生商業模式，Skill 2 的任務是：SearchCo 有哪些個案已確認的既有資產，能讓這個決策具備可執行性？</p>
+      <br>
+      <table class="data-table">
+        <tr><th>個案確認的資產</th><th>在 AI 原生策略中的槓桿點</th></tr>
+        <tr><td><strong>每日超過 30 億次搜尋意圖數據</strong></td><td>搜尋行為代表用戶即時意圖——這個規模的意圖數據是廣告、電商、企業決策的高價值資產，可作為獨立 B2B 產品</td></tr>
+        <tr><td><strong>AI 助手已上線且在年輕用戶中快速成長</strong></td><td>建立個人 AI 入口的既有基礎，不需從零開始；問題是速度——是否在 Apple 整合成熟前推進至 Agent 層</td></tr>
+        <tr><td><strong>Agent-Based Search 已在實驗中</strong></td><td>最接近新商業模式的既有資產，目前「尚未找到獲利模式」——應優先推進至可以獲利階段</td></tr>
+        <tr><td><strong>AI 摘要上線，參與度 +18%</strong></td><td>用戶參與度確認體驗有價值；問題是現行廣告模式無法從此參與度中獲利，需配套付費機制</td></tr>
+      </table>
+      <br>
+      <div class="callout green"><strong>Skill 2 識別結論：</strong>SearchCo 的「Only We Can」不是搜尋技術本身，而是三個既有資產的組合——30 億次意圖數據規模、已上線 AI 助手、Agent-Based Search 實驗積累。<strong>這三個資產直接決定了 Skill 3 的資源配置方向。</strong></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:8px 0;color:var(--teal);font-size:18px;">↓ 因為 Skill 1+2 → 所以這樣配置 $15B</div>
+
+  <!-- Skill 3 -->
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAccordion(this)" style="border-left:4px solid var(--blue)">
+      Skill 3 — ALLOCATE：$15B 資源配置<span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-body open">
+      <p style="color:var(--gray);">因為 Skill 1 決定建立 AI 原生商業模式，因為 Skill 2 識別了三個核心資產缺口，所以 $15B 追加預算的配置邏輯如下：</p>
+      <br>
+      <div class="budget-grid">
+        <div class="budget-card">
+          <div class="b-pct">40%</div>
+          <div class="b-amt">$6B</div>
+          <div class="b-label">① AI 原生獲利模式研發<br>訂閱制、企業 API 授權、Agent 商務抽成、意圖數據 B2B</div>
+        </div>
+        <div class="budget-card" style="border-top-color:var(--teal)">
+          <div class="b-pct">27%</div>
+          <div class="b-amt">$4B</div>
+          <div class="b-label">② AI 助手 Agent 能力擴展<br>建立個人 AI 入口，搶在 Apple 整合成熟前</div>
+        </div>
+        <div class="budget-card" style="border-top-color:#538135">
+          <div class="b-pct">20%</div>
+          <div class="b-amt">$3B</div>
+          <div class="b-label">③ 出版商生態系夥伴方案<br>收入分潤機制，確保 AI 摘要內容品質基礎</div>
+        </div>
+        <div class="budget-card" style="border-top-color:var(--gray)">
+          <div class="b-pct">13%</div>
+          <div class="b-amt">$2B</div>
+          <div class="b-label">④ AI 基礎設施查詢成本效率優化<br>非規模擴張，降低 per-query 成本（已 +40%）</div>
+        </div>
+      </div>
+      <div class="callout yellow"><strong>Skill 3 邏輯：</strong>40% 集中於獲利模式研發 是此配置的核心。個案最大缺口是 Agent-Based Search 尚未找到獲利模式，且現行計畫選擇延遲——這個缺口最需要資源填補。<strong>這個配置在 Skill 4 中需要檢視它會產生哪些系統性取捨。</strong></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:8px 0;color:var(--teal);font-size:18px;">↓ 此配置 → 產生哪些系統性取捨和假設？</div>
+
+  <!-- Skill 4 -->
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAccordion(this)" style="border-left:4px solid #1F5C7A">
+      Skill 4 — INTEGRATE：系統性取捨分析<span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-body open">
+      <table class="data-table">
+        <tr><th>配置產生的取捨</th><th>此取捨依賴的假設（脆弱程度）</th></tr>
+        <tr><td>縮減傳統搜尋優化投資，轉向 AI 助手與 Agent</td><td><span class="badge warn">🟡 中</span> 84% 市占率的傳統用戶仍有慣性，縮減需在不失去現有用戶的前提下進行</td></tr>
+        <tr><td>替代收入路徑建立前延遲全面展開 AI 摘要</td><td><span class="badge bad">🔴 高</span> 替代收入建立速度能快過廣告下滑速度——<strong>整個策略最關鍵的假設</strong></td></tr>
+        <tr><td>$3B 投入出版商夥伴方案</td><td><span class="badge warn">🟡 中</span> 出版商仍需要 SearchCo 的分發能力；若 AI 平台提供替代分發路徑，此假設動搖</td></tr>
+        <tr><td>$2B 效率優化而非規模擴張</td><td><span class="badge ok">🟢 低</span> 現行 $10B 計畫已覆蓋規模，效率優化是可執行的獨立目標</td></tr>
+      </table>
+      <div class="callout teal"><strong>Skill 4 系統性洞察：</strong>取捨 ② 揭示最大系統性風險——「替代收入速度 vs. 廣告下滑速度的競賽」不是一個可以「等等看」的假設，而是整個策略的核心賭注。<strong>確認了這些取捨，Skill 5 才能在此配置框架內推導優先序。</strong></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:8px 0;color:var(--teal);font-size:18px;">↓ 確認取捨 → 在此配置下，哪些事必須先做、哪些必須停止？</div>
+
+  <!-- Skill 5 -->
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAccordion(this)" style="border-left:4px solid #5C3D6B">
+      Skill 5 — PRIORITIZE：必做 vs. 必停<span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-body open">
+      <p style="color:var(--gray);margin-bottom:16px;">在 Skill 3 確定資源配置、Skill 4 確認系統性取捨之後，優先序才有依據——不是憑直覺排序，而是從配置邏輯和系統取捨推導出的必然結果。</p>
+      <h4 style="color:var(--navy);margin-bottom:10px;">Top 2 優先事項（Must Do）</h4>
+      <div class="callout green" style="margin-bottom:10px;"><strong>#1 立即建立不依賴點擊廣告的替代獲利路徑</strong><br>訂閱制 · 企業 API 授權 · Agent 商務抽成 · 意圖數據 B2B<br><em>依據：AI 摘要與廣告因果衝突已確認；Agent-Based Search 有產品但無收入路徑；Chief AI Officer 主張在競爭者之前建立——現行計畫選擇延遲。</em></div>
+      <div class="callout teal"><strong>#2 加速 AI 助手的 Agent 能力，鞏固個人 AI 入口位置</strong><br>搶在 Apple 跨裝置 AI 整合成熟前建立用戶習慣<br><em>依據：AI 助手已在年輕用戶中快速成長（既有基礎）；Apple 正在探索替代入口（時機緊迫）。</em></div>
+      <br>
+      <h4 style="color:var(--navy);margin-bottom:10px;">應停止 / 延遲（Must Stop / Delay）</h4>
+      <table class="data-table">
+        <tr><th>行動</th><th>個案依據</th></tr>
+        <tr><td><span class="badge bad">🔴 停止</span> 大力優化傳統搜尋排名</td><td>以傳統搜尋為資訊起點的比例 92%→74% 且持續下滑；Skill 4 確認縮減此投資是配置的必然取捨</td></tr>
+        <tr><td><span class="badge bad">🔴 停止</span> 延遲新獲利模式開發直到 AI 收入「真正落地」</td><td>競爭者持續擴張；等待等於讓對手先建立用戶習慣；Skill 4 確認此為最高風險假設</td></tr>
+        <tr><td><span class="badge warn">⚠ 延遲</span> 在替代收入未建立前向所有用戶全面展開 AI 摘要</td><td>個案確認 AI 摘要降低點擊率；Skill 4 確認廣告收入速度是最關鍵假設——在替代機制未到位前全面展開是在加速傷害</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:8px 0;color:var(--teal);font-size:18px;">↓ 確認優先序 → 針對不同情境，如何調整？</div>
+
+  <!-- Skill 6 -->
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAccordion(this)" style="border-left:4px solid #3D6B3D">
+      Skill 6 — PREPARE：三情境規劃<span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-body open">
+      <p style="color:var(--gray);margin-bottom:16px;">不是預測單一未來，而是建立情境彈性——以最可能的情境規劃，確保在最壞情境下不措手不及。</p>
+      <div class="scenario-grid">
+        <div class="scenario-card green">
+          <h4>🟢 共存（Co-existence）</h4>
+          <p><strong>世界如何演變：</strong>AI 摘要與傳統搜尋長期共存；廣告模式演化為對話式廣告；出版商與 SearchCo 達成收入分潤協議。</p>
+          <br>
+          <p><strong>配置調整：</strong>廣告 + 訂閱雙引擎並行；AI 助手持續深化；出版商生態穩定。</p>
+          <br>
+          <p><strong>觸發訊號：</strong>傳統搜尋用戶比例穩定在 70% 以上；點擊廣告收入增速恢復。</p>
+        </div>
+        <div class="scenario-card yellow">
+          <h4>🟡 加速位移（Accelerated Displacement）★ 主要準備情境</h4>
+          <p><strong>世界如何演變：</strong>AI 助手在數年內成為資訊搜尋主要入口；Apple 的 AI 整合成熟並替代搜尋入口地位；廣告點擊率持續下降。</p>
+          <br>
+          <p><strong>配置調整：</strong>加速訂閱制與企業 API 收入；以個人 AI 入口鞏固用戶；以出版商夥伴方案維持內容品質。</p>
+          <br>
+          <p><strong>觸發訊號：</strong>以 AI 助手作為資訊起點的比例突破 30%；25 歲以下超過 50% 不使用傳統搜尋。</p>
+        </div>
+        <div class="scenario-card red">
+          <h4>🔴 生態重組（Ecosystem Reorganization）</h4>
+          <p><strong>世界如何演變：</strong>OpenAI/Anthropic 的 Agent 能力成熟到直接完成大多數任務，搜尋作為中間步驟的必要性大幅降低；傳統廣告市場萎縮至次要地位。</p>
+          <br>
+          <p><strong>配置調整：</strong>SearchCo 轉型為 AI 知識基礎設施提供者——向 AI 平台授權搜尋索引與意圖數據，而非直接面向終端用戶競爭。</p>
+          <br>
+          <p><strong>觸發訊號：</strong>Agent 完成任務比例達 40%+；搜尋廣告收入絕對值出現下滑。</p>
+        </div>
+      </div>
+      <div class="callout yellow"><strong>最應準備的情境：🟡 加速位移。</strong>個案中所有外部訊號——OpenAI/Anthropic 的 Agent 擴張、Apple 的平台動作、Perplexity 的快速成長——加上內部用戶行為數據，都指向此方向。以 🟡 規劃，才能在 🔴 出現時不措手不及。</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ══ SECTION 4: ANSWERS ═════════════════════════════════════════════════ -->
+<div class="section" id="answers">
+  <div class="section-header">
+    <div class="en">Simulation Q&A — Direct Answers Based on the 6-Skill Analysis</div>
+    <h2>✅ 題目解答</h2>
+    <p style="color:var(--gray);font-size:14px;margin-top:8px;">依照因果序列分析結果，直接回答三個 Part 的所有題目。每個答案都標示個案數據依據。</p>
+  </div>
+
+  <!-- Part 1 Answers -->
+  <h3 style="color:var(--navy);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--lblue);">Part 1 — Critique the Current Strategy</h3>
+
+  <div class="qa-block">
+    <div class="qa-q">Q1. What are the key issues or weaknesses in this plan?</div>
+    <div class="callout red">
+      <strong>核心矛盾：</strong>現行計畫選擇「擴大 AI 摘要 + 維持廣告模式」並行，但個案已明確確認 AI 生成答案降低點擊率、點擊率降低減少廣告收入。這不是「風險」——而是個案自身確認的因果衝突，現行計畫選擇假裝它不存在。
+    </div>
+    <div class="qa-a">
+      <ul class="list">
+        <li>$10B 基礎設施投資沒有配套的新商業模式——花更多錢服務一個收縮中的收入基礎</li>
+        <li>在替代收入路徑建立前就全面展開 AI 摘要——主動加速廣告收入的侵蝕</li>
+        <li>將新獲利模式推遲到「AI 收入真正落地」——在所有競爭者積極擴張的同時選擇等待，錯失時機的代價被系統性低估</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-q">Q2. What strategic signals may be underestimated?</div>
+    <table class="compare-table">
+      <tr><th>被低估的訊號</th><th>為什麼比表面更危險</th></tr>
+      <tr><td><strong>Apple 的跨裝置 AI 助理層定位</strong></td><td>不是「裝置功能升級」，而是 SearchCo 最關鍵的分發入口（裝置預設資訊入口）有被替代的風險。Apple 不需要建立更好的搜尋引擎，只需要讓用戶不再需要開啟搜尋引擎。</td></tr>
+      <tr><td><strong>OpenAI/Anthropic 的 Agent 能力擴張</strong></td><td>Agent 能搜尋、推理、直接執行任務——用戶完成一個任務可能完全繞過搜尋這個中間步驟。搜尋作為必要入口的前提正在被動搖。</td></tr>
+      <tr><td><strong>25 歲以下用戶的行為轉移</strong></td><td>個案確認此族群已將 AI 助手視為主要資訊介面。這是未來 10 年整體用戶結構的方向訊號，不是利基現象。</td></tr>
+      <tr><td><strong>Perplexity 的高參與度</strong></td><td>規模雖小，但確認了 AI-first 資訊體驗有真實的、非實驗性的需求。「用戶不會買單」的假設已被反駁。</td></tr>
+    </table>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-q">Q3. What future risks are not being addressed?</div>
+    <ul class="list">
+      <li><strong>出版商封鎖風險：</strong>個案確認出版商已質疑 AI 摘要影響。若封鎖爬蟲，AI 摘要內容品質崩潰——整個 AI 搜尋體驗的基礎瓦解。現行計畫對此沒有任何對應機制。</li>
+      <li><strong>領導層衝突未解決：</strong>個案明確列出 CEO、CFO、CPO、廣告主管、Chief AI Officer 的優先事項存在衝突。此衝突若不在決策層面解決，所有資源配置都會被拉向不同方向。</li>
+      <li><strong>Agent-Based Search 的獲利時機：</strong>實驗中但尚未找到獲利模式，而競爭者正在同一方向加速。搶先建立商業模式的機會是有限的，目前計畫沒有為此設定時程。</li>
+    </ul>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-q">Q4. What assumptions does management appear to be making?</div>
+    <table class="compare-table">
+      <tr><th>管理層的隱含假設</th><th>個案訊號的檢驗</th></tr>
+      <tr><td>AI 摘要可與廣告模式並行，兩者不互斥</td><td><span class="tag-x">❌ 個案明確確認因果衝突——假設不成立</span></td></tr>
+      <tr><td>AI 查詢成本的增加是可管理的</td><td><span class="tag-warn2">⚠️ 成本已 +40%，無個案數據支撐「可管理」</span></td></tr>
+      <tr><td>新獲利模式可以等到 AI 收入真正落地後再建立</td><td><span class="tag-x">❌ 四家競爭者都在積極擴張，可以出手的時機越來越短</span></td></tr>
+      <tr><td>傳統搜尋排名優化仍能持續創造用戶價值</td><td><span class="tag-warn2">⚠️ 以傳統搜尋為資訊起點：92%→74% 且持續下降</span></td></tr>
+    </table>
+  </div>
+
+  <br>
+  <h3 style="color:var(--navy);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--lblue);">Part 2 — Define a Better Strategy</h3>
+
+  <div class="qa-block">
+    <div class="qa-q">Q1. What are the top 2 priorities SearchCo should focus on now?</div>
+    <div class="callout green" style="margin-bottom:10px;">
+      <strong>#1 立即建立不依賴點擊廣告的替代獲利路徑</strong><br>
+      訂閱制 · 企業 API 授權 · Agent 商務抽成 · 意圖數據 B2B<br>
+      <em>依據：AI 摘要與廣告因果衝突已確認；Agent-Based Search 有產品但無收入路徑；收入增速已腰斬；Chief AI Officer 主張「在競爭者之前建立未來商業模式」而現行計畫選擇延遲。</em>
+    </div>
+    <div class="callout teal">
+      <strong>#2 加速 AI 助手的 Agent 能力，鞏固個人 AI 入口位置</strong><br>
+      搶在 Apple 跨裝置 AI 整合成熟前建立用戶習慣<br>
+      <em>依據：AI 助手已在年輕用戶中快速成長（既有基礎，不需從零開始）；Apple 正在探索替代資訊發現體驗（時機存在但有限）；25 歲以下用戶已將 AI 助手視為主要資訊介面，需求已確認。</em>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-q">Q2. What should be delayed, reduced, or stopped?</div>
+    <table class="compare-table">
+      <tr><th>行動</th><th>依據</th></tr>
+      <tr><td><span class="badge bad">🔴 停止</span> 大力優化傳統搜尋排名</td><td>用戶比例 92%→74% 且持續下滑；繼續投入是在優化一個收縮中的場域</td></tr>
+      <tr><td><span class="badge bad">🔴 停止</span> 延遲新獲利模式直到 AI 收入「真正落地」</td><td>競爭者持續擴張，等待等於讓對手先建立用戶習慣；等待的代價高於行動的風險</td></tr>
+      <tr><td><span class="badge warn">⚠ 延遲</span> 在替代收入路徑建立前向所有用戶全面展開 AI 摘要</td><td>AI 摘要降低點擊率已確認；在廣告替代機制未到位前全面展開，是在主動加速現有收入的侵蝕</td></tr>
+    </table>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-q">Q3. What future scenarios should leadership prepare for?</div>
+    <div class="callout yellow">
+      <strong>主要準備情境：🟡 加速位移</strong><br>
+      所有個案訊號都指向此方向。以此情境為主要規劃基礎。
+    </div>
+    <div class="callout red" style="margin-top:8px;">
+      <strong>尾部風險情境：🔴 生態重組</strong><br>
+      SearchCo 轉型為 AI 知識基礎設施提供者——向 AI 平台授權搜尋索引與意圖數據，而非繼續直接面向終端用戶競爭。以 🟡 規劃，才能在 🔴 出現時不措手不及。
+    </div>
+  </div>
+
+  <br>
+  <h3 style="color:var(--navy);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--lblue);">Part 3 — Make a Leadership Decision</h3>
+
+  <div class="qa-block">
+    <div class="qa-q">Q1. How should the $15B budget be allocated?</div>
+    <div class="budget-grid">
+      <div class="budget-card"><div class="b-pct">40%</div><div class="b-amt">$6B</div><div class="b-label">AI 原生獲利模式研發（訂閱、企業 API、Agent 商務抽成）</div></div>
+      <div class="budget-card" style="border-top-color:var(--teal)"><div class="b-pct">27%</div><div class="b-amt">$4B</div><div class="b-label">AI 助手 Agent 能力擴展（個人 AI 入口）</div></div>
+      <div class="budget-card" style="border-top-color:#538135"><div class="b-pct">20%</div><div class="b-amt">$3B</div><div class="b-label">出版商生態系夥伴方案（收入分潤）</div></div>
+      <div class="budget-card" style="border-top-color:var(--gray)"><div class="b-pct">13%</div><div class="b-amt">$2B</div><div class="b-label">AI 基礎設施成本效率優化（非規模擴張）</div></div>
+    </div>
+    <div class="callout navy" style="margin-top:8px;"><strong>配置邏輯：</strong>最大缺口是 AI 原生獲利路徑的缺乏（Agent-Based Search 尚未找到獲利模式），因此 40% 集中於此。其次是時機最緊迫的 AI 助手 Agent 能力。出版商方案是維持 AI 摘要體驗品質的底層條件。效率優化而非規模擴張，因為現行 $10B 計畫已覆蓋規模。</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-q">Q2. What trade-offs are being made?</div>
+    <table class="compare-table">
+      <tr><th>取捨項目</th><th>短期代價</th><th>長期定位</th></tr>
+      <tr><td>縮減傳統搜尋優化投資</td><td>部分現有用戶體驗改善放慢</td><td>資源集中於真正增長的方向</td></tr>
+      <tr><td>替代收入建立前延遲全面展開 AI 摘要</td><td>AI 摘要覆蓋率增速放緩</td><td>避免在廣告收入被侵蝕前沒有替代</td></tr>
+      <tr><td>$3B 投入出版商而非用戶端體驗</td><td>用戶端功能投資減少</td><td>保住 AI 摘要內容品質基礎，避免封鎖</td></tr>
+      <tr><td>現在建立替代商業模式，而非等待</td><td>研發成本增加、廣告收入承壓</td><td>在競爭者之前建立 AI 原生收入先例</td></tr>
+    </table>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-q">Q3. What assumptions is your strategy dependent upon?</div>
+    <table class="compare-table">
+      <tr><th>策略依賴的假設</th><th>脆弱程度</th></tr>
+      <tr><td>替代獲利路徑的建立速度能快過廣告收入的下滑速度</td><td><span class="badge bad">🔴 最高風險</span> 整個策略的核心賭注</td></tr>
+      <tr><td>AI 助手用戶可以在 Apple 跨裝置 AI 整合成熟前被留住</td><td><span class="badge warn">🟡 中等</span> 有機會，但時間有限</td></tr>
+      <tr><td>出版商仍需要 SearchCo 的分發能力，夥伴方案談判可行</td><td><span class="badge warn">🟡 中等</span> 若 AI 平台提供替代分發路徑，假設動搖</td></tr>
+      <tr><td>Agent-Based Search 可快速推進至可以獲利的階段，不需更多基礎研究</td><td><span class="badge ok">🟢 較低</span> 實驗積累已存在，執行風險大於技術風險</td></tr>
+    </table>
+  </div>
+
+  <br>
+  <h3 style="color:var(--navy);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--lblue);">Presentation Summary（5 分鐘呈現架構）</h3>
+  <div class="pres-grid" style="border:1px solid var(--lgray);border-radius:var(--radius);overflow:hidden;">
+    <div class="pres-row">
+      <div class="pres-key">The key strategic problem</div>
+      <div class="pres-val">現行計畫押注 AI 摘要與廣告模式可以共存，但個案已確認這是因果衝突。與此同時，所有競爭者都在建立繞過搜尋的直接 AI 介面。SearchCo 面對的不是「如何升級搜尋」，而是「搜尋作為必要入口的前提本身是否成立」。</div>
+    </div>
+    <div class="pres-row">
+      <div class="pres-key">The signals that matter most</div>
+      <div class="pres-val">(1) Apple 的裝置層 AI 定位 = SearchCo 的分發入口有被替代的結構性風險；(2) OpenAI/Anthropic 的 Agent 擴張 = 搜尋作為中間步驟有被跳過的可能。兩個訊號合起來：SearchCo 的「入口」定位正在被從不同層次同時替代。</div>
+    </div>
+    <div class="pres-row">
+      <div class="pres-key">The revised priorities</div>
+      <div class="pres-val">(1) 立即建立 AI 原生獲利路徑（訂閱、企業 API、Agent 商務抽成）；(2) 加速 AI 助手 Agent 能力。<strong>停止：</strong>延遲建立獲利模式、在廣告替代機制未到位前全面鋪開 AI 摘要。</div>
+    </div>
+    <div class="pres-row">
+      <div class="pres-key">Budget & trade-offs</div>
+      <div class="pres-val">$6B 獲利模式研發 / $4B AI 助手 Agent / $3B 出版商夥伴 / $2B 成本效率。核心取捨：短期廣告收入承壓，換取 AI 原生商業模式的結構性定位。最大假設：替代收入建立速度快過廣告下滑速度。</div>
+    </div>
+    <div class="pres-row">
+      <div class="pres-key">The future scenario</div>
+      <div class="pres-val">🟡 加速位移——所有個案訊號都指向此方向。以此情境為主要規劃基礎，同時為 🔴 生態重組建立轉型選項（轉型為 AI 知識基礎設施，向 AI 平台授權搜尋索引與意圖數據）。</div>
+    </div>
+  </div>
+
+  <br>
+  <div class="callout yellow" style="text-align:center;margin-top:24px;">
+    <strong style="font-size:16px;">「我們要成為下一個時代的基礎設施，還是上一個時代的遺址？」</strong><br>
+    <em style="color:var(--gray);">Discernment determines what is really happening. Strategic Thinking determines what to do next — and what NOT to do.</em>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══════════════════════════════════════════════════════════════ -->
+<footer>
+  <p><strong>SearchCo: Defend the Core or Reinvent the Future?</strong></p>
+  <p style="margin-top:6px;">Week 10 Strategic Thinking Mindset Simulation · NUS SOC CDAIO SEPO · June 2026</p>
+  <p style="margin-top:6px;">Framework: Discernment Process · 4 Strategic Thinking Levels · 6 Strategic Mindset Skills</p>
+</footer>
+
+<script>
+// ── Tab system ────────────────────────────────────────────────────────────
+function showTab(group, id, btn) {
+  document.querySelectorAll(`[id^="${group}-"]`).forEach(p => p.classList.remove('active'));
+  document.querySelectorAll(`[id="${group}-${id}"]`).forEach(p => p.classList.add('active'));
+  const allBtns = btn.closest('.tabs').querySelectorAll('.tab-btn');
+  allBtns.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ── Accordion ─────────────────────────────────────────────────────────────
+function toggleAccordion(header) {
+  const body = header.nextElementSibling;
+  const isOpen = header.classList.contains('open');
+  header.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+
+// ── Active nav link on scroll ─────────────────────────────────────────────
+const sections = ['frameworks', 'case', 'analysis', 'answers'];
+const navLinks = document.querySelectorAll('.nav-link');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+
+sections.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) observer.observe(el);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SearchCo: Defend the Core or Reinvent the Future? — Week 10 Strategic Thinking</title>
+<style>
+:root {
+  --navy:   #1F3864;
+  --blue:   #2E75B6;
+  --teal:   #1F7DA8;
+  --lblue:  #D5E8F0;
+  --light:  #F4F8FB;
+  --gray:   #5A5A5A;
+  --lgray:  #F0F0F0;
+  --white:  #FFFFFF;
+  --green:  #E2EFDA;
+  --yellow: #FFF2CC;
+  --red:    #FCE4D6;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; color: #333; background: #fff; font-size: 15px; line-height: 1.7; }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--navy); color: #fff;
+  display: flex; align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+.nav-brand { padding: 0 24px; font-weight: 700; font-size: 15px; white-space: nowrap; border-right: 1px solid rgba(255,255,255,.15); }
+.nav-links { display: flex; overflow-x: auto; }
+.nav-links a {
+  padding: 16px 20px; color: rgba(255,255,255,.8); text-decoration: none;
+  font-size: 13px; font-weight: 500; white-space: nowrap;
+  border-bottom: 3px solid transparent; margin-bottom: -2px; transition: .2s;
+}
+.nav-links a:hover { color: #fff; border-bottom-color: var(--teal); }
+.nav-links a.active { color: #fff; border-bottom-color: #fff; }
+
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+  color: #fff; padding: 72px 24px 56px; text-align: center;
+}
+.hero h1 { font-size: clamp(26px, 4vw, 42px); font-weight: 800; margin-bottom: 12px; }
+.hero .sub { font-size: 16px; color: rgba(255,255,255,.75); max-width: 680px; margin: 0 auto 32px; }
+.hero-chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.chip { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); border-radius: 20px; padding: 6px 16px; font-size: 13px; }
+
+.section { padding: 64px 24px; max-width: 1100px; margin: 0 auto; }
+.section-header { margin-bottom: 40px; }
+.section-header h2 { font-size: 28px; font-weight: 700; color: var(--navy); }
+.section-header .label { font-size: 13px; color: var(--teal); font-weight: 600; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 6px; }
+.section-divider { width: 100%; height: 1px; background: var(--lgray); margin: 64px 0 0; }
+
+.tabs { display: flex; gap: 4px; border-bottom: 2px solid var(--lgray); margin-bottom: 32px; overflow-x: auto; }
+.tab-btn {
+  padding: 10px 20px; border: none; background: none; cursor: pointer;
+  font-size: 14px; font-weight: 600; color: var(--gray);
+  border-bottom: 3px solid transparent; margin-bottom: -2px; white-space: nowrap; transition: .2s;
+}
+.tab-btn.active { color: var(--navy); border-bottom-color: var(--blue); }
+.tab-btn:hover { color: var(--blue); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.fw-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 32px; }
+.fw-card {
+  background: var(--light); border-radius: var(--radius); padding: 24px 20px;
+  border-left: 4px solid var(--blue); transition: .2s;
+}
+.fw-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.fw-card .step-num { font-size: 11px; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 8px; }
+.fw-card h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.fw-card .sub-label { font-size: 12px; color: var(--gray); font-style: italic; margin-bottom: 10px; }
+.fw-card p { font-size: 13px; color: var(--gray); }
+
+.skill-sequence { display: flex; flex-direction: column; gap: 12px; }
+.skill-row { display: flex; gap: 12px; align-items: stretch; }
+.skill-num {
+  min-width: 80px; background: var(--navy); color: #fff;
+  border-radius: var(--radius) 0 0 var(--radius);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 16px 8px; text-align: center;
+}
+.skill-num .s-label { font-size: 10px; font-weight: 700; opacity: .7; letter-spacing: .1em; }
+.skill-num .s-en { font-size: 18px; font-weight: 800; }
+.skill-body {
+  flex: 1; background: var(--light); border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 16px 20px;
+}
+.skill-body h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.skill-body .skill-sub { font-size: 12px; color: var(--teal); font-weight: 600; font-style: italic; margin-bottom: 8px; }
+.skill-body p { font-size: 13px; color: var(--gray); }
+.causal-arrow { text-align: left; padding-left: 80px; color: var(--teal); font-size: 18px; margin: 2px 0; font-style: italic; font-size: 13px; }
+
+.callout { border-radius: var(--radius); padding: 16px 20px; margin: 16px 0; border-left: 4px solid; }
+.callout.navy  { background: var(--lblue);  border-color: var(--navy); }
+.callout.teal  { background: #E8F5FA;        border-color: var(--teal); }
+.callout.yellow { background: var(--yellow); border-color: #D4A017; }
+.callout.green  { background: var(--green);  border-color: #538135; }
+.callout.red    { background: var(--red);    border-color: #C55A11; }
+.callout strong { color: var(--navy); }
+
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+.data-table th { background: var(--navy); color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; }
+.data-table td { padding: 9px 12px; border-bottom: 1px solid var(--lgray); }
+.data-table tr:nth-child(even) td { background: var(--light); }
+.data-table tr:hover td { background: var(--lblue); }
+.tag-bad  { color: #C55A11; font-weight: 700; }
+.tag-good { color: #375623; font-weight: 700; }
+.tag-warn { color: #7C5F00; font-weight: 700; }
+
+.accordion { border: 1px solid var(--lgray); border-radius: var(--radius); overflow: hidden; margin-bottom: 12px; }
+.accordion-header {
+  width: 100%; text-align: left; background: var(--light); border: none; cursor: pointer;
+  padding: 16px 20px; display: flex; justify-content: space-between; align-items: center;
+  font-size: 15px; font-weight: 600; color: var(--navy); transition: .2s;
+}
+.accordion-header:hover { background: var(--lblue); }
+.accordion-header.open { background: var(--navy); color: #fff; }
+.accordion-icon { font-size: 18px; transition: transform .25s; }
+.accordion-header.open .accordion-icon { transform: rotate(45deg); }
+.accordion-body { display: none; padding: 20px; }
+.accordion-body.open { display: block; }
+
+.budget-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+.budget-card { border-radius: var(--radius); padding: 20px; background: var(--light); border-top: 4px solid var(--blue); }
+.budget-card .b-pct { font-size: 32px; font-weight: 800; color: var(--navy); }
+.budget-card .b-amt { font-size: 14px; color: var(--teal); font-weight: 700; margin-bottom: 8px; }
+.budget-card .b-label { font-size: 13px; color: var(--gray); }
+
+.scenario-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 16px 0; }
+.scenario-card { border-radius: var(--radius); padding: 20px; border-left: 5px solid; }
+.scenario-card.green  { background: var(--green); border-color: #538135; }
+.scenario-card.yellow { background: var(--yellow); border-color: #D4A017; }
+.scenario-card.red    { background: var(--red);    border-color: #C55A11; }
+.scenario-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: #222; }
+.scenario-card p { font-size: 13px; color: #444; }
+
+.qa-block { margin-bottom: 28px; }
+.qa-q { font-size: 15px; font-weight: 700; color: var(--navy); padding: 10px 0 6px; border-top: 2px solid var(--lblue); }
+.qa-a { font-size: 13px; color: var(--gray); padding: 8px 0; }
+
+.compare-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+.compare-table th { background: var(--teal); color: #fff; padding: 10px 14px; }
+.compare-table td { padding: 10px 14px; border-bottom: 1px solid var(--lgray); vertical-align: top; }
+.compare-table tr:nth-child(even) td { background: var(--light); }
+.tag-x    { color: #C00; font-weight: 700; }
+.tag-warn2 { color: #7C5F00; font-weight: 700; }
+
+.pres-grid { display: flex; flex-direction: column; border: 1px solid var(--lgray); border-radius: var(--radius); overflow: hidden; }
+.pres-row { display: flex; border-bottom: 1px solid var(--lgray); }
+.pres-row:last-child { border-bottom: none; }
+.pres-key { min-width: 200px; background: var(--navy); color: #fff; padding: 16px; font-size: 13px; font-weight: 600; }
+.pres-val { flex: 1; padding: 16px; font-size: 13px; color: var(--gray); background: var(--light); }
+.pres-row:nth-child(even) .pres-key { background: var(--teal); }
+.pres-row:nth-child(even) .pres-val { background: #fff; }
+
+ul.list { list-style: none; padding: 0; }
+ul.list li { padding: 6px 0 6px 20px; position: relative; font-size: 13px; color: var(--gray); }
+ul.list li::before { content: "•"; color: var(--teal); position: absolute; left: 0; font-weight: 700; }
+.badge { display: inline-block; background: var(--lblue); color: var(--navy); border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 700; margin-right: 6px; }
+.badge.bad  { background: var(--red);    color: #7D2600; }
+.badge.ok   { background: var(--green);  color: #2E5300; }
+.badge.warn { background: var(--yellow); color: #5A4000; }
+
+footer { background: var(--navy); color: rgba(255,255,255,.6); text-align: center; padding: 32px 24px; font-size: 13px; }
+footer strong { color: #fff; }
+
+@media (max-width: 640px) {
+  .skill-row { flex-direction: column; }
+  .skill-num { border-radius: var(--radius) var(--radius) 0 0; min-width: auto; flex-direction: row; gap: 12px; }
+  .pres-row { flex-direction: column; }
+  .pres-key { min-width: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="top-nav">
+  <div class="nav-brand">Strategic Thinking · Week 10</div>
+  <div class="nav-links">
+    <a href="#frameworks" class="nav-link">📘 Frameworks</a>
+    <a href="#case" class="nav-link">📋 Case Study</a>
+    <a href="#analysis" class="nav-link">🔍 Analysis</a>
+    <a href="#answers" class="nav-link">✅ Q&amp;A Answers</a>
+  </div>
+  <a href="index.html" style="margin-left:auto;margin-right:16px;padding:6px 14px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:4px;color:#fff;text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap;">中文 →</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>SearchCo: Defend the Core or Reinvent the Future?</h1>
+  <p class="sub">Week 10 Strategic Thinking Mindset Simulation — NUS SOC CDAIO SEPO · June 2026<br>
+  This page integrates the three course frameworks, the original simulation case, and a complete causal-sequence strategic analysis.</p>
+  <div class="hero-chips">
+    <span class="chip">Discernment Process</span>
+    <span class="chip">4 Strategic Thinking Levels</span>
+    <span class="chip">6 Strategic Mindset Skills</span>
+    <span class="chip">SearchCo Case Study</span>
+    <span class="chip">$15B Budget Decision</span>
+  </div>
+</div>
+
+<!-- ══ SECTION 1: FRAMEWORKS ═════════════════════════════════════════════ -->
+<div class="section" id="frameworks">
+  <div class="section-header">
+    <div class="label">The Three Frameworks</div>
+    <h2>📘 Three Strategic Thinking Frameworks</h2>
+    <p style="color:var(--gray);font-size:14px;margin-top:8px;">These three frameworks form a complete strategic leadership toolkit. Use Discernment to read reality accurately, the 4 Levels to deepen understanding, and the 6 Skills sequence to decide on action.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('fw','discernment',this)">① Discernment Process</button>
+    <button class="tab-btn" onclick="showTab('fw','levels',this)">② 4 Strategic Levels</button>
+    <button class="tab-btn" onclick="showTab('fw','skills',this)">③ 6 Mindset Skills</button>
+  </div>
+
+  <!-- Tab 1: Discernment -->
+  <div class="tab-panel active" id="fw-discernment">
+    <div class="callout navy">
+      <strong>Core idea:</strong> Discernment is the starting point of strategic thinking. Before deciding what to do, you must first read the complete reality — not just the parts you want to see. "Discernment determines what is really happening. Strategic Thinking determines what to do next — and what NOT to do."
+    </div>
+    <br>
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="step-num">Step 1</div>
+        <h3>👁 Observe</h3>
+        <div class="sub-label">Active Listening & Pattern Recognition</div>
+        <p>Gather internal and external observable facts. Resist the urge to interpret immediately — build a complete factual foundation first. Collect data, signals, behaviors, and announcements without bias.</p>
+      </div>
+      <div class="fw-card" style="border-color:var(--teal)">
+        <div class="step-num">Step 2</div>
+        <h3>🧩 Interpret</h3>
+        <div class="sub-label">Contextual Thinking & Emotional Intelligence</div>
+        <p>Read the signals together: what do they mean as a whole? Synthesis asks "what do ALL these signals mean together?" — not just what each one means in isolation.</p>
+      </div>
+      <div class="fw-card" style="border-color:var(--navy)">
+        <div class="step-num">Step 3</div>
+        <h3>🔍 Challenge</h3>
+        <div class="sub-label">Critical Thinking</div>
+        <p>Challenge the assumptions behind current plans. Are these assumptions valid? What contradictions are being ignored? What would need to be true for the current plan to succeed?</p>
+      </div>
+      <div class="fw-card" style="border-color:#538135">
+        <div class="step-num">Step 4</div>
+        <h3>🔭 Anticipate</h3>
+        <div class="sub-label">Foresight</div>
+        <p>If current trends continue, what comes next? Anticipate rather than wait. The strategic leader's advantage is recognizing what's coming before it becomes obvious to everyone.</p>
+      </div>
+    </div>
+    <br>
+    <h4 style="color:var(--navy);margin-bottom:8px;font-size:15px;">🔧 The Six Discernment Lenses</h4>
+    <p style="color:var(--gray);font-size:13px;margin-bottom:16px;">"Discernment is not one skill. It is six lenses working together." — Each lens maps to a specific step in the Observe → Interpret → Challenge → Anticipate process.</p>
+    <div class="fw-grid" style="grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));">
+      <div class="fw-card" style="border-color:var(--blue);">
+        <div class="step-num">LENS 1 · Signal Detection Layer</div>
+        <h3>Active Listening & Observation</h3>
+        <p>Hear what is said <em>and unsaid</em>. Detect tone shifts, micro-behaviors, and inconsistencies. Notice weak signals that others overlook in conversations and situations.<br><span style="color:var(--teal);font-weight:600;">→ Step: Observe</span></p>
+      </div>
+      <div class="fw-card" style="border-color:var(--teal);">
+        <div class="step-num">LENS 2 · Analytical Validation Layer</div>
+        <h3>Critical Thinking</h3>
+        <p>Question assumptions rather than accept them. Identify bias in data and sources. Evaluate evidence quality — correlation is not causation. Apply logical reasoning to avoid fallacies.<br><span style="color:var(--teal);font-weight:600;">→ Step: Challenge</span></p>
+      </div>
+      <div class="fw-card" style="border-color:var(--navy);">
+        <div class="step-num">LENS 3 · Insight Discovery Layer</div>
+        <h3>Pattern Recognition</h3>
+        <p>Spot hidden trends and recurring signals in data. Recognize behavioral patterns across teams and projects. Connect seemingly unrelated observations into a single insight.<br><span style="color:var(--teal);font-weight:600;">→ Step: Observe</span></p>
+      </div>
+      <div class="fw-card" style="border-color:#1F7DA8;">
+        <div class="step-num">LENS 4 · System Interpretation Layer</div>
+        <h3>Contextual Thinking</h3>
+        <p>Interpret information within the broader environment. Understand timing, constraints, organizational politics, and hidden dynamics. See why actions make sense — or don't — within context.<br><span style="color:var(--teal);font-weight:600;">→ Step: Interpret</span></p>
+      </div>
+      <div class="fw-card" style="border-color:#5C3D6B;">
+        <div class="step-num">LENS 5 · Human Insight Layer</div>
+        <h3>Emotional Intelligence</h3>
+        <p>Understand how your own biases shape your interpretation. Maintain objectivity by managing emotional reactions. Read the motivations and intentions behind people's decisions.<br><span style="color:var(--teal);font-weight:600;">→ Step: Interpret</span></p>
+      </div>
+      <div class="fw-card" style="border-color:#3D6B3D;">
+        <div class="step-num">LENS 6 · Strategic Anticipation Layer</div>
+        <h3>Foresight & Consequence Prediction</h3>
+        <p>Anticipate 2nd and 3rd order effects of decisions. Predict unintended consequences. Evaluate trade-offs between short-term gains and long-term impact.<br><span style="color:var(--teal);font-weight:600;">→ Step: Anticipate</span></p>
+      </div>
+    </div>
+    <div class="callout yellow">
+      <strong>Key principle:</strong> "Discernment determines what is really happening. Strategic Thinking determines what to do next — and what NOT to do." There may be multiple reasonable actions, but there is always a wrong starting point.
+    </div>
+  </div>
+
+  <!-- Tab 2: 4 Levels -->
+  <div class="tab-panel" id="fw-levels">
+    <div class="callout navy">
+      <strong>Core idea:</strong> Most people stop at Level 1 — seeing what happened. Strong strategic thinkers reach Level 4: preparing for ecosystem transformation before it becomes obvious. The goal is to move from surface-level observation to anticipating how the world reorganizes.
+    </div>
+    <br>
+    <div style="display:flex;flex-direction:column;gap:0;">
+      <div class="fw-card" style="border:1px solid var(--lgray);border-top:4px solid var(--blue);border-left:none;background:#fff;">
+        <div class="step-num">LEVEL 1</div>
+        <h3>Event Interpretation</h3>
+        <div class="sub-label">What is happening?</div>
+        <p>The entry point of strategic thinking — grounding yourself in observable facts before drawing conclusions. What are the obvious facts? Why is this happening? A strong Level 1 thinker reads both the good news and bad news honestly, without filtering.</p>
+      </div>
+      <div style="text-align:center;padding:8px;color:var(--teal);font-size:20px;">↓</div>
+      <div class="fw-card" style="border-color:var(--teal);">
+        <div class="step-num">LEVEL 2</div>
+        <h3>Signal Recognition</h3>
+        <div class="sub-label">What is emerging? What is the underlying shift?</div>
+        <p>Moving past the obvious to identify patterns and larger shifts that most observers miss. Don't analyze each signal in isolation — ask what they all mean together. <em>"Analysis asks what does this signal mean? Synthesis asks what do all these signals mean together?"</em></p>
+      </div>
+      <div style="text-align:center;padding:8px;color:var(--teal);font-size:20px;">↓</div>
+      <div class="fw-card" style="border-color:var(--navy);">
+        <div class="step-num">LEVEL 3</div>
+        <h3>Consequence Analysis</h3>
+        <div class="sub-label">What changes? What becomes more or less valuable?</div>
+        <p>Assume the trend continues. What gets disrupted? What becomes more valuable — and what becomes less? This is where strategic thinking gets uncomfortable, because the answers challenge existing business models and career assumptions.</p>
+      </div>
+      <div style="text-align:center;padding:8px;color:var(--teal);font-size:20px;">↓</div>
+      <div class="fw-card" style="border-color:#C55A11;background:var(--red);">
+        <div class="step-num">LEVEL 4</div>
+        <h3>Ecosystem Transformation</h3>
+        <div class="sub-label">How does the world reorganize? Who gains and loses power?</div>
+        <p><em>"The most important strategic question is not who wins the product battle — it is who controls the new layer of value in an AI-native world."</em> Level 4 thinkers prepare for this before it becomes obvious to everyone else.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab 3: 6 Skills -->
+  <div class="tab-panel" id="fw-skills">
+    <div class="callout navy">
+      <strong>Critical:</strong> These six skills form ONE integrated causal sequence — they do not activate independently. Skill 1's decision determines what Skill 2 must identify. Skill 2's assets determine how Skill 3 allocates. Skill 3's configuration determines what trade-offs Skill 4 must analyze. Skill 4's trade-offs determine what Skill 5 prioritizes. Skill 5's priorities determine what scenarios Skill 6 must prepare for.
+    </div>
+    <br>
+    <div class="skill-sequence">
+      <div class="skill-row">
+        <div class="skill-num" style="background:var(--navy)"><div class="s-label">SKILL 1</div><div class="s-en">DECIDE</div></div>
+        <div class="skill-body">
+          <h4>Decision-Making Under Uncertainty</h4>
+          <div class="skill-sub">Make timely decisions with incomplete, ambiguous, or conflicting data. Avoid analysis paralysis.</div>
+          <p>Balance risk, timing, trade-offs, and long-term direction. Act with disciplined confidence even when perfect information doesn't exist. <strong>This decision sets the direction for every subsequent analysis.</strong></p>
+        </div>
+      </div>
+      <div class="causal-arrow">↓ Decision made → identify which assets can support it</div>
+      <div class="skill-row">
+        <div class="skill-num" style="background:var(--teal)"><div class="s-label">SKILL 2</div><div class="s-en">DIFFERENTIATE</div></div>
+        <div class="skill-body">
+          <h4>Synthesis for Advantage</h4>
+          <div class="skill-sub">Combine insights, capabilities, and data. Identify your "Only We Can…" advantage.</div>
+          <p>Connect multiple weak signals, trends, and observations into a larger strategic insight others haven't yet recognized. <strong>"Only We Can" is not about technology — it's about the unique combination of assets no competitor can replicate.</strong></p>
+        </div>
+      </div>
+      <div class="causal-arrow">↓ Assets identified → therefore allocate resources this way</div>
+      <div class="skill-row">
+        <div class="skill-num" style="background:var(--blue)"><div class="s-label">SKILL 3</div><div class="s-en">ALLOCATE</div></div>
+        <div class="skill-body">
+          <h4>Resource Orchestration</h4>
+          <div class="skill-sub">Align talent, time, budget, and attention to strategic priorities. Move resources when priorities shift.</div>
+          <p>Allocate based on Skill 1's direction and Skill 2's identified gaps — not equally across everything. <strong>Strategy IS resource allocation. If you're not making a trade-off, you're not doing strategy.</strong></p>
+        </div>
+      </div>
+      <div class="causal-arrow">↓ Allocation set → what systemic trade-offs does this create?</div>
+      <div class="skill-row">
+        <div class="skill-num" style="background:#1F5C7A"><div class="s-label">SKILL 4</div><div class="s-en">INTEGRATE</div></div>
+        <div class="skill-body">
+          <h4>Systems Thinking</h4>
+          <div class="skill-sub">See interdependencies. Anticipate ripple effects before deployment.</div>
+          <p>Identify the ripple effects this resource allocation creates within the system. Recognize trade-offs before execution, not after problems emerge. <strong>How does one change impact the whole organization and its business ecosystem?</strong></p>
+        </div>
+      </div>
+      <div class="causal-arrow">↓ Trade-offs confirmed → given this configuration, what must be done first?</div>
+      <div class="skill-row">
+        <div class="skill-num" style="background:#5C3D6B"><div class="s-label">SKILL 5</div><div class="s-en">PRIORITIZE</div></div>
+        <div class="skill-body">
+          <h4>Strategic Filtration & Prioritization</h4>
+          <div class="skill-sub">Distill noise from signal. Select what matters most. Sequence to maximize speed.</div>
+          <p>Within the framework of Skill 3's allocation, derive what must be done and what must stop. <strong>"What NOT to do" is as important as "what to do." You cannot do everything — if your answer is 'do all', you have failed the exercise.</strong></p>
+        </div>
+      </div>
+      <div class="causal-arrow">↓ Priorities confirmed → for different futures, how does this configuration adapt?</div>
+      <div class="skill-row">
+        <div class="skill-num" style="background:#3D6B3D"><div class="s-label">SKILL 6</div><div class="s-en">PREPARE</div></div>
+        <div class="skill-body">
+          <h4>Futures Thinking & Scenario Planning</h4>
+          <div class="skill-sub">Prepare for multiple possible futures. Build options and contingency paths. Use weak signals early.</div>
+          <p>Don't predict a single future — build scenario flexibility. <strong>Plan for the most likely scenario while ensuring you are not caught off guard by the worst case.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ══ SECTION 2: CASE STUDY ════════════════════════════════════════════ -->
+<div class="section" id="case">
+  <div class="section-header">
+    <div class="label">Week 10 Simulation 1 — Original Case Material</div>
+    <h2>📋 SearchCo Case Study</h2>
+    <p style="color:var(--gray);font-size:14px;margin-top:8px;">Defend the Core or Reinvent the Future? — Context, Data & Questions</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('case','raw',this)">📄 Original Case</button>
+    <button class="tab-btn" onclick="showTab('case','breakdown',this)">🗂 Structured Breakdown</button>
+    <button class="tab-btn" onclick="showTab('case','questions',this)">❓ Questions (Part 1–3)</button>
+  </div>
+
+  <!-- Tab 1: Raw Case (as received) -->
+  <div class="tab-panel active" id="case-raw">
+    <div class="callout teal" style="margin-bottom:20px;">
+      <strong>Simulation note:</strong> The text below is the original case material as distributed in class — presented as a narrative, unstructured and unanalyzed. This is the starting point of a real simulation: a body of information you must make sense of yourself using the three frameworks.
+    </div>
+
+    <div style="background:#fff;border:1px solid var(--lgray);border-radius:var(--radius);padding:32px 36px;font-size:14px;line-height:1.9;color:#333;">
+
+      <h3 style="font-size:20px;font-weight:800;color:var(--navy);margin-bottom:6px;">SearchCo: Defend the Core or Reinvent the Future?</h3>
+      <p style="color:var(--gray);font-size:12px;margin-bottom:28px;">Week 10 Strategic Thinking Mindset Simulation — NUS SOC CDAIO SEPO</p>
+
+      <p>SearchCo is the world's largest search platform, processing over 3 billion search queries per day and holding a dominant position in global digital advertising. For fifteen years, its core business model has remained remarkably stable: users enter search terms, the platform serves sponsored results, and advertisers pay per click. This model generates over 80% of the company's revenue.</p>
+
+      <p style="margin-top:16px;">The CEO has articulated the company's direction publicly: <em>"Our mission is to remain the world's primary gateway to information while accelerating our AI transformation."</em></p>
+
+      <h4 style="color:var(--navy);margin-top:24px;margin-bottom:10px;font-size:15px;">Business Performance</h4>
+      <p>Recent financial results present a mixed picture. Search advertising revenue grew from $180 billion in 2023 to $205 billion in 2025, but revenue growth rate fell from 12% to 5% over the same period. Market share declined from 91% to 84%. Average searches per user shifted from positive 8% growth to negative 3%. Meanwhile, cost per search increased by 40%, and AI infrastructure spending surged from $8 billion to $22 billion — an increase of 175%.</p>
+
+      <h4 style="color:var(--navy);margin-top:24px;margin-bottom:10px;font-size:15px;">User Behavior</h4>
+      <p>On the user behavior side, a series of shifts has emerged. The share of users beginning their information discovery with traditional search fell from 92% in 2023 to 74% in 2025. Over the same period, users starting with an AI assistant rose from 2% to 16%, those using AI summaries before visiting websites jumped from 5% to 28%, and users turning to conversational AI for product recommendations grew from 3% to 21%. An internal survey found that users under 25 increasingly treat AI assistants — not search engines — as their primary information interface.</p>
+
+      <h4 style="color:var(--navy);margin-top:24px;margin-bottom:10px;font-size:15px;">Competitive Landscape</h4>
+      <p>Externally, the competitive environment is shifting rapidly across multiple fronts. OpenAI has launched AI-powered search capabilities with growing enterprise adoption, and its Agent products can search, reason, and act. Anthropic is investing in long-context reasoning and expanding AI Agent capabilities through MCP protocols, positioning itself as the primary interface for knowledge work. Apple is integrating AI deeply into its operating system, exploring alternative information discovery experiences, and positioning AI as a personal assistant layer across devices. Perplexity is growing rapidly among students, researchers, and professionals with an AI-first search experience — smaller in scale but high in engagement.</p>
+
+      <h4 style="color:var(--navy);margin-top:24px;margin-bottom:10px;font-size:15px;">Internal AI Initiatives</h4>
+      <p>SearchCo currently has several AI-related programs underway. AI Search Summaries are fully live, boosting user engagement by 18%. Conversational Search is in pilot, with positive user feedback but low adoption. The AI Assistant is live and growing rapidly among younger users. Agent-Based Search remains at the experimental stage with no commercial revenue path established yet.</p>
+
+      <h4 style="color:var(--navy);margin-top:24px;margin-bottom:10px;font-size:15px;">Leadership Dynamics</h4>
+      <p>Internally, strategic priorities are diverging across the leadership team. The CFO is focused on protecting advertising profitability. The Chief Product Officer is prioritizing user experience improvements. The Ad Revenue lead is focused on maintaining advertiser relationships. The Chief AI Officer is advocating for building the future business model ahead of competitors.</p>
+
+      <h4 style="color:var(--navy);margin-top:24px;margin-bottom:10px;font-size:15px;">The Executive Proposal</h4>
+      <p>Against this backdrop, management has proposed the following strategic direction: <em>"Expand AI-generated search summaries across all markets while preserving the existing advertising model."</em></p>
+      <p style="margin-top:10px;">The proposal includes six specific actions:</p>
+      <ol style="margin:10px 0 0 20px;line-height:2;">
+        <li>Deploy AI summaries to all search users globally</li>
+        <li>Increase AI infrastructure investment by $10 billion</li>
+        <li>Maintain the existing advertising model without structural change</li>
+        <li>Increase AI assistant adoption rates</li>
+        <li>Continue optimizing traditional search rankings</li>
+        <li>Delay development of new monetization models until AI revenue becomes material</li>
+      </ol>
+
+      <p style="margin-top:20px;padding-top:16px;border-top:1px solid var(--lgray);color:var(--gray);font-size:13px;">The board has approved an additional <strong>$15 billion investment budget</strong> pending a strategic allocation proposal from the management team.</p>
+    </div>
+  </div>
+
+  <!-- Tab 2: Structured Breakdown -->
+  <div class="tab-panel" id="case-breakdown">
+    <p style="color:var(--gray);font-size:13px;margin-bottom:20px;">The original case information reorganized into structured format for easier reference and comparison.</p>
+
+    <h4 style="color:var(--navy);margin-bottom:12px;">Company Profile</h4>
+    <div class="callout navy" style="margin-bottom:16px;">
+      <strong>SearchCo</strong> — World's largest search platform · 3B+ daily searches · 80%+ revenue from search advertising<br>
+      Core business model (15 years unchanged): <strong>User Search → Sponsored Results → Advertising Revenue</strong>
+    </div>
+
+    <h4 style="color:var(--navy);margin-bottom:12px;">Business Performance Data</h4>
+    <table class="data-table">
+      <tr><th>Metric</th><th>2023</th><th>2025</th><th>Direction</th></tr>
+      <tr><td>Search Market Share</td><td>91%</td><td>84%</td><td class="tag-bad">↓ Declining</td></tr>
+      <tr><td>Search Advertising Revenue</td><td>$180B</td><td>$205B</td><td class="tag-good">↑ Still growing</td></tr>
+      <tr><td>Revenue Growth Rate</td><td>12%</td><td>5%</td><td class="tag-bad">↓ Halved</td></tr>
+      <tr><td>Searches per User</td><td>+8%</td><td>−3%</td><td class="tag-bad">↓ Turned negative</td></tr>
+      <tr><td>Cost per Search</td><td>Stable</td><td>+40%</td><td class="tag-bad">↓ Worsening</td></tr>
+      <tr><td>AI Infrastructure Spend</td><td>$8B</td><td>$22B</td><td class="tag-warn">⚠ +175%</td></tr>
+    </table>
+    <br>
+
+    <h4 style="color:var(--navy);margin-bottom:12px;">User Behavior Shifts</h4>
+    <table class="data-table">
+      <tr><th>User Behavior</th><th>2023</th><th>2025</th><th>Signal</th></tr>
+      <tr><td>Start information discovery with traditional search</td><td>92%</td><td>74%</td><td class="tag-bad">⚠ Declining steadily</td></tr>
+      <tr><td>Start information discovery with AI assistant</td><td>2%</td><td>16%</td><td class="tag-bad">🔺 Rising fast</td></tr>
+      <tr><td>Use AI summaries before visiting websites</td><td>5%</td><td>28%</td><td class="tag-bad">🔺 Surging</td></tr>
+      <tr><td>Use conversational AI for product recommendations</td><td>3%</td><td>21%</td><td class="tag-bad">🔺 Surging</td></tr>
+    </table>
+    <div class="callout yellow" style="margin-top:10px;"><strong>Internal survey:</strong> Users under 25 increasingly view AI assistants as their primary information interface rather than traditional search engines.</div>
+    <br>
+
+    <h4 style="color:var(--navy);margin-bottom:12px;">Competitor Movements</h4>
+    <table class="data-table">
+      <tr><th>Competitor</th><th>Key Moves</th></tr>
+      <tr><td><strong>OpenAI</strong></td><td>AI-powered search live; growing enterprise adoption; Agent that can search, reason, and act</td></tr>
+      <tr><td><strong>Anthropic</strong></td><td>Long-context reasoning; Agent expansion via MCP; primary interface for knowledge work</td></tr>
+      <tr><td><strong>Apple</strong></td><td>AI integrated into OS; exploring alternative information discovery; cross-device personal assistant layer</td></tr>
+      <tr><td><strong>Perplexity</strong></td><td>Rapid growth among students and researchers; AI-first search experience; high engagement</td></tr>
+    </table>
+    <br>
+
+    <h4 style="color:var(--navy);margin-bottom:12px;">Internal AI Initiatives</h4>
+    <table class="data-table">
+      <tr><th>Initiative</th><th>Status</th><th>Result</th></tr>
+      <tr><td>AI Search Summaries</td><td>✅ Live</td><td>User engagement +18%</td></tr>
+      <tr><td>Conversational Search</td><td>🔬 Pilot</td><td>Positive feedback, low adoption</td></tr>
+      <tr><td>AI Assistant</td><td>✅ Live</td><td>Growing fast among younger users</td></tr>
+      <tr><td>Agent-Based Search</td><td>🧪 Experimental</td><td class="tag-bad">Not yet monetized</td></tr>
+    </table>
+    <br>
+
+    <h4 style="color:var(--navy);margin-bottom:12px;">Leadership Priority Conflicts</h4>
+    <ul class="list">
+      <li><strong>CEO:</strong> "Remain the world's primary gateway to information, accelerate AI transformation"</li>
+      <li><strong>CFO:</strong> Priority is protecting advertising profitability</li>
+      <li><strong>Chief Product Officer:</strong> Focus on user experience improvements</li>
+      <li><strong>Ad Revenue Lead:</strong> Maintain advertiser partnerships</li>
+      <li><strong>Chief AI Officer:</strong> Advocates building the future business model before competitors</li>
+    </ul>
+    <br>
+
+    <h4 style="color:var(--navy);margin-bottom:12px;">Executive Proposal</h4>
+    <div class="callout red">
+      <strong>"Expand AI-generated search summaries across all markets while preserving the existing advertising model."</strong><br>
+      (1) Deploy AI summaries to all users &nbsp;(2) AI infrastructure +$10B &nbsp;(3) Maintain ad model &nbsp;(4) Increase AI assistant adoption &nbsp;(5) Continue optimizing traditional search &nbsp;(6) Delay new monetization until AI revenue becomes material
+    </div>
+  </div>
+
+  <!-- Tab 3: Questions -->
+  <div class="tab-panel" id="case-questions">
+    <div class="callout navy" style="margin-bottom:24px;">
+      <strong>Rules (from the professor):</strong><br>
+      (1) You cannot do everything. If your answer is "do all", you have failed the exercise.<br>
+      (2) What trade-off are you making? If you don't make a trade-off, you are not doing strategy.<br>
+      (3) Think like a CDO and CAIO — this is a business decision under constraint, not a technical exercise.
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header open" onclick="toggleAccordion(this)">
+        Part 1 — Critique the Current Strategy <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body open">
+        <div class="qa-block"><div class="qa-q">Q1. What are the key issues or weaknesses in this plan?</div></div>
+        <div class="qa-block"><div class="qa-q">Q2. What strategic signals may be underestimated?</div></div>
+        <div class="qa-block"><div class="qa-q">Q3. What future risks are not being addressed?</div></div>
+        <div class="qa-block"><div class="qa-q">Q4. What assumptions does management appear to be making about the future?</div></div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        Part 2 — Define a Better Strategy <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <div class="qa-block"><div class="qa-q">Q1. What are the top 2 priorities SearchCo should focus on now?</div></div>
+        <div class="qa-block"><div class="qa-q">Q2. What should be delayed, reduced, or stopped?</div></div>
+        <div class="qa-block"><div class="qa-q">Q3. What future scenarios should leadership prepare for?</div></div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        Part 3 — Make a Leadership Decision <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <div class="callout yellow"><strong>Budget:</strong> SearchCo has approved an additional <strong>$15 billion investment budget</strong>.</div>
+        <br>
+        <div class="qa-block"><div class="qa-q">Q1. How should this budget be allocated?</div></div>
+        <div class="qa-block"><div class="qa-q">Q2. What trade-offs are being made?</div></div>
+        <div class="qa-block"><div class="qa-q">Q3. What assumptions is your strategy dependent upon?</div></div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        Presentation Format (5 minutes per team) <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <ul class="list">
+          <li>The key strategic problem identified</li>
+          <li>The strategic signals that matter most</li>
+          <li>The revised strategic priorities</li>
+          <li>The budget allocation and trade-offs</li>
+          <li>The future scenario they believe leadership should prepare for</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ══ SECTION 3: ANALYSIS ══════════════════════════════════════════════ -->
+<div class="section" id="analysis">
+  <div class="section-header">
+    <div class="label">Full Analysis — Following the 6-Skill Causal Sequence</div>
+    <h2>🔍 Strategic Analysis: Skill 1 → 6 Causal Chain</h2>
+    <p style="color:var(--gray);font-size:14px;margin-top:8px;">Each Skill's conclusion directly produces the next Skill's question. The causal chain never breaks.</p>
+  </div>
+
+  <!-- Discernment -->
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAccordion(this)">
+      📍 Foundation: Discernment — Reading the Complete Reality <span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-body open">
+      <div class="callout teal"><strong>Interpret (what the signals mean together):</strong> The shift in user information-discovery behavior (confirmed by internal data) and the expansion of competitor capabilities (confirmed by external signals) point in the same direction — AI is becoming the direct interface between people and information, compressing the need for search as an intermediate step. These are not four independent competitive threats; they are four dimensions of the same structural shift.</div>
+      <br>
+      <h4 style="color:var(--navy);margin-bottom:10px;">Challenge — Do the current plan's assumptions hold?</h4>
+      <table class="compare-table">
+        <tr><th>Management's Implied Assumption</th><th>What Case Signals Show</th></tr>
+        <tr><td>AI summaries can coexist with the advertising model — they are not mutually exclusive</td><td><span class="tag-x">❌ Case explicitly confirms the causal conflict — assumption does not hold</span></td></tr>
+        <tr><td>The cost increase per AI query is manageable</td><td><span class="tag-warn2">⚠️ Cost per search +40%; no case data supports "manageable"</span></td></tr>
+        <tr><td>New monetization models can wait until AI revenue materializes</td><td><span class="tag-x">❌ All four competitors actively expanding; the waiting window is closing</span></td></tr>
+        <tr><td>Continuing to optimize traditional search rankings still creates value</td><td><span class="tag-warn2">⚠️ Users starting with traditional search: 92% → 74%, trend continuing</span></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <br>
+  <p style="color:var(--gray);font-size:13px;text-align:center;margin-bottom:16px;">— After Discernment confirms the reality, the 4 Strategic Levels deepen understanding —</p>
+
+  <!-- 4 Strategic Levels Application -->
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAccordion(this)" style="border-left:4px solid var(--teal)">
+      📊 4 Strategic Levels: Deepening the Analysis <span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-body open">
+      <p style="color:var(--gray);margin-bottom:16px;">Discernment tells us <em>what is happening</em>. The 4 Levels ask <em>what it structurally means</em> — the essential prerequisite before Skill 1 can make a sound decision.</p>
+
+      <div class="analysis-flow">
+        <div class="analysis-step">
+          <div class="analysis-step-label" style="background:var(--blue);">
+            <div class="s-num">LEVEL 1</div>
+            <div class="s-name">Event<br>Interpretation</div>
+            <div class="s-cn">事件解讀</div>
+          </div>
+          <div class="analysis-step-content">
+            <h4>What is happening? — Read the observable facts honestly</h4>
+            <p>Market share 91%→84%; revenue growth rate 12%→5%; users starting with AI assistant 2%→16%; AI summary adoption 5%→28%; per-search cost +40%; AI infrastructure spend +175%.</p>
+            <div class="callout teal" style="margin-top:8px;"><strong>Level 1 observation:</strong> The numbers are "mixed" — advertising revenue is still growing to $205B, but <em>every structural indicator</em> is deteriorating. Good and bad news coexist, which is precisely Level 1's most dangerous trap: focusing only on the absolute revenue figure leads to a misread of the situation.</div>
+          </div>
+        </div>
+        <div class="analysis-connector">↓</div>
+        <div class="analysis-step">
+          <div class="analysis-step-label" style="background:var(--teal);">
+            <div class="s-num">LEVEL 2</div>
+            <div class="s-name">Signal<br>Recognition</div>
+            <div class="s-cn">訊號識別</div>
+          </div>
+          <div class="analysis-step-content">
+            <h4>What do ALL signals mean together? — Synthesis, not isolation</h4>
+            <p>Internal signals (user behavior shift) and external signals (OpenAI / Anthropic / Apple / Perplexity all expanding simultaneously) point in the same direction:</p>
+            <div class="callout navy" style="margin-top:8px;"><strong>Level 2 recognition:</strong> These are not four independent competitive threats — they are four dimensions of the same structural shift: <strong>AI is becoming the direct interface between people and information, compressing search as a necessary intermediate step.</strong></div>
+          </div>
+        </div>
+        <div class="analysis-connector">↓</div>
+        <div class="analysis-step">
+          <div class="analysis-step-label" style="background:#1F5C7A;">
+            <div class="s-num">LEVEL 3</div>
+            <div class="s-name">Consequence<br>Analysis</div>
+            <div class="s-cn">結果分析</div>
+          </div>
+          <div class="analysis-step-content">
+            <h4>If this trend continues, what changes? — What gains and loses value?</h4>
+            <table class="data-table" style="margin-top:8px;">
+              <tr><th>Becomes <span class="tag-bad">LESS</span> valuable</th><th>Becomes <span class="tag-good">MORE</span> valuable</th></tr>
+              <tr><td>Traditional search advertising (click model)</td><td>Large-scale intent data at scale (B2B)</td></tr>
+              <tr><td>Search ranking optimization capability</td><td>AI Agent task-completion capability</td></tr>
+              <tr><td>Publisher ecosystem sustained by traffic</td><td>Personal AI assistant gateway position</td></tr>
+              <tr><td>"Information gateway" role (bypassed by AI)</td><td>AI-native business models (subscriptions, API licensing)</td></tr>
+            </table>
+            <div class="callout red" style="margin-top:8px;"><strong>Level 3 warning:</strong> Rising costs (+40%) and revenue model erosion are happening simultaneously. If the trend continues, SearchCo faces a dual compression: AI infrastructure costs rising while search advertising revenue per query falls.</div>
+          </div>
+        </div>
+        <div class="analysis-connector">↓</div>
+        <div class="analysis-step">
+          <div class="analysis-step-label" style="background:#1F3864;">
+            <div class="s-num">LEVEL 4</div>
+            <div class="s-name">Ecosystem<br>Transformation</div>
+            <div class="s-cn">生態系轉型</div>
+          </div>
+          <div class="analysis-step-content">
+            <h4>Who controls the new layer of value? — The real strategic question</h4>
+            <p><strong>Old value layer:</strong> Search engine = gateway between user and the web<br><strong>New value layer:</strong> AI assistant = interface between user and information / tasks</p>
+            <div class="callout navy" style="margin-top:8px;"><strong>Level 4 core question:</strong> "The most important strategic question is not who wins the search product battle — it is who controls the new AI-native layer of value."<br><br>OpenAI / Anthropic are building the <em>reasoning layer</em>; Apple is building the <em>OS-level layer</em>; Perplexity is building the <em>research interface layer</em>. SearchCo's real risk: regressing from "information gateway" to a <em>backend data supplier</em> for other AI systems — losing gateway position entirely.</div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="callout yellow"><strong>4 Levels conclusion → leads directly to Skill 1:</strong> Level 3 confirms structural pressure on the advertising model; Level 4 confirms that control of the ecosystem's value layer is shifting. Given this, the Skill 1 question is no longer "whether to transform," but "at what speed and which new value-layer position to prioritize securing first."</div>
+    </div>
+  </div>
+
+  <br>
+  <p style="color:var(--gray);font-size:13px;text-align:center;margin-bottom:24px;">— After the 4 Levels confirm the structural transformation, the 6-Skill sequence decides on action —</p>
+
+  <!-- Skill 1 -->
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAccordion(this)" style="border-left:4px solid var(--navy)">
+      Skill 1 — DECIDE: The Core Strategic Decision <span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-body open">
+      <p style="color:var(--gray);">The case reveals clear directional conflict within leadership: the CFO prioritizes protecting advertising profit; the Chief AI Officer advocates building the future business model before competitors. Running both simultaneously appears to be the current plan — yet the case has already confirmed a causal conflict between the two directions.</p>
+      <br>
+      <table class="data-table">
+        <tr><th>Direction</th><th>Core Trade-off</th></tr>
+        <tr><td>Option A: Prioritize protecting advertising revenue</td><td>Delays AI-native business model; waits while competitors expand</td></tr>
+        <tr><td><strong>Option B (This analysis): Build an AI-native business model now</strong></td><td>Short-term advertising revenue pressure; builds long-term structural advantage</td></tr>
+      </table>
+      <br>
+      <div class="callout yellow"><strong>Skill 1 Decision:</strong> SearchCo chooses to build an AI-native business model rather than merely defending advertising revenue. Supporting evidence: (1) AI summary / advertising causal conflict confirmed by case; (2) Revenue growth halved; (3) Chief AI Officer advocates acting before competitors — current plan delays; (4) All major competitors accelerating in the same direction. <strong>This decision determines what assets Skill 2 must identify.</strong></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:8px 0;color:var(--teal);font-size:13px;font-style:italic;">↓ Decision confirmed → identify which existing assets make this decision executable</div>
+
+  <!-- Skill 2 -->
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAccordion(this)" style="border-left:4px solid var(--teal)">
+      Skill 2 — DIFFERENTIATE: Identify the "Only We Can" Assets <span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-body open">
+      <p style="color:var(--gray);">Because Skill 1 chose to build an AI-native business model, Skill 2's task is: which case-confirmed existing assets make this decision executable?</p>
+      <br>
+      <table class="data-table">
+        <tr><th>Case-Confirmed Asset</th><th>Leverage Point in an AI-Native Strategy</th></tr>
+        <tr><td><strong>3B+ daily search intent data</strong></td><td>Search behavior represents real-time user intent. This scale of intent data is a high-value asset for advertising, e-commerce, and enterprise decisions — potentially as a standalone B2B product, not just an advertising feed</td></tr>
+        <tr><td><strong>AI Assistant live and growing fast among young users</strong></td><td>An existing foundation for a personal AI gateway. Not starting from zero. The question is speed: can it reach Agent execution capability before Apple's cross-device AI integration matures?</td></tr>
+        <tr><td><strong>Agent-Based Search already in experiment</strong></td><td>The closest existing asset to a new business model. Currently "not monetized" — should be fast-tracked to monetizable stage, not kept in experiment indefinitely</td></tr>
+        <tr><td><strong>AI Summaries live with +18% engagement</strong></td><td>Engagement growth confirms the experience has value. The problem: the existing advertising model cannot capture this engagement as revenue. A complementary payment mechanism is needed</td></tr>
+      </table>
+      <br>
+      <div class="callout green"><strong>Skill 2 Synthesis:</strong> SearchCo's "Only We Can" advantage is not search technology itself, but the combination of three existing assets — 3B intent data at scale, a live AI assistant with an established user base, and Agent-Based Search experimentation. <strong>These three assets directly determine how Skill 3 configures the $15B.</strong></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:8px 0;color:var(--teal);font-size:13px;font-style:italic;">↓ Assets identified → therefore allocate the $15B this way</div>
+
+  <!-- Skill 3 -->
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAccordion(this)" style="border-left:4px solid var(--blue)">
+      Skill 3 — ALLOCATE: The $15B Resource Configuration <span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-body open">
+      <p style="color:var(--gray);">Because Skill 1 decided on an AI-native model, and because Skill 2 identified three core asset gaps, the $15B allocation follows this logic:</p>
+      <br>
+      <div class="budget-grid">
+        <div class="budget-card">
+          <div class="b-pct">40%</div>
+          <div class="b-amt">$6B</div>
+          <div class="b-label">① AI-native monetization R&D — subscription, enterprise API licensing, Agent commerce revenue share, intent data B2B</div>
+        </div>
+        <div class="budget-card" style="border-top-color:var(--teal)">
+          <div class="b-pct">27%</div>
+          <div class="b-amt">$4B</div>
+          <div class="b-label">② AI Assistant Agent capability expansion — secure personal AI gateway before Apple's integration matures</div>
+        </div>
+        <div class="budget-card" style="border-top-color:#538135">
+          <div class="b-pct">20%</div>
+          <div class="b-amt">$3B</div>
+          <div class="b-label">③ Publisher ecosystem partnership program — revenue sharing to ensure content quality foundation for AI summaries</div>
+        </div>
+        <div class="budget-card" style="border-top-color:var(--gray)">
+          <div class="b-pct">13%</div>
+          <div class="b-amt">$2B</div>
+          <div class="b-label">④ AI infrastructure query cost efficiency — not scale expansion; reduce per-query cost (already +40%)</div>
+        </div>
+      </div>
+      <div class="callout yellow"><strong>Allocation logic:</strong> 40% concentrated on monetization R&D because that is the largest gap — Agent-Based Search has a product but no revenue path, and the current plan delays this. The existing $10B infrastructure plan already covers scale; this $15B targets the gaps Skill 2 identified. <strong>This allocation must be examined in Skill 4 for systemic trade-offs.</strong></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:8px 0;color:var(--teal);font-size:13px;font-style:italic;">↓ Allocation set → what systemic trade-offs does this configuration create?</div>
+
+  <!-- Skill 4 -->
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAccordion(this)" style="border-left:4px solid #1F5C7A">
+      Skill 4 — INTEGRATE: Systemic Trade-off Analysis <span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-body open">
+      <table class="data-table">
+        <tr><th>Trade-off This Configuration Makes</th><th>Assumption This Depends On (Risk Level)</th></tr>
+        <tr><td>Reducing traditional search optimization investment, shifting toward AI assistant and Agent</td><td><span class="badge warn">🟡 Medium</span> 84% market share base still has user inertia; reduction must not cause existing user loss</td></tr>
+        <tr><td>Delaying full AI summary rollout until alternative revenue is established</td><td><span class="badge bad">🔴 Highest risk</span> Speed of building alternative revenue must outpace speed of advertising revenue decline — <strong>the core bet of the entire strategy</strong></td></tr>
+        <tr><td>$3B into publisher partnership program</td><td><span class="badge warn">🟡 Medium</span> Publishers still need SearchCo's distribution; if AI platforms offer alternative distribution, assumption weakens</td></tr>
+        <tr><td>$2B for efficiency, not scale</td><td><span class="badge ok">🟢 Lower risk</span> Existing $10B plan covers scale; efficiency optimization is an independent, executable goal</td></tr>
+      </table>
+      <div class="callout teal"><strong>Skill 4 systemic insight:</strong> Trade-off ② reveals the largest systemic risk — the race between "speed of building alternative revenue" vs "speed of advertising revenue decline." This is not an assumption you can "wait and see" on — it is the central bet of the entire strategy. <strong>After confirming these trade-offs, Skill 5 can derive the priority sequence within this configuration.</strong></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:8px 0;color:var(--teal);font-size:13px;font-style:italic;">↓ Trade-offs confirmed → given this configuration, what must be done first and what must stop?</div>
+
+  <!-- Skill 5 -->
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAccordion(this)" style="border-left:4px solid #5C3D6B">
+      Skill 5 — PRIORITIZE: Must Do vs. Must Stop <span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-body open">
+      <p style="color:var(--gray);margin-bottom:16px;">After Skill 3 confirms the resource configuration and Skill 4 confirms the systemic trade-offs, the priority sequence has its basis — derived from the allocation logic and system trade-offs, not from intuition alone.</p>
+
+      <h4 style="color:var(--navy);margin-bottom:10px;">Top 2 Priorities (Must Do)</h4>
+      <div class="callout green" style="margin-bottom:10px;">
+        <strong>#1 Immediately build alternative monetization paths not dependent on click advertising</strong><br>
+        Subscription model · Enterprise API licensing · Agent commerce revenue share · Intent data B2B<br>
+        <em>Evidence: AI summary / advertising causal conflict confirmed; Agent-Based Search has a product but no revenue path; Chief AI Officer advocates acting before competitors — current plan delays.</em>
+      </div>
+      <div class="callout teal">
+        <strong>#2 Accelerate AI Assistant Agent capabilities to secure personal AI gateway position</strong><br>
+        Before Apple's cross-device AI integration matures and closes the window<br>
+        <em>Evidence: AI Assistant already growing fast among young users (existing base — not starting from zero); Apple actively exploring alternative information discovery experiences (window exists but is time-limited).</em>
+      </div>
+      <br>
+
+      <h4 style="color:var(--navy);margin-bottom:10px;">Must Stop / Delay</h4>
+      <table class="data-table">
+        <tr><th>Action</th><th>Case Evidence</th></tr>
+        <tr><td><span class="badge bad">🔴 STOP</span> Heavy investment in traditional search ranking optimization</td><td>Users starting with traditional search: 92% → 74%, declining. Skill 4 confirms reducing this investment is a necessary consequence of the allocation</td></tr>
+        <tr><td><span class="badge bad">🔴 STOP</span> Delaying new monetization model development until AI revenue "materializes"</td><td>Competitors expanding; waiting means letting rivals build user habits first. Skill 4 confirms this is the highest-risk assumption</td></tr>
+        <tr><td><span class="badge warn">⚠ DELAY</span> Full AI summary rollout to all users before alternative revenue is in place</td><td>Case confirms AI summaries reduce click-through; Skill 4 confirms ad revenue speed is the critical assumption — full rollout before alternative revenue accelerates damage</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:8px 0;color:var(--teal);font-size:13px;font-style:italic;">↓ Priorities confirmed → for different futures, how should this configuration adapt?</div>
+
+  <!-- Skill 6 -->
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAccordion(this)" style="border-left:4px solid #3D6B3D">
+      Skill 6 — PREPARE: Three-Scenario Planning <span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-body open">
+      <p style="color:var(--gray);margin-bottom:16px;">Not predicting a single future — building scenario flexibility. Plan for the most likely scenario while ensuring you're not caught off guard by the worst case.</p>
+      <div class="scenario-grid">
+        <div class="scenario-card green">
+          <h4>🟢 Co-existence</h4>
+          <p><strong>How the world evolves:</strong> AI summaries and traditional search coexist long-term; advertising model evolves into conversational ads and new formats; publishers and SearchCo reach revenue-sharing agreements.</p>
+          <br>
+          <p><strong>Configuration adjustment:</strong> Advertising + subscription dual engine running in parallel; AI assistant continues deepening; publisher ecosystem stable.</p>
+          <br>
+          <p><strong>Early trigger signals:</strong> Traditional search user share stabilizes above 70%; click advertising revenue growth rate recovers.</p>
+        </div>
+        <div class="scenario-card yellow">
+          <h4>🟡 Accelerated Displacement ★ Primary Scenario</h4>
+          <p><strong>How the world evolves:</strong> AI assistants become the primary information discovery interface within a few years; Apple's AI integration matures and replaces search as the default gateway; advertising click-through rates continue declining.</p>
+          <br>
+          <p><strong>Configuration adjustment:</strong> Accelerate subscription and enterprise API revenue; strengthen personal AI gateway to retain users; publisher partnership maintains content quality.</p>
+          <br>
+          <p><strong>Early trigger signals:</strong> AI assistant as starting point exceeds 30%; over 50% of under-25 users no longer use traditional search.</p>
+        </div>
+        <div class="scenario-card red">
+          <h4>🔴 Ecosystem Reorganization</h4>
+          <p><strong>How the world evolves:</strong> OpenAI/Anthropic Agent capabilities mature to directly complete most tasks; search as an intermediate step becomes largely unnecessary; traditional click advertising shrinks to a secondary market.</p>
+          <br>
+          <p><strong>Configuration adjustment:</strong> SearchCo pivots to AI knowledge infrastructure provider — licensing search index and intent data to AI platforms rather than competing directly for end users.</p>
+          <br>
+          <p><strong>Early trigger signals:</strong> Agent task completion rate reaches 40%+; search advertising revenue (absolute value) begins declining.</p>
+        </div>
+      </div>
+      <div class="callout yellow"><strong>Primary scenario to prepare for: 🟡 Accelerated Displacement.</strong> All external signals in the case — OpenAI/Anthropic Agent expansion, Apple's platform moves, Perplexity's rapid growth — plus internal user behavior data all point in this direction. Planning for 🟡 means not being caught off guard when 🔴 arrives.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ══ SECTION 4: ANSWERS ════════════════════════════════════════════════ -->
+<div class="section" id="answers">
+  <div class="section-header">
+    <div class="label">Simulation Q&amp;A — Direct Answers Based on the 6-Skill Analysis</div>
+    <h2>✅ Q&amp;A Answers</h2>
+    <p style="color:var(--gray);font-size:14px;margin-top:8px;">Direct answers to all three Parts, grounded in case data. Every answer references specific case evidence.</p>
+  </div>
+
+  <!-- Part 1 -->
+  <h3 style="color:var(--navy);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--lblue);">Part 1 — Critique the Current Strategy</h3>
+
+  <div class="qa-block">
+    <div class="qa-q">Q1. What are the key issues or weaknesses in this plan?</div>
+    <div class="callout red">
+      <strong>The central contradiction:</strong> The current plan tries to expand AI summaries at scale while preserving the advertising model — but the case itself explicitly confirms that AI-generated answers reduce click-through rates, and lower click-through rates reduce advertising revenue. This is not a "risk to manage" — it is a case-confirmed causal conflict, and the plan chooses to ignore it.
+    </div>
+    <ul class="list">
+      <li><strong>$10B infrastructure investment without a new business model</strong> — spending more to serve a shrinking revenue base</li>
+      <li><strong>Full AI summary rollout before any alternative monetization</strong> — actively accelerating the erosion of existing revenue</li>
+      <li><strong>Delaying new monetization until AI revenue "materializes"</strong> — while all four competitors actively expand, the cost of waiting is systematically underestimated</li>
+    </ul>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-q">Q2. What strategic signals may be underestimated?</div>
+    <table class="compare-table">
+      <tr><th>Underestimated Signal</th><th>Why It's More Dangerous Than It Appears</th></tr>
+      <tr><td><strong>Apple's cross-device AI assistant layer</strong></td><td>This is not a "device feature upgrade" — it's a structural threat to SearchCo's most critical distribution advantage. Apple doesn't need to build a better search engine; it just needs to make users stop opening one.</td></tr>
+      <tr><td><strong>OpenAI/Anthropic Agent capability expansion</strong></td><td>Agents that can search, reason, and directly execute tasks may make search as an intermediate step unnecessary. The premise of search as a required gateway is being undermined.</td></tr>
+      <tr><td><strong>Under-25 user behavior shift</strong></td><td>The case confirms this cohort already views AI assistants as their primary information interface. This is not a niche — it's the directional signal for where the entire user base is heading over the next decade.</td></tr>
+      <tr><td><strong>Perplexity's high engagement at small scale</strong></td><td>Despite limited scale, Perplexity confirms there is real, non-experimental demand for AI-first information experiences. The assumption that "users won't pay for this" has already been disproved.</td></tr>
+    </table>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-q">Q3. What future risks are not being addressed?</div>
+    <ul class="list">
+      <li><strong>Publisher ecosystem fragmentation:</strong> The case confirms publishers are already questioning AI summary impact on their traffic. If publishers block crawlers, AI summary content quality collapses — destroying the foundation of the entire AI search experience. The current plan has no mechanism to address this.</li>
+      <li><strong>Unresolved leadership conflict:</strong> The case explicitly names conflicting priorities among CEO, CFO, CPO, the ad revenue lead, and Chief AI Officer. Without resolving this at the decision level, every resource allocation will be pulled in different directions simultaneously.</li>
+      <li><strong>Agent-Based Search monetization window:</strong> Currently in experiment, not monetized — while competitors scale in the same direction. The window to establish monetization precedent is finite, and the current plan sets no timeline for this.</li>
+    </ul>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-q">Q4. What assumptions does management appear to be making?</div>
+    <table class="compare-table">
+      <tr><th>Management's Implied Assumption</th><th>Case Signal Verdict</th></tr>
+      <tr><td>AI summaries and advertising can coexist — they are not mutually exclusive</td><td><span class="tag-x">❌ Case explicitly confirms the causal conflict — assumption does not hold</span></td></tr>
+      <tr><td>The cost increase per AI query is manageable</td><td><span class="tag-warn2">⚠️ Cost per search +40%; no case data supports "manageable"</span></td></tr>
+      <tr><td>New monetization models can wait until AI revenue materializes</td><td><span class="tag-x">❌ All four competitors actively expanding; window is closing</span></td></tr>
+      <tr><td>Traditional search ranking optimization still creates user value worth investing in</td><td><span class="tag-warn2">⚠️ Traditional search start: 92% → 74%, trend continuing downward</span></td></tr>
+    </table>
+  </div>
+
+  <br>
+  <h3 style="color:var(--navy);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--lblue);">Part 2 — Define a Better Strategy</h3>
+
+  <div class="qa-block">
+    <div class="qa-q">Q1. What are the top 2 priorities SearchCo should focus on now?</div>
+    <div class="callout green" style="margin-bottom:10px;">
+      <strong>#1 Immediately build alternative monetization paths not dependent on click advertising</strong><br>
+      Subscription model · Enterprise API licensing · Agent commerce revenue share · Intent data B2B<br>
+      <em>Evidence: AI summary / advertising causal conflict confirmed; Agent-Based Search has a product but no revenue path; revenue growth rate halved; Chief AI Officer advocates acting before competitors — current plan delays.</em>
+    </div>
+    <div class="callout teal">
+      <strong>#2 Accelerate AI Assistant Agent capabilities — secure personal AI gateway before Apple's window closes</strong><br>
+      <em>Evidence: AI Assistant already growing fast among young users (existing base); Apple actively exploring alternative information discovery experiences (time-limited window); under-25 demand for AI-first interface already confirmed.</em>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-q">Q2. What should be delayed, reduced, or stopped?</div>
+    <table class="compare-table">
+      <tr><th>Action</th><th>Evidence</th></tr>
+      <tr><td><span class="badge bad">🔴 STOP</span> Heavy investment in traditional search ranking optimization</td><td>Usage declining; all competitors accelerating the shift away from this. Optimizing a shrinking domain.</td></tr>
+      <tr><td><span class="badge bad">🔴 STOP</span> Delaying new monetization model development until AI revenue "materializes"</td><td>Competitors expanding; waiting lets rivals build user habits first. The cost of waiting exceeds the cost of acting.</td></tr>
+      <tr><td><span class="badge warn">⚠ DELAY</span> Full AI summary rollout to all users before alternative revenue is in place</td><td>AI summaries confirmed to reduce click-through rates. Doing this without an alternative revenue mechanism actively accelerates existing revenue erosion.</td></tr>
+    </table>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-q">Q3. What future scenarios should leadership prepare for?</div>
+    <div class="callout yellow">
+      <strong>Primary scenario: 🟡 Accelerated Displacement</strong><br>
+      All case signals point here. Use this as the primary planning basis.
+    </div>
+    <div class="callout red" style="margin-top:8px;">
+      <strong>Tail-risk scenario: 🔴 Ecosystem Reorganization</strong><br>
+      SearchCo pivots to AI knowledge infrastructure provider — licensing search index and intent data to AI platforms, rather than competing directly for end users. Plan for 🟡, build resilience for 🔴.
+    </div>
+  </div>
+
+  <br>
+  <h3 style="color:var(--navy);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--lblue);">Part 3 — Make a Leadership Decision</h3>
+
+  <div class="qa-block">
+    <div class="qa-q">Q1. How should the $15B budget be allocated?</div>
+    <div class="budget-grid">
+      <div class="budget-card"><div class="b-pct">40%</div><div class="b-amt">$6B</div><div class="b-label">AI-native monetization R&D (subscription, enterprise API, Agent commerce)</div></div>
+      <div class="budget-card" style="border-top-color:var(--teal)"><div class="b-pct">27%</div><div class="b-amt">$4B</div><div class="b-label">AI Assistant Agent capability expansion (personal AI gateway)</div></div>
+      <div class="budget-card" style="border-top-color:#538135"><div class="b-pct">20%</div><div class="b-amt">$3B</div><div class="b-label">Publisher ecosystem partnership program (revenue sharing)</div></div>
+      <div class="budget-card" style="border-top-color:var(--gray)"><div class="b-pct">13%</div><div class="b-amt">$2B</div><div class="b-label">AI infrastructure cost efficiency (not scale — reduce per-query cost)</div></div>
+    </div>
+    <div class="callout navy" style="margin-top:8px;"><strong>Allocation rationale:</strong> The largest gap is the missing AI-native monetization path (Agent-Based Search has a product but no revenue path, and the current plan delays this). Therefore 40% goes here. Next is the most time-pressured gap — AI assistant Agent capability before Apple's window closes. Publisher partnership maintains the content quality foundation for AI summaries. Cost efficiency (not scale) because the existing $10B plan already covers scale.</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-q">Q2. What trade-offs are being made?</div>
+    <table class="compare-table">
+      <tr><th>Trade-off</th><th>Short-term Cost</th><th>Long-term Positioning</th></tr>
+      <tr><td>Reducing traditional search optimization</td><td>Some existing user experience improvements slow down</td><td>Resources concentrated on where growth is actually happening</td></tr>
+      <tr><td>Delaying full AI summary rollout before alternative revenue is in place</td><td>AI summary coverage growth rate slows</td><td>Avoids eroding advertising revenue before an alternative exists</td></tr>
+      <tr><td>$3B into publisher partnerships rather than user-facing features</td><td>Less investment in front-end product features</td><td>Preserves AI summary content quality foundation; prevents publisher blocking</td></tr>
+      <tr><td>Building alternative business model now rather than waiting</td><td>Higher R&D spend; advertising revenue under pressure</td><td>Establishes AI-native revenue precedent before competitors do</td></tr>
+    </table>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-q">Q3. What assumptions is your strategy dependent upon?</div>
+    <table class="compare-table">
+      <tr><th>Assumption</th><th>Vulnerability</th></tr>
+      <tr><td>Alternative monetization can be built fast enough to offset advertising revenue decline</td><td><span class="badge bad">🔴 Highest risk</span> The core bet of the entire strategy</td></tr>
+      <tr><td>AI assistant users can be retained before Apple's cross-device AI integration matures</td><td><span class="badge warn">🟡 Medium</span> Window exists, but length is uncertain</td></tr>
+      <tr><td>Publishers still need SearchCo's distribution — partnership negotiations are viable</td><td><span class="badge warn">🟡 Medium</span> If AI platforms offer alternative distribution, this assumption weakens</td></tr>
+      <tr><td>Agent-Based Search can move from experiment to monetization on current technical foundations</td><td><span class="badge ok">🟢 Lower risk</span> Experimentation already exists; execution risk greater than technology risk</td></tr>
+    </table>
+  </div>
+
+  <br>
+  <h3 style="color:var(--navy);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--lblue);">Presentation Summary (5-Minute Format)</h3>
+  <div class="pres-grid">
+    <div class="pres-row">
+      <div class="pres-key">The key strategic problem</div>
+      <div class="pres-val">The current plan bets that AI summaries and advertising can coexist — but the case confirms this is a causal conflict. Meanwhile, all competitors are building direct AI interfaces that bypass search. SearchCo's challenge is not "how to upgrade search" but "whether the premise of search as a required gateway remains valid at all."</div>
+    </div>
+    <div class="pres-row">
+      <div class="pres-key">Signals that matter most</div>
+      <div class="pres-val">(1) Apple's device-layer AI positioning = structural risk to SearchCo's distribution gateway; (2) OpenAI/Anthropic Agent expansion = search as an intermediate step becoming optional. Combined: SearchCo's "gateway" position is being replaced simultaneously from multiple layers.</div>
+    </div>
+    <div class="pres-row">
+      <div class="pres-key">The revised priorities</div>
+      <div class="pres-val">(1) Build AI-native monetization paths now (subscription, enterprise API, Agent commerce); (2) Accelerate AI assistant Agent capabilities. <strong>Stop:</strong> delaying monetization model development; full AI summary rollout before alternative revenue is in place.</div>
+    </div>
+    <div class="pres-row">
+      <div class="pres-key">Budget &amp; trade-offs</div>
+      <div class="pres-val">$6B monetization R&D / $4B AI assistant Agent / $3B publisher partnership / $2B cost efficiency. Core trade-off: short-term advertising revenue pressure in exchange for structural AI-native positioning. Critical assumption: alternative revenue speed outpaces advertising decline speed.</div>
+    </div>
+    <div class="pres-row">
+      <div class="pres-key">The scenario to prepare for</div>
+      <div class="pres-val">🟡 Accelerated Displacement — all case signals point here. Use this as the primary planning scenario. Simultaneously build the option to pivot toward 🔴 Ecosystem Reorganization (licensing search index and intent data to AI platforms as a knowledge infrastructure provider).</div>
+    </div>
+  </div>
+
+  <br>
+  <div class="callout yellow" style="text-align:center;margin-top:24px;">
+    <strong style="font-size:16px;">"Are we building the infrastructure of the next era — or the ruins of the last one?"</strong><br>
+    <em style="color:var(--gray);">Discernment determines what is really happening. Strategic Thinking determines what to do next — and what NOT to do.</em>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>SearchCo: Defend the Core or Reinvent the Future?</strong></p>
+  <p style="margin-top:6px;">Week 10 Strategic Thinking Mindset Simulation · NUS SOC CDAIO SEPO · June 2026</p>
+  <p style="margin-top:6px;">Framework: Discernment Process · 4 Strategic Thinking Levels · 6 Strategic Mindset Skills</p>
+</footer>
+
+<script>
+function showTab(group, id, btn) {
+  document.querySelectorAll(`[id^="${group}-"]`).forEach(p => p.classList.remove('active'));
+  document.getElementById(`${group}-${id}`).classList.add('active');
+  btn.closest('.tabs').querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function toggleAccordion(header) {
+  const body = header.nextElementSibling;
+  const isOpen = header.classList.contains('open');
+  header.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      const a = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+      if (a) a.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+['frameworks','case','analysis','answers'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) observer.observe(el);
+});
+</script>
+</body>
+</html>
