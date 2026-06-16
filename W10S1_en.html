@@ -126,6 +126,26 @@ nav {
 .accordion-body { display: none; padding: 20px; }
 .accordion-body.open { display: block; }
 
+/* ── ANALYSIS FLOW ── */
+.analysis-flow { display: flex; flex-direction: column; gap: 0; }
+.analysis-step { display: flex; gap: 0; }
+.analysis-step-label {
+  min-width: 100px; background: var(--navy); color: #fff;
+  padding: 20px 12px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+.analysis-step-label .s-num { font-size: 10px; opacity: .6; text-transform: uppercase; letter-spacing: .08em; }
+.analysis-step-label .s-name { font-size: 14px; font-weight: 800; margin: 4px 0; }
+.analysis-step-content {
+  flex: 1; padding: 20px 24px; border: 1px solid var(--lgray); border-left: none;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: #fff;
+}
+.analysis-connector { height: 24px; width: 50px; margin-left: 50px; display: flex; align-items: center; color: var(--teal); font-size: 20px; }
+.analysis-step-content h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.analysis-step-content p { font-size: 13px; color: var(--gray); margin-bottom: 8px; }
+
 .budget-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
 .budget-card { border-radius: var(--radius); padding: 20px; background: var(--light); border-top: 4px solid var(--blue); }
 .budget-card .b-pct { font-size: 32px; font-weight: 800; color: var(--navy); }
@@ -175,6 +195,8 @@ footer strong { color: #fff; }
   .skill-num { border-radius: var(--radius) var(--radius) 0 0; min-width: auto; flex-direction: row; gap: 12px; }
   .pres-row { flex-direction: column; }
   .pres-key { min-width: auto; }
+  .analysis-step { flex-direction: column; }
+  .analysis-step-label { border-radius: var(--radius) var(--radius) 0 0; flex-direction: row; justify-content: flex-start; gap: 12px; }
 }
 </style>
 </head>
@@ -187,7 +209,7 @@ footer strong { color: #fff; }
     <a href="#frameworks" class="nav-link">📘 Frameworks</a>
     <a href="#case" class="nav-link">📋 Case Study</a>
     <a href="#analysis" class="nav-link">🔍 Analysis</a>
-    <a href="#answers" class="nav-link">✅ Sim1 Answers</a>
+    <a href="#answers" class="nav-link">✅ Q&amp;A Answers</a>
   </div>
   <a href="W10S1.html" style="margin-left:auto;margin-right:16px;padding:6px 14px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:4px;color:#fff;text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap;">中文 →</a>
 </nav>
@@ -632,7 +654,6 @@ footer strong { color: #fff; }
           <div class="analysis-step-label" style="background:var(--blue);">
             <div class="s-num">LEVEL 1</div>
             <div class="s-name">Event<br>Interpretation</div>
-            <div class="s-cn">事件解讀</div>
           </div>
           <div class="analysis-step-content">
             <h4>What is happening? — Read the observable facts honestly</h4>
@@ -645,7 +666,6 @@ footer strong { color: #fff; }
           <div class="analysis-step-label" style="background:var(--teal);">
             <div class="s-num">LEVEL 2</div>
             <div class="s-name">Signal<br>Recognition</div>
-            <div class="s-cn">訊號識別</div>
           </div>
           <div class="analysis-step-content">
             <h4>What do ALL signals mean together? — Synthesis, not isolation</h4>
@@ -658,7 +678,6 @@ footer strong { color: #fff; }
           <div class="analysis-step-label" style="background:#1F5C7A;">
             <div class="s-num">LEVEL 3</div>
             <div class="s-name">Consequence<br>Analysis</div>
-            <div class="s-cn">結果分析</div>
           </div>
           <div class="analysis-step-content">
             <h4>If this trend continues, what changes? — What gains and loses value?</h4>
@@ -677,7 +696,6 @@ footer strong { color: #fff; }
           <div class="analysis-step-label" style="background:#1F3864;">
             <div class="s-num">LEVEL 4</div>
             <div class="s-name">Ecosystem<br>Transformation</div>
-            <div class="s-cn">生態系轉型</div>
           </div>
           <div class="analysis-step-content">
             <h4>Who controls the new layer of value? — The real strategic question</h4>
@@ -867,8 +885,8 @@ footer strong { color: #fff; }
 <!-- ══ SECTION 4: ANSWERS ════════════════════════════════════════════════ -->
 <div class="section" id="answers">
   <div class="section-header">
-    <div class="label">Simulation — Direct Answers Based on the 6-Skill Analysis</div>
-    <h2>✅ Sim1 Answers</h2>
+    <div class="label">Simulation Q&amp;A — Direct Answers Based on the 6-Skill Analysis</div>
+    <h2>✅ Q&amp;A Answers</h2>
     <p style="color:var(--gray);font-size:14px;margin-top:8px;">Direct answers to all three Parts, grounded in case data. Every answer references specific case evidence.</p>
   </div>
 
