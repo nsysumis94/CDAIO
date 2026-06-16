@@ -110,7 +110,7 @@ nav {
 .data-table tr:nth-child(even) td { background: var(--light); }
 .data-table tr:hover td { background: var(--lblue); }
 .tag-bad  { color: #C55A11; font-weight: 700; }
-.tag-good { color: #FF95CA; font-weight: 700; }
+.tag-good { color: #375623; font-weight: 700; }
 .tag-warn { color: #7C5F00; font-weight: 700; }
 
 .accordion { border: 1px solid var(--lgray); border-radius: var(--radius); overflow: hidden; margin-bottom: 12px; }
@@ -1011,28 +1011,85 @@ footer strong { color: #fff; }
   </div>
 
   <br>
-  <h3 style="color:var(--navy);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--lblue);">Presentation Summary (5-Minute Format)</h3>
-  <div class="pres-grid">
-    <div class="pres-row">
-      <div class="pres-key">The key strategic problem</div>
-      <div class="pres-val">The current plan bets that AI summaries and advertising can coexist — but the case confirms this is a causal conflict. Meanwhile, all competitors are building direct AI interfaces that bypass search. SearchCo's challenge is not "how to upgrade search" but "whether the premise of search as a required gateway remains valid at all."</div>
+  <h3 style="color:var(--navy);margin-bottom:4px;padding-bottom:8px;border-bottom:2px solid var(--lblue);">Presentation Summary (5-Minute Format)</h3>
+  <p style="color:var(--gray);font-size:13px;margin-bottom:20px;">Present these five cards in sequence to deliver a complete strategic analysis.</p>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+
+    <!-- Card 1 -->
+    <div style="border-radius:var(--radius);border:1px solid var(--lgray);overflow:hidden;">
+      <div style="background:var(--navy);color:#fff;padding:12px 20px;display:flex;align-items:center;gap:14px;">
+        <span style="font-size:22px;font-weight:900;opacity:.4;">01</span>
+        <span style="font-size:15px;font-weight:700;">Core Problem: Does the "search gateway" premise still hold?</span>
+      </div>
+      <div style="padding:16px 20px;background:#fff;">
+        <ul class="list">
+          <li>The current plan bets AI summaries and advertising can coexist — but the case confirms a <strong>causal conflict</strong>: the two cannot be simultaneously maximized</li>
+          <li>Every major competitor is bypassing search to build a direct AI interface — search as a "required intermediate step" is being eroded</li>
+          <li>The question is not "how to upgrade search" but "<strong>whether the gateway premise remains valid at all</strong>"</li>
+        </ul>
+      </div>
     </div>
-    <div class="pres-row">
-      <div class="pres-key">Signals that matter most</div>
-      <div class="pres-val">(1) Apple's device-layer AI positioning = structural risk to SearchCo's distribution gateway; (2) OpenAI/Anthropic Agent expansion = search as an intermediate step becoming optional. Combined: SearchCo's "gateway" position is being replaced simultaneously from multiple layers.</div>
+
+    <!-- Card 2 -->
+    <div style="border-radius:var(--radius);border:1px solid var(--lgray);overflow:hidden;">
+      <div style="background:var(--teal);color:#fff;padding:12px 20px;display:flex;align-items:center;gap:14px;">
+        <span style="font-size:22px;font-weight:900;opacity:.4;">02</span>
+        <span style="font-size:15px;font-weight:700;">Key Signals: Two structural threats compressing the gateway simultaneously</span>
+      </div>
+      <div style="padding:16px 20px;background:#fff;">
+        <ul class="list">
+          <li>🍎 <strong>Apple's device-layer AI</strong> — intercepts search triggers at the OS level, hollowing out SearchCo's distribution gateway</li>
+          <li>🤖 <strong>OpenAI / Anthropic Agent expansion</strong> — AI executes tasks directly, making search an optional intermediate step</li>
+          <li>Together: SearchCo's gateway position is being replaced <strong>from both the device layer and the application layer</strong> — this is not a single competitive threat</li>
+        </ul>
+      </div>
     </div>
-    <div class="pres-row">
-      <div class="pres-key">The revised priorities</div>
-      <div class="pres-val">(1) Build AI-native monetization paths now (subscription, enterprise API, Agent commerce); (2) Accelerate AI assistant Agent capabilities. <strong>Stop:</strong> delaying monetization model development; full AI summary rollout before alternative revenue is in place.</div>
+
+    <!-- Card 3 -->
+    <div style="border-radius:var(--radius);border:1px solid var(--lgray);overflow:hidden;">
+      <div style="background:#1F5C7A;color:#fff;padding:12px 20px;display:flex;align-items:center;gap:14px;">
+        <span style="font-size:22px;font-weight:900;opacity:.4;">03</span>
+        <span style="font-size:15px;font-weight:700;">Revised Priorities: What to start, what to stop</span>
+      </div>
+      <div style="padding:16px 20px;background:#fff;">
+        <ul class="list">
+          <li>✅ <strong>Start now:</strong> Build AI-native revenue paths (subscription, enterprise intent-data API, Agent commerce fee)</li>
+          <li>✅ <strong>Accelerate:</strong> AI assistant Agent capabilities — move from experiment to monetizable commercial stage, fast</li>
+          <li>🚫 <strong>Stop:</strong> Full AI summary rollout before advertising alternatives are in place; keeping Agent-Based Search permanently in "experiment" status</li>
+        </ul>
+      </div>
     </div>
-    <div class="pres-row">
-      <div class="pres-key">Budget &amp; trade-offs</div>
-      <div class="pres-val">$6B monetization R&D / $4B AI assistant Agent / $3B publisher partnership / $2B cost efficiency. Core trade-off: short-term advertising revenue pressure in exchange for structural AI-native positioning. Critical assumption: alternative revenue speed outpaces advertising decline speed.</div>
+
+    <!-- Card 4 -->
+    <div style="border-radius:var(--radius);border:1px solid var(--lgray);overflow:hidden;">
+      <div style="background:#1F3864;color:#fff;padding:12px 20px;display:flex;align-items:center;gap:14px;">
+        <span style="font-size:22px;font-weight:900;opacity:.4;">04</span>
+        <span style="font-size:15px;font-weight:700;">Budget & Core Trade-offs</span>
+      </div>
+      <div style="padding:16px 20px;background:#fff;">
+        <ul class="list">
+          <li>$6B monetization R&amp;D · $4B AI assistant Agent · $3B publisher partnerships · $2B cost efficiency</li>
+          <li><strong>Core trade-off:</strong> Short-term advertising revenue pressure in exchange for structural AI-native positioning</li>
+          <li><strong>Critical assumption:</strong> Alternative revenue must be built faster than advertising declines — this is the strategy's primary risk</li>
+        </ul>
+      </div>
     </div>
-    <div class="pres-row">
-      <div class="pres-key">The scenario to prepare for</div>
-      <div class="pres-val">🟡 Accelerated Displacement — all case signals point here. Use this as the primary planning scenario. Simultaneously build the option to pivot toward 🔴 Ecosystem Reorganization (licensing search index and intent data to AI platforms as a knowledge infrastructure provider).</div>
+
+    <!-- Card 5 -->
+    <div style="border-radius:var(--radius);border:1px solid var(--lgray);overflow:hidden;">
+      <div style="background:var(--blue);color:#fff;padding:12px 20px;display:flex;align-items:center;gap:14px;">
+        <span style="font-size:22px;font-weight:900;opacity:.4;">05</span>
+        <span style="font-size:15px;font-weight:700;">Scenario Planning: Primary path and contingency option</span>
+      </div>
+      <div style="padding:16px 20px;background:#fff;">
+        <ul class="list">
+          <li>🟡 <strong>Accelerated Displacement (primary scenario)</strong> — all case signals point here; treat this as the default planning assumption</li>
+          <li>🔴 <strong>Ecosystem Reorganization (contingency pivot)</strong> — if AI platforms fully replace the search gateway, transform into knowledge infrastructure: license the search index and intent data to AI platforms</li>
+          <li>⚠️ The current plan has <strong>no contingency for 🟡 / 🔴 scenarios</strong> — this is the strategic gap Q1 identifies</li>
+        </ul>
+      </div>
     </div>
+
   </div>
 
   <br>

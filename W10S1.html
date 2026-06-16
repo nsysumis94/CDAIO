@@ -121,7 +121,7 @@ nav {
 .data-table tr:nth-child(even) td { background: var(--light); }
 .data-table tr:hover td { background: var(--lblue); }
 .tag-bad  { color: #C55A11; font-weight: 700; }
-.tag-good { color: #FF95CA; font-weight: 700; }
+.tag-good { color: #375623; font-weight: 700; }
 .tag-warn { color: #7C5F00; font-weight: 700; }
 
 /* ── ACCORDION ── */
@@ -1040,28 +1040,85 @@ ul.list li::before { content: "•"; color: var(--teal); position: absolute; lef
   </div>
 
   <br>
-  <h3 style="color:var(--navy);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--lblue);">Presentation Summary（5 分鐘呈現架構）</h3>
-  <div class="pres-grid" style="border:1px solid var(--lgray);border-radius:var(--radius);overflow:hidden;">
-    <div class="pres-row">
-      <div class="pres-key">The key strategic problem</div>
-      <div class="pres-val">現行計畫押注 AI 摘要與廣告模式可以共存，但個案已確認這是因果衝突。與此同時，所有競爭者都在建立繞過搜尋的直接 AI 介面。SearchCo 面對的不是「如何升級搜尋」，而是「搜尋作為必要入口的前提本身是否成立」。</div>
+  <h3 style="color:var(--navy);margin-bottom:4px;padding-bottom:8px;border-bottom:2px solid var(--lblue);">Presentation Summary（5 分鐘呈現架構）</h3>
+  <p style="color:var(--gray);font-size:13px;margin-bottom:20px;">依序說完五張卡片，即完整呈現策略分析邏輯。</p>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+
+    <!-- Card 1 -->
+    <div style="border-radius:var(--radius);border:1px solid var(--lgray);overflow:hidden;">
+      <div style="background:var(--navy);color:#fff;padding:12px 20px;display:flex;align-items:center;gap:14px;">
+        <span style="font-size:22px;font-weight:900;opacity:.4;">01</span>
+        <span style="font-size:15px;font-weight:700;">核心問題：搜尋的「入口」前提是否還成立？</span>
+      </div>
+      <div style="padding:16px 20px;background:#fff;">
+        <ul class="list">
+          <li>現行計畫押注 AI 摘要與廣告模式可以共存——但個案已確認這是<strong>因果衝突</strong>，兩者不能同時最大化</li>
+          <li>所有主要競爭者都在繞過搜尋，直接建立 AI 介面——搜尋作為「必要中間步驟」的地位正在被侵蝕</li>
+          <li>問題不是「如何升級搜尋」，而是「<strong>搜尋作為入口的前提本身是否仍然有效</strong>」</li>
+        </ul>
+      </div>
     </div>
-    <div class="pres-row">
-      <div class="pres-key">The signals that matter most</div>
-      <div class="pres-val">(1) Apple 的裝置層 AI 定位 = SearchCo 的分發入口有被替代的結構性風險；(2) OpenAI/Anthropic 的 Agent 擴張 = 搜尋作為中間步驟有被跳過的可能。兩個訊號合起來：SearchCo 的「入口」定位正在被從不同層次同時替代。</div>
+
+    <!-- Card 2 -->
+    <div style="border-radius:var(--radius);border:1px solid var(--lgray);overflow:hidden;">
+      <div style="background:var(--teal);color:#fff;padding:12px 20px;display:flex;align-items:center;gap:14px;">
+        <span style="font-size:22px;font-weight:900;opacity:.4;">02</span>
+        <span style="font-size:15px;font-weight:700;">關鍵訊號：兩個結構性威脅同時收縮入口</span>
+      </div>
+      <div style="padding:16px 20px;background:#fff;">
+        <ul class="list">
+          <li>🍎 <strong>Apple 裝置層 AI</strong>——在 OS 層截斷搜尋的觸發點，SearchCo 的分發入口被架空</li>
+          <li>🤖 <strong>OpenAI / Anthropic Agent 擴張</strong>——AI 直接執行任務，搜尋作為中間步驟被跳過</li>
+          <li>兩個訊號的合力：SearchCo 的入口定位正在被<strong>從裝置層與應用層同時替代</strong>，不是單一競爭威脅</li>
+        </ul>
+      </div>
     </div>
-    <div class="pres-row">
-      <div class="pres-key">The revised priorities</div>
-      <div class="pres-val">(1) 立即建立 AI 原生獲利路徑（訂閱、企業 API、Agent 商務抽成）；(2) 加速 AI 助手 Agent 能力。<strong>停止：</strong>延遲建立獲利模式、在廣告替代機制未到位前全面鋪開 AI 摘要。</div>
+
+    <!-- Card 3 -->
+    <div style="border-radius:var(--radius);border:1px solid var(--lgray);overflow:hidden;">
+      <div style="background:#1F5C7A;color:#fff;padding:12px 20px;display:flex;align-items:center;gap:14px;">
+        <span style="font-size:22px;font-weight:900;opacity:.4;">03</span>
+        <span style="font-size:15px;font-weight:700;">調整後的優先順序：做什麼、停止什麼</span>
+      </div>
+      <div style="padding:16px 20px;background:#fff;">
+        <ul class="list">
+          <li>✅ <strong>立即啟動</strong>：建立 AI 原生獲利路徑（訂閱制、企業意圖資料 API、Agent 商務抽成）</li>
+          <li>✅ <strong>加速推進</strong>：AI 助手 Agent 能力——從實驗快速推進到可獲利的商業化階段</li>
+          <li>🚫 <strong>停止</strong>：在廣告替代機制到位前全面鋪開 AI 摘要；持續將 Agent 搜尋停在「實驗」狀態</li>
+        </ul>
+      </div>
     </div>
-    <div class="pres-row">
-      <div class="pres-key">Budget & trade-offs</div>
-      <div class="pres-val">$6B 獲利模式研發 / $4B AI 助手 Agent / $3B 出版商夥伴 / $2B 成本效率。核心取捨：短期廣告收入承壓，換取 AI 原生商業模式的結構性定位。最大假設：替代收入建立速度快過廣告下滑速度。</div>
+
+    <!-- Card 4 -->
+    <div style="border-radius:var(--radius);border:1px solid var(--lgray);overflow:hidden;">
+      <div style="background:#1F3864;color:#fff;padding:12px 20px;display:flex;align-items:center;gap:14px;">
+        <span style="font-size:22px;font-weight:900;opacity:.4;">04</span>
+        <span style="font-size:15px;font-weight:700;">預算與核心取捨</span>
+      </div>
+      <div style="padding:16px 20px;background:#fff;">
+        <ul class="list">
+          <li>$6B 獲利模式研發・$4B AI 助手 Agent・$3B 出版商夥伴・$2B 成本效率</li>
+          <li><strong>核心取捨</strong>：短期廣告收入承壓，換取 AI 原生商業模式的結構性定位</li>
+          <li><strong>最大假設</strong>：替代收入的建立速度，必須快過廣告下滑的速度——這是整個策略的風險所在</li>
+        </ul>
+      </div>
     </div>
-    <div class="pres-row">
-      <div class="pres-key">The future scenario</div>
-      <div class="pres-val">🟡 加速位移——所有個案訊號都指向此方向。以此情境為主要規劃基礎，同時為 🔴 生態重組建立轉型選項（轉型為 AI 知識基礎設施，向 AI 平台授權搜尋索引與意圖數據）。</div>
+
+    <!-- Card 5 -->
+    <div style="border-radius:var(--radius);border:1px solid var(--lgray);overflow:hidden;">
+      <div style="background:var(--blue);color:#fff;padding:12px 20px;display:flex;align-items:center;gap:14px;">
+        <span style="font-size:22px;font-weight:900;opacity:.4;">05</span>
+        <span style="font-size:15px;font-weight:700;">情境規劃：主要路徑與備用選項</span>
+      </div>
+      <div style="padding:16px 20px;background:#fff;">
+        <ul class="list">
+          <li>🟡 <strong>加速位移（主要規劃情境）</strong>——所有個案訊號都指向此方向，以此為預設前提制定策略</li>
+          <li>🔴 <strong>生態重組（備用轉型選項）</strong>——若 AI 平台全面取代搜尋入口，轉型為知識基礎設施：向 AI 平台授權搜尋索引與意圖資料</li>
+          <li>⚠️ 現行計畫<strong>沒有為 🟡/🔴 情境保留應變空間</strong>——這是 Q1 指出的最大策略缺口</li>
+        </ul>
+      </div>
     </div>
+
   </div>
 
   <br>
